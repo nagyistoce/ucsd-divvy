@@ -7,6 +7,9 @@
 //
 
 #import "DivvyPCA.h"
+#import "DivvyDataset.h"
+
+#include "pca.h"
 
 
 @implementation DivvyPCA
@@ -27,6 +30,15 @@
 
 - (void) reduceDataset:(DivvyDataset *)dataset
            reducedData:(NSData *)reducedData {
+	
+	// Run PCA code
+	float *newReducedData = (float*) [reducedData bytes];
+	/*reduce_data([dataset floatData], 
+				[[dataset d] unsignedIntValue], 
+				[[dataset n] unsignedIntValue], 
+				newReducedData, 2);*/
+	
+	// Should set firstAxis, secondAxis, and rotatedData...?
 }
 
 @end
