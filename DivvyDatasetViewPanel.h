@@ -44,6 +44,7 @@
 @property (retain) NSMutableArray *reducerViewControllers;
 
 - (IBAction) clustererSelect:(id)sender;
+- (IBAction) reducerSelect:(id)sender;
 
 - (void) reflow;
 

@@ -80,6 +80,17 @@
   [delegate reloadSelectedDatasetViewImage]; 
 }
 
+- (IBAction) reducerSelect:(id)sender {
+  [self reflow];
+  
+  DivvyAppDelegate *delegate = [NSApp delegate];
+  
+  delegate.selectedDatasetView.selectedReducer = reducerController.content;
+  
+  [delegate datasetVisualizerChanged]; // If the reduction changes, the dataset visualizer result needs to be updated
+  [delegate reloadSelectedDatasetViewImage]; 
+}
+
 - (void) reflow {
   DivvyAppDelegate *delegate = [NSApp delegate];
   NSArray *pluginTypes = delegate.pluginTypes;

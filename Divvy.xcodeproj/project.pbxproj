@@ -7,11 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0D55DC7113FAA04A000ADAFB /* pca.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0D55DC6F13FAA04A000ADAFB /* pca.cpp */; };
-		0D55DC7413FAA056000ADAFB /* DivvyPCAController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D55DC7313FAA056000ADAFB /* DivvyPCAController.m */; };
 		0D55DC7613FAA05A000ADAFB /* DivvyPCA.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0D55DC7513FAA05A000ADAFB /* DivvyPCA.xib */; };
 		0D55DC7713FAA081000ADAFB /* DivvyPCA.m in Sources */ = {isa = PBXBuildFile; fileRef = D7B1957713983DE500BF1EC7 /* DivvyPCA.m */; };
-		0D55DC7813FAA081000ADAFB /* pca.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0D55DC6F13FAA04A000ADAFB /* pca.cpp */; };
+		0D55DC7813FAA081000ADAFB /* pca.c in Sources */ = {isa = PBXBuildFile; fileRef = 0D55DC6F13FAA04A000ADAFB /* pca.c */; };
 		0D55DC7913FAA081000ADAFB /* DivvyPCAController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D55DC7313FAA056000ADAFB /* DivvyPCAController.m */; };
 		0D55DC7A13FAA087000ADAFB /* DivvyPCA.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0D55DC7513FAA05A000ADAFB /* DivvyPCA.xib */; };
 		0D55DC8213FAA0A1000ADAFB /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D77DF783118636A2009C1946 /* Accelerate.framework */; };
@@ -79,7 +77,7 @@
 			isa = PBXContainerItemProxy;
 			containerPortal = 29B97313FDCFA39411CA2CEA /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 0D55DC5C13FA9FCA000ADAFB /* DivvyPCA */;
+			remoteGlobalIDString = 0D55DC5C13FA9FCA000ADAFB;
 			remoteInfo = DivvyPCA;
 		};
 		D704B6A913E088B1002692E9 /* PBXContainerItemProxy */ = {
@@ -130,7 +128,7 @@
 		089C165DFE840E0CC02AAC07 /* English */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = English; path = English.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		0D55DC5D13FA9FCA000ADAFB /* DivvyPCA.plugin */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DivvyPCA.plugin; sourceTree = BUILT_PRODUCTS_DIR; };
 		0D55DC5E13FA9FCA000ADAFB /* DivvyPCA-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "DivvyPCA-Info.plist"; sourceTree = "<group>"; };
-		0D55DC6F13FAA04A000ADAFB /* pca.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = pca.cpp; sourceTree = "<group>"; };
+		0D55DC6F13FAA04A000ADAFB /* pca.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = pca.c; sourceTree = "<group>"; };
 		0D55DC7013FAA04A000ADAFB /* pca.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = pca.h; sourceTree = "<group>"; };
 		0D55DC7213FAA056000ADAFB /* DivvyPCAController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DivvyPCAController.h; sourceTree = "<group>"; };
 		0D55DC7313FAA056000ADAFB /* DivvyPCAController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DivvyPCAController.m; sourceTree = "<group>"; };
@@ -446,7 +444,7 @@
 				D7B1957613983DE500BF1EC7 /* DivvyPCA.h */,
 				D7B1957713983DE500BF1EC7 /* DivvyPCA.m */,
 				D7A24D9713F32105001AD337 /* DivvyPCA.xcdatamodel */,
-				0D55DC6F13FAA04A000ADAFB /* pca.cpp */,
+				0D55DC6F13FAA04A000ADAFB /* pca.c */,
 				0D55DC7013FAA04A000ADAFB /* pca.h */,
 				0D55DC7213FAA056000ADAFB /* DivvyPCAController.h */,
 				0D55DC7313FAA056000ADAFB /* DivvyPCAController.m */,
@@ -834,7 +832,7 @@
 				0D55DC7713FAA081000ADAFB /* DivvyPCA.m in Sources */,
 				0D55DC7913FAA081000ADAFB /* DivvyPCAController.m in Sources */,
 				0D55DCB213FAA128000ADAFB /* DivvyPCA.xcdatamodel in Sources */,
-				0D55DC7813FAA081000ADAFB /* pca.cpp in Sources */,
+				0D55DC7813FAA081000ADAFB /* pca.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -851,8 +849,6 @@
 				D7DD8BE11381DEBA00DADC35 /* DivvyDatasetView.m in Sources */,
 				D730D28213B52AE200E01F31 /* DivvyDatasetViewPanel.m in Sources */,
 				D74C66DF13DF36F900CC5BB2 /* DivvyPluginManager.m in Sources */,
-				0D55DC7113FAA04A000ADAFB /* pca.cpp in Sources */,
-				0D55DC7413FAA056000ADAFB /* DivvyPCAController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

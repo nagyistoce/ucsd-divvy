@@ -3,12 +3,12 @@
 	<data>
 		<int key="IBDocument.SystemTarget">1060</int>
 		<string key="IBDocument.SystemVersion">10K549</string>
-		<string key="IBDocument.InterfaceBuilderVersion">804</string>
+		<string key="IBDocument.InterfaceBuilderVersion">851</string>
 		<string key="IBDocument.AppKitVersion">1038.36</string>
 		<string key="IBDocument.HIToolboxVersion">461.00</string>
 		<object class="NSMutableDictionary" key="IBDocument.PluginVersions">
 			<string key="NS.key.0">com.apple.InterfaceBuilder.CocoaPlugin</string>
-			<string key="NS.object.0">804</string>
+			<string key="NS.object.0">851</string>
 		</object>
 		<object class="NSMutableArray" key="IBDocument.EditedObjectIDs">
 			<bool key="EncodedWithXMLCoder">YES</bool>
@@ -69,7 +69,7 @@
 						<object class="NSPopUpButton" id="159755003">
 							<reference key="NSNextResponder" ref="329074452"/>
 							<int key="NSvFlags">268</int>
-							<string key="NSFrame">{{38, 179}, {187, 26}}</string>
+							<string key="NSFrame">{{38, 179}, {245, 26}}</string>
 							<reference key="NSSuperview" ref="329074452"/>
 							<bool key="NSEnabled">YES</bool>
 							<object class="NSPopUpButtonCell" key="NSCell" id="704843306">
@@ -145,7 +145,7 @@
 						<object class="NSPopUpButton" id="13712301">
 							<reference key="NSNextResponder" ref="329074452"/>
 							<int key="NSvFlags">268</int>
-							<string key="NSFrame">{{38, 344}, {187, 26}}</string>
+							<string key="NSFrame">{{38, 344}, {245, 26}}</string>
 							<reference key="NSSuperview" ref="329074452"/>
 							<bool key="NSEnabled">YES</bool>
 							<object class="NSPopUpButtonCell" key="NSCell" id="822653967">
@@ -258,7 +258,7 @@
 						<object class="NSPopUpButton" id="747900109">
 							<reference key="NSNextResponder" ref="329074452"/>
 							<int key="NSvFlags">268</int>
-							<string key="NSFrame">{{38, 262}, {187, 26}}</string>
+							<string key="NSFrame">{{38, 262}, {245, 26}}</string>
 							<reference key="NSSuperview" ref="329074452"/>
 							<bool key="NSEnabled">YES</bool>
 							<object class="NSPopUpButtonCell" key="NSCell" id="190081140">
@@ -351,7 +351,7 @@
 						<object class="NSPopUpButton" id="442862668">
 							<reference key="NSNextResponder" ref="329074452"/>
 							<int key="NSvFlags">268</int>
-							<string key="NSFrame">{{38, 96}, {187, 26}}</string>
+							<string key="NSFrame">{{38, 96}, {245, 26}}</string>
 							<reference key="NSSuperview" ref="329074452"/>
 							<bool key="NSEnabled">YES</bool>
 							<object class="NSPopUpButtonCell" key="NSCell" id="970761057">
@@ -1089,6 +1089,14 @@
 					</object>
 					<int key="connectionID">257</int>
 				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">reducerSelect:</string>
+						<reference key="source" ref="1001"/>
+						<reference key="destination" ref="442862668"/>
+					</object>
+					<int key="connectionID">258</int>
+				</object>
 			</object>
 			<object class="IBMutableOrderedSet" key="objectRecords">
 				<object class="NSArray" key="orderedObjects">
@@ -1608,9 +1616,9 @@
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
-					<string>{{131, 446}, {300, 388}}</string>
+					<string>{{340, 446}, {300, 388}}</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
-					<string>{{131, 446}, {300, 388}}</string>
+					<string>{{340, 446}, {300, 388}}</string>
 					<boolean value="YES"/>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
@@ -1659,7 +1667,7 @@
 				</object>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">257</int>
+			<int key="maxID">258</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -1668,14 +1676,35 @@
 					<string key="className">DivvyDatasetViewPanel</string>
 					<string key="superclassName">NSWindowController</string>
 					<object class="NSMutableDictionary" key="actions">
-						<string key="NS.key.0">clustererSelect:</string>
-						<string key="NS.object.0">id</string>
+						<bool key="EncodedWithXMLCoder">YES</bool>
+						<object class="NSArray" key="dict.sortedKeys">
+							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>clustererSelect:</string>
+							<string>reducerSelect:</string>
+						</object>
+						<object class="NSMutableArray" key="dict.values">
+							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>id</string>
+							<string>id</string>
+						</object>
 					</object>
 					<object class="NSMutableDictionary" key="actionInfosByName">
-						<string key="NS.key.0">clustererSelect:</string>
-						<object class="IBActionInfo" key="NS.object.0">
-							<string key="name">clustererSelect:</string>
-							<string key="candidateClassName">id</string>
+						<bool key="EncodedWithXMLCoder">YES</bool>
+						<object class="NSArray" key="dict.sortedKeys">
+							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>clustererSelect:</string>
+							<string>reducerSelect:</string>
+						</object>
+						<object class="NSMutableArray" key="dict.values">
+							<bool key="EncodedWithXMLCoder">YES</bool>
+							<object class="IBActionInfo">
+								<string key="name">clustererSelect:</string>
+								<string key="candidateClassName">id</string>
+							</object>
+							<object class="IBActionInfo">
+								<string key="name">reducerSelect:</string>
+								<string key="candidateClassName">id</string>
+							</object>
 						</object>
 					</object>
 					<object class="NSMutableDictionary" key="outlets">
