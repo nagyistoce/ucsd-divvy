@@ -67,9 +67,37 @@ void reduce_data(float* X, int D, int N, float* Y, int no_dims) {
 		}
 	}
 	
+	// Normalize data to have a minimum value of zero
+	float* min_val = (float*) calloc(no_dims, sizeof(float));
+	for(int n = 0; n < N; n++) {
+		for(int d = 0; d < no_dims; d++) {
+			if(n == 0 || Y[n * no_dims + d] < min_val[d]) min_val[d] = Y[n * no_dims + d];
+		}
+	}
+	for(int n = 0; n < N; n++) {
+		for(int d = 0; d < no_dims; d++) {
+			Y[n * no_dims + d] -= min_val[d];
+		}
+	}
+	
+	// Normalize data to have a maximum value of one
+	float* max_val = (float*) calloc(no_dims, sizeof(float));
+	for(int n = 0; n < N; n++) {
+		for(int d = 0; d < no_dims; d++) {
+			if(n == 0 || Y[n * no_dims + d] > max_val[d]) max_val[d] = Y[n * no_dims + d];
+		}
+	}
+	for(int n = 0; n < N; n++) {
+		for(int d = 0; d < no_dims; d++) {
+			Y[n * no_dims + d] /= max_val[d];
+		}
+	}	
+	
 	// Clean up memory
 	free(mean);
 	free(C);
 	free(lambda);
 	free(work);
+	free(min_val);
+	free(max_val);
 }
