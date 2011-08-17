@@ -32,11 +32,20 @@
            reducedData:(NSData *)reducedData {
 	
 	// Run PCA code
+	int no_dims = 2;
 	float *newReducedData = (float*) [reducedData bytes];
 	reduce_data([dataset floatData], 
 				[[dataset d] unsignedIntValue], 
 				[[dataset n] unsignedIntValue], 
-				newReducedData, 2);
+				newReducedData, no_dims);
+	
+	// Print out reduced data
+	for(int i = 0; i < [[dataset n] unsignedIntValue]; i++) {
+		for(int j = 0; j < no_dims; j++) {
+			printf("%f,", newReducedData[j * [[dataset n] unsignedIntValue] + i]);
+		}
+		printf("\n");
+	}
 	
 	// Should set firstAxis, secondAxis, and rotatedData...?
 }
