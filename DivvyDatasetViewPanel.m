@@ -88,6 +88,7 @@
   delegate.selectedDatasetView.selectedReducer = reducerController.content;
   
   [delegate datasetVisualizerChanged]; // If the reduction changes, the dataset visualizer result needs to be updated
+  [delegate pointVisualizerChanged]; // Same for the point visualizer
   [delegate reloadSelectedDatasetViewImage]; 
 }
 

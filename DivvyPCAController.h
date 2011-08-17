@@ -11,6 +11,4 @@
 
 @interface DivvyPCAController : NSViewController
 
--(IBAction) changeK:(id)sender;
-
 @end

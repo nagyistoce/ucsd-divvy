@@ -17,10 +17,6 @@
 @dynamic reducerID;
 @dynamic name;
 
-@dynamic firstAxis;
-@dynamic secondAxis;
-@dynamic rotatedData;
-
 - (void) awakeFromInsert {
   [super awakeFromInsert];
   

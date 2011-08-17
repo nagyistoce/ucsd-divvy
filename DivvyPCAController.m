@@ -11,8 +11,4 @@
 
 @implementation DivvyPCAController
 
--(IBAction) changeK:(id)sender {
-	[(DivvyAppDelegate *)[NSApp delegate] reducerChanged];
-}
-
 @end

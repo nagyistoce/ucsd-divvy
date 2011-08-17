@@ -15,8 +15,4 @@
 @property (nonatomic, retain) NSString *reducerID;
 @property (nonatomic, retain) NSString *name;
 
-@property (nonatomic, retain) NSNumber *firstAxis;
-@property (nonatomic, retain) NSNumber *secondAxis;
-@property (nonatomic, retain) NSData *rotatedData;
-
 @end
