@@ -65,6 +65,9 @@ void perform_tsne(float* X, int D, int N, float* Y, int no_dims, float perplexit
 			momentum = final_momentum;
 		}
 	}
+    
+    // Normalize plot between 0 and 1
+    normalize_data(Y, N, no_dims);
 	
 	// Clean up memory
 	free(P);
