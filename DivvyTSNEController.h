@@ -9,8 +9,5 @@
 #import <Cocoa/Cocoa.h>
 
 
-@interface DivvyTSNEController : NSObject {
-
-}
-
+@interface DivvyTSNEController : NSViewController
 @end

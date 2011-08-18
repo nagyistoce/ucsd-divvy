@@ -20,8 +20,6 @@
 		0D9C41A413FD00F800E59675 /* DivvyTSNEController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D9C41A313FD00F800E59675 /* DivvyTSNEController.m */; };
 		0D9C41AB13FD05DA00E59675 /* DivvyTSNE.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0D9C41AA13FD05DA00E59675 /* DivvyTSNE.xib */; };
 		0DA1048513FD272A0017B561 /* DivvyTSNE.xcdatamodel in Sources */ = {isa = PBXBuildFile; fileRef = 0DA1048413FD272A0017B561 /* DivvyTSNE.xcdatamodel */; };
-		0DA1048C13FD2A130017B561 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0DA1048A13FD2A130017B561 /* Accelerate.framework */; };
-		0DA1048D13FD2A130017B561 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0DA1048B13FD2A130017B561 /* Cocoa.framework */; };
 		1DDD58160DA1D0A300B32029 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1DDD58140DA1D0A300B32029 /* MainMenu.xib */; };
 		256AC3DA0F4B6AC300CF3369 /* DivvyAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 256AC3D90F4B6AC300CF3369 /* DivvyAppDelegate.m */; };
 		8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C165CFE840E0CC02AAC07 /* InfoPlist.strings */; };
@@ -55,6 +53,8 @@
 		D730D2E513B5307400E01F31 /* kmeans.c in Sources */ = {isa = PBXBuildFile; fileRef = D76454F013A6A333000B4038 /* kmeans.c */; };
 		D730D31313B5334C00E01F31 /* Divvy_Prefix.pch in Headers */ = {isa = PBXBuildFile; fileRef = 256AC3F00F4B6AF500CF3369 /* Divvy_Prefix.pch */; };
 		D74C66DF13DF36F900CC5BB2 /* DivvyPluginManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D74C66DE13DF36F900CC5BB2 /* DivvyPluginManager.m */; };
+		D751AC8413FD7DFD0089FAAE /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D77DF783118636A2009C1946 /* Accelerate.framework */; };
+		D751AC8513FD7E030089FAAE /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D730D27713B5297E00E01F31 /* Cocoa.framework */; };
 		D7764F2F1378B40400F7F49F /* DatasetViewPanel.xib in Resources */ = {isa = PBXBuildFile; fileRef = D7764F2E1378B40400F7F49F /* DatasetViewPanel.xib */; };
 		D7764F371378B65A00F7F49F /* DatasetsPanel.xib in Resources */ = {isa = PBXBuildFile; fileRef = D7764F361378B65A00F7F49F /* DatasetsPanel.xib */; };
 		D7764F46137B4A9900F7F49F /* DivvyDataset.m in Sources */ = {isa = PBXBuildFile; fileRef = D7764F45137B4A9900F7F49F /* DivvyDataset.m */; };
@@ -115,6 +115,13 @@
 			remoteGlobalIDString = D730D23E13B5271A00E01F31;
 			remoteInfo = DivvyKMeans;
 		};
+		D751AC9C13FD7E780089FAAE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 29B97313FDCFA39411CA2CEA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 0D9C419013FD007100E59675 /* DivvyTSNE */;
+			remoteInfo = DivvyTSNE;
+		};
 		D7A24DA713F3225C001AD337 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 29B97313FDCFA39411CA2CEA /* Project object */;
@@ -150,8 +157,6 @@
 		0D9C41A313FD00F800E59675 /* DivvyTSNEController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DivvyTSNEController.m; sourceTree = "<group>"; };
 		0D9C41AA13FD05DA00E59675 /* DivvyTSNE.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DivvyTSNE.xib; sourceTree = "<group>"; };
 		0DA1048413FD272A0017B561 /* DivvyTSNE.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DivvyTSNE.xcdatamodel; sourceTree = "<group>"; };
-		0DA1048A13FD2A130017B561 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
-		0DA1048B13FD2A130017B561 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = /System/Library/Frameworks/Cocoa.framework; sourceTree = "<absolute>"; };
 		13E42FB307B3F0F600E4EEF1 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = /System/Library/Frameworks/CoreData.framework; sourceTree = "<absolute>"; };
 		1DDD58150DA1D0A300B32029 /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/MainMenu.xib; sourceTree = "<group>"; };
@@ -254,8 +259,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0DA1048C13FD2A130017B561 /* Accelerate.framework in Frameworks */,
-				0DA1048D13FD2A130017B561 /* Cocoa.framework in Frameworks */,
+				D751AC8513FD7E030089FAAE /* Cocoa.framework in Frameworks */,
+				D751AC8413FD7DFD0089FAAE /* Accelerate.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -404,8 +409,6 @@
 		29B97314FDCFA39411CA2CEA /* Divvy */ = {
 			isa = PBXGroup;
 			children = (
-				0DA1048A13FD2A130017B561 /* Accelerate.framework */,
-				0DA1048B13FD2A130017B561 /* Cocoa.framework */,
 				D7642A6613F4EE5200F1CE56 /* Dataset Visualizers */,
 				D7642A6713F4EE5F00F1CE56 /* Point Visualizers */,
 				D7642A6813F4EE6C00F1CE56 /* Clusterers */,
@@ -677,6 +680,7 @@
 				D7A24DA813F3225C001AD337 /* PBXTargetDependency */,
 				D7A24DAA13F3225C001AD337 /* PBXTargetDependency */,
 				0D55DCAD13FAA0D2000ADAFB /* PBXTargetDependency */,
+				D751AC9D13FD7E780089FAAE /* PBXTargetDependency */,
 			);
 			name = Divvy;
 			productInstallPath = "$(HOME)/Applications";
@@ -1025,6 +1029,11 @@
 			isa = PBXTargetDependency;
 			target = D730D23E13B5271A00E01F31 /* DivvyKMeans */;
 			targetProxy = D74C691F13DF6A9200CC5BB2 /* PBXContainerItemProxy */;
+		};
+		D751AC9D13FD7E780089FAAE /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 0D9C419013FD007100E59675 /* DivvyTSNE */;
+			targetProxy = D751AC9C13FD7E780089FAAE /* PBXContainerItemProxy */;
 		};
 		D7A24DA813F3225C001AD337 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
