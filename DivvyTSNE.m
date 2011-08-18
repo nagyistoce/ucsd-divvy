@@ -37,14 +37,6 @@
 				[[dataset d] unsignedIntValue], 
 				[[dataset n] unsignedIntValue], 
 				newReducedData, no_dims, perplexity);
-	
-	// Print out reduced data
-	/*for(int i = 0; i < [[dataset n] unsignedIntValue]; i++) {
-		for(int j = 0; j < no_dims; j++) {
-			printf("%f,", newReducedData[j * [[dataset n] unsignedIntValue] + i]);
-		}
-		printf("\n");
-	 }*/
 }
 
 @end
