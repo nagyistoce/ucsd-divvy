@@ -15,6 +15,13 @@
 		0D55DC8213FAA0A1000ADAFB /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D77DF783118636A2009C1946 /* Accelerate.framework */; };
 		0D55DC8313FAA0A1000ADAFB /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D730D27713B5297E00E01F31 /* Cocoa.framework */; };
 		0D55DCB213FAA128000ADAFB /* DivvyPCA.xcdatamodel in Sources */ = {isa = PBXBuildFile; fileRef = D7A24D9713F32105001AD337 /* DivvyPCA.xcdatamodel */; };
+		0D9C419E13FD00D700E59675 /* tsne.c in Sources */ = {isa = PBXBuildFile; fileRef = 0D9C419D13FD00D700E59675 /* tsne.c */; };
+		0D9C41A113FD00E900E59675 /* DivvyTSNE.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D9C41A013FD00E900E59675 /* DivvyTSNE.m */; };
+		0D9C41A413FD00F800E59675 /* DivvyTSNEController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D9C41A313FD00F800E59675 /* DivvyTSNEController.m */; };
+		0D9C41AB13FD05DA00E59675 /* DivvyTSNE.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0D9C41AA13FD05DA00E59675 /* DivvyTSNE.xib */; };
+		0DA1048513FD272A0017B561 /* DivvyTSNE.xcdatamodel in Sources */ = {isa = PBXBuildFile; fileRef = 0DA1048413FD272A0017B561 /* DivvyTSNE.xcdatamodel */; };
+		0DA1048C13FD2A130017B561 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0DA1048A13FD2A130017B561 /* Accelerate.framework */; };
+		0DA1048D13FD2A130017B561 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0DA1048B13FD2A130017B561 /* Cocoa.framework */; };
 		1DDD58160DA1D0A300B32029 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1DDD58140DA1D0A300B32029 /* MainMenu.xib */; };
 		256AC3DA0F4B6AC300CF3369 /* DivvyAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 256AC3D90F4B6AC300CF3369 /* DivvyAppDelegate.m */; };
 		8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C165CFE840E0CC02AAC07 /* InfoPlist.strings */; };
@@ -133,6 +140,18 @@
 		0D55DC7213FAA056000ADAFB /* DivvyPCAController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DivvyPCAController.h; sourceTree = "<group>"; };
 		0D55DC7313FAA056000ADAFB /* DivvyPCAController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DivvyPCAController.m; sourceTree = "<group>"; };
 		0D55DC7513FAA05A000ADAFB /* DivvyPCA.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DivvyPCA.xib; sourceTree = "<group>"; };
+		0D9C419113FD007100E59675 /* DivvyTSNE.plugin */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DivvyTSNE.plugin; sourceTree = BUILT_PRODUCTS_DIR; };
+		0D9C419213FD007100E59675 /* DivvyTSNE-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "DivvyTSNE-Info.plist"; sourceTree = "<group>"; };
+		0D9C419C13FD00D700E59675 /* tsne.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tsne.h; sourceTree = "<group>"; };
+		0D9C419D13FD00D700E59675 /* tsne.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = tsne.c; sourceTree = "<group>"; };
+		0D9C419F13FD00E900E59675 /* DivvyTSNE.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DivvyTSNE.h; sourceTree = "<group>"; };
+		0D9C41A013FD00E900E59675 /* DivvyTSNE.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DivvyTSNE.m; sourceTree = "<group>"; };
+		0D9C41A213FD00F800E59675 /* DivvyTSNEController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DivvyTSNEController.h; sourceTree = "<group>"; };
+		0D9C41A313FD00F800E59675 /* DivvyTSNEController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DivvyTSNEController.m; sourceTree = "<group>"; };
+		0D9C41AA13FD05DA00E59675 /* DivvyTSNE.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DivvyTSNE.xib; sourceTree = "<group>"; };
+		0DA1048413FD272A0017B561 /* DivvyTSNE.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DivvyTSNE.xcdatamodel; sourceTree = "<group>"; };
+		0DA1048A13FD2A130017B561 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
+		0DA1048B13FD2A130017B561 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = /System/Library/Frameworks/Cocoa.framework; sourceTree = "<absolute>"; };
 		13E42FB307B3F0F600E4EEF1 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = /System/Library/Frameworks/CoreData.framework; sourceTree = "<absolute>"; };
 		1DDD58150DA1D0A300B32029 /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/MainMenu.xib; sourceTree = "<group>"; };
@@ -231,6 +250,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		0D9C418F13FD007100E59675 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0DA1048C13FD2A130017B561 /* Accelerate.framework in Frameworks */,
+				0DA1048D13FD2A130017B561 /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		8D11072E0486CEB800E47090 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -317,6 +345,22 @@
 			name = Classes;
 			sourceTree = "<group>";
 		};
+		0D9C418513FCFFE100E59675 /* TSNE */ = {
+			isa = PBXGroup;
+			children = (
+				0D9C419C13FD00D700E59675 /* tsne.h */,
+				0D9C419D13FD00D700E59675 /* tsne.c */,
+				0D9C419F13FD00E900E59675 /* DivvyTSNE.h */,
+				0D9C41A013FD00E900E59675 /* DivvyTSNE.m */,
+				0D9C41A213FD00F800E59675 /* DivvyTSNEController.h */,
+				0D9C41A313FD00F800E59675 /* DivvyTSNEController.m */,
+				0D9C41AA13FD05DA00E59675 /* DivvyTSNE.xib */,
+				0DA1048413FD272A0017B561 /* DivvyTSNE.xcdatamodel */,
+				0D9C419213FD007100E59675 /* DivvyTSNE-Info.plist */,
+			);
+			name = TSNE;
+			sourceTree = "<group>";
+		};
 		1058C7A0FEA54F0111CA2CBB /* Linked Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -352,6 +396,7 @@
 				D7A24D8413F32039001AD337 /* DivvyNilReducer.plugin */,
 				D7A24D8E13F3204A001AD337 /* DivvyZhu.plugin */,
 				0D55DC5D13FA9FCA000ADAFB /* DivvyPCA.plugin */,
+				0D9C419113FD007100E59675 /* DivvyTSNE.plugin */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -359,6 +404,8 @@
 		29B97314FDCFA39411CA2CEA /* Divvy */ = {
 			isa = PBXGroup;
 			children = (
+				0DA1048A13FD2A130017B561 /* Accelerate.framework */,
+				0DA1048B13FD2A130017B561 /* Cocoa.framework */,
 				D7642A6613F4EE5200F1CE56 /* Dataset Visualizers */,
 				D7642A6713F4EE5F00F1CE56 /* Point Visualizers */,
 				D7642A6813F4EE6C00F1CE56 /* Clusterers */,
@@ -524,6 +571,7 @@
 			children = (
 				D7A24D9413F32053001AD337 /* NilReducer */,
 				D730D24813B5276C00E01F31 /* PCA */,
+				0D9C418513FCFFE100E59675 /* TSNE */,
 			);
 			name = Reducers;
 			sourceTree = "<group>";
@@ -592,6 +640,23 @@
 			name = DivvyPCA;
 			productName = DivvyPCA;
 			productReference = 0D55DC5D13FA9FCA000ADAFB /* DivvyPCA.plugin */;
+			productType = "com.apple.product-type.bundle";
+		};
+		0D9C419013FD007100E59675 /* DivvyTSNE */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0D9C419513FD007200E59675 /* Build configuration list for PBXNativeTarget "DivvyTSNE" */;
+			buildPhases = (
+				0D9C418D13FD007100E59675 /* Resources */,
+				0D9C418E13FD007100E59675 /* Sources */,
+				0D9C418F13FD007100E59675 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = DivvyTSNE;
+			productName = DivvyTSNE;
+			productReference = 0D9C419113FD007100E59675 /* DivvyTSNE.plugin */;
 			productType = "com.apple.product-type.bundle";
 		};
 		8D1107260486CEB800E47090 /* Divvy */ = {
@@ -752,6 +817,7 @@
 				D7A24D8313F32039001AD337 /* DivvyNilReducer */,
 				D7A24D8D13F3204A001AD337 /* DivvyZhu */,
 				0D55DC5C13FA9FCA000ADAFB /* DivvyPCA */,
+				0D9C419013FD007100E59675 /* DivvyTSNE */,
 			);
 		};
 /* End PBXProject section */
@@ -762,6 +828,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				0D55DC7A13FAA087000ADAFB /* DivvyPCA.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0D9C418D13FD007100E59675 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0D9C41AB13FD05DA00E59675 /* DivvyTSNE.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -836,6 +910,17 @@
 				0D55DC7913FAA081000ADAFB /* DivvyPCAController.m in Sources */,
 				0D55DCB213FAA128000ADAFB /* DivvyPCA.xcdatamodel in Sources */,
 				0D55DC7813FAA081000ADAFB /* pca.c in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0D9C418E13FD007100E59675 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0D9C419E13FD00D700E59675 /* tsne.c in Sources */,
+				0D9C41A113FD00E900E59675 /* DivvyTSNE.m in Sources */,
+				0D9C41A413FD00F800E59675 /* DivvyTSNEController.m in Sources */,
+				0DA1048513FD272A0017B561 /* DivvyTSNE.xcdatamodel in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1014,8 +1099,62 @@
 					Foundation,
 					"-framework",
 					AppKit,
+					"-framework",
+					Accelerate,
 				);
 				PRODUCT_NAME = DivvyPCA;
+				WRAPPER_EXTENSION = bundle;
+				ZERO_LINK = NO;
+			};
+			name = Release;
+		};
+		0D9C419313FD007200E59675 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_FIX_AND_CONTINUE = YES;
+				GCC_MODEL_TUNING = G5;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = Divvy_Prefix.pch;
+				INFOPLIST_FILE = "DivvyTSNE-Info.plist";
+				INSTALL_PATH = "$(HOME)/Library/Bundles";
+				OTHER_LDFLAGS = (
+					"-framework",
+					Foundation,
+					"-framework",
+					AppKit,
+					"-framework",
+					Accelerate,
+				);
+				PRODUCT_NAME = DivvyTSNE;
+				WRAPPER_EXTENSION = plugin;
+			};
+			name = Debug;
+		};
+		0D9C419413FD007200E59675 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				GCC_MODEL_TUNING = G5;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/AppKit.framework/Headers/AppKit.h";
+				INFOPLIST_FILE = "DivvyTSNE-Info.plist";
+				INSTALL_PATH = "$(HOME)/Library/Bundles";
+				OTHER_LDFLAGS = (
+					"-framework",
+					Foundation,
+					"-framework",
+					AppKit,
+					"-framework",
+					Accelerate,
+				);
+				PRODUCT_NAME = DivvyTSNE;
 				WRAPPER_EXTENSION = bundle;
 				ZERO_LINK = NO;
 			};
@@ -1067,6 +1206,7 @@
 				GCC_VERSION = "";
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				MOMC_NO_INVERSE_RELATIONSHIP_WARNINGS = NO;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = macosx;
@@ -1082,6 +1222,7 @@
 				GCC_OPTIMIZATION_LEVEL = 3;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				SDKROOT = macosx;
 			};
 			name = Release;
@@ -1374,6 +1515,15 @@
 			buildConfigurations = (
 				0D55DC6013FA9FCA000ADAFB /* Debug */,
 				0D55DC6113FA9FCA000ADAFB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		0D9C419513FD007200E59675 /* Build configuration list for PBXNativeTarget "DivvyTSNE" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0D9C419313FD007200E59675 /* Debug */,
+				0D9C419413FD007200E59675 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
