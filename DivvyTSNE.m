@@ -28,12 +28,12 @@
            reducedData:(NSData *)reducedData {
 	
 	
-	//float perplexity = 10.0;			// should come from the GUI
+	float perplexity = 10.0;			// should come from the GUI
 	
 	// Run t-SNE code
 	int no_dims = 2;
 	float *newReducedData = (float*) [reducedData bytes];
-	perform_tnse([dataset floatData], 
+	perform_tsne([dataset floatData], 
 				[[dataset d] unsignedIntValue], 
 				[[dataset n] unsignedIntValue], 
 				newReducedData, no_dims, perplexity);

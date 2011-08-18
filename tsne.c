@@ -36,7 +36,7 @@ void perform_tsne(float* X, int D, int N, float* Y, int no_dims, float perplexit
 	
 	// Initialize solution
 	for(int i = 0; i < N * no_dims; i++) {
-		Y[i] = randn() * .0001;		// missing randn implementation!
+		Y[i] = 0.0; //randn() * .0001;
 	}
 	
 	// Perform main training loop
