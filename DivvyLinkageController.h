@@ -11,6 +11,6 @@
 
 @interface DivvyLinkageController : NSViewController
 
--(IBAction) changeK:(id)sender;
+-(IBAction) changeParameter:(id)sender;
 
 @end

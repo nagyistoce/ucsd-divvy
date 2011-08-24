@@ -11,7 +11,7 @@
 
 @implementation DivvyLinkageController
 
--(IBAction) changeK:(id)sender {
+-(IBAction) changeParameter:(id)sender {
   [(DivvyAppDelegate *)[NSApp delegate] clustererChanged];
 }
 

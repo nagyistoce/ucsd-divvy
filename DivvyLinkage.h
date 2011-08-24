@@ -16,5 +16,6 @@
 @property (nonatomic, retain) NSString *name;
 
 @property (nonatomic, retain) NSNumber *k;
+@property (nonatomic, retain) NSNumber *isComplete;
 
 @end

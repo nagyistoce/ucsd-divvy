@@ -32,6 +32,7 @@
           [[dataset n] unsignedIntValue], 
           [[dataset d] unsignedIntValue], 
           [[self k] unsignedIntValue],
+          [[self isComplete] unsignedIntValue],
           (int *)[assignment bytes]);
 }
 

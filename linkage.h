@@ -25,9 +25,9 @@ typedef struct {
 	float distance;
 } dendrite;
 
-void linkage(float *data, unsigned int n, unsigned int d, unsigned int k, int *assignment);
+void linkage(float *data, unsigned int n, unsigned int d, unsigned int k, unsigned int complete, int *assignment);
 
-void dendrogram(int N, float *distance, dendrite *result);
+void dendrogram(int N, int complete, float *distance, dendrite *result);
 
 void assignLaunch(dendrite *dendrogram, int k, int N, int *result);
 void assign(dendrite *dendrogram, int line, int k, int N, int *result);

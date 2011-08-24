@@ -9,19 +9,21 @@
 
 #include "linkage.h"
 
-void linkage(float *data, unsigned int n, unsigned int d, unsigned int k, int *assignment) {
+void linkage(float *data, unsigned int n, unsigned int d, unsigned int k, unsigned int complete, int *assignment) {
   float *distance_out = (float *)malloc(sizeof(float) * n * (n - 1) / 2);
   dendrite *dendrogram_out = (dendrite *)malloc(sizeof(dendrite) * (n - 1));
   
   distance(n, d, data, distance_out);
-  dendrogram(n, distance_out, dendrogram_out);
+  dendrogram(n, complete, distance_out, dendrogram_out);
   assignLaunch(dendrogram_out, k, n, assignment);
   
   free(distance_out);
   free(dendrogram_out);
 }
 
-void dendrogram(int N, float *distance, dendrite *result) {
+
+// This needs to be cleaned up and rewritten to support complete and average linkage
+void dendrogram(int N, int complete, float *distance, dendrite *result) {
 	int i, j, k;
 	int * nearest = (int *)malloc((N - 1) * sizeof(int));
 	int * bookkeep = (int *)malloc(N * sizeof(int));
@@ -111,16 +113,22 @@ void dendrogram(int N, float *distance, dendrite *result) {
 				bookkeep[i] = N + j;
 			if (i > ncopy[mindex]) {
 				ndist = distance[i*(i-1)/2 + ncopy[mindex]];
-				if (ndist < distance[i*(i-1)/2 + mindex])
+				if ((complete ? ndist > distance[i*(i-1)/2 + mindex] : ndist < distance[i*(i-1)/2 + mindex]))
 					distance[i*(i-1)/2 + mindex] = ndist;
 			}
 			if(i > mindex && i < ncopy[mindex]) {
-				ndist = fmin(distance[i*(i-1)/2 + mindex], distance[ncopy[mindex] * (ncopy[mindex] - 1) / 2 + i]);
+        if(complete)
+          ndist = fmax(distance[i*(i-1)/2 + mindex], distance[ncopy[mindex] * (ncopy[mindex] - 1) / 2 + i]);
+        else
+          ndist = fmin(distance[i*(i-1)/2 + mindex], distance[ncopy[mindex] * (ncopy[mindex] - 1) / 2 + i]);
 				distance[i*(i-1)/2 + mindex] = ndist;
 				//distance[ncopy[mindex] * (ncopy[mindex] - 1) / 2 + i] = ndist;
 			}
 			if(i < mindex && i < ncopy[mindex]) {
-				ndist = fmin(distance[mindex * (mindex - 1) / 2 + i], distance[ncopy[mindex] * (ncopy[mindex] - 1) / 2 + i]);
+        if(complete)
+          ndist = fmax(distance[mindex * (mindex - 1) / 2 + i], distance[ncopy[mindex] * (ncopy[mindex] - 1) / 2 + i]);
+        else
+          ndist = fmin(distance[mindex * (mindex - 1) / 2 + i], distance[ncopy[mindex] * (ncopy[mindex] - 1) / 2 + i]);
 				distance[mindex * (mindex - 1) / 2 + i] = ndist;
 				//distance[ncopy[mindex] * (ncopy[mindex] - 1) / 2 + i] = ndist;
 			}
