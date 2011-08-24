@@ -17,9 +17,6 @@ void linkage(float *data, unsigned int n, unsigned int d, unsigned int k, int *a
   dendrogram(n, distance_out, dendrogram_out);
   assignLaunch(dendrogram_out, k, n, assignment);
   
-  for(int j = 0; j < n; j++)
-    printf("%f ", dendrogram_out[j].distance);  
-  
   free(distance_out);
   free(dendrogram_out);
 }
@@ -160,30 +157,29 @@ void dendrogram(int N, float *distance, dendrite *result) {
 	return;
 }
 
-void assignLaunch(dendrite *dendrogram, int k, int N, int *result) {
+void assignLaunch(dendrite *dendrogram, int k, int N, int *assignment) {
 	int curK = 0;
-	for(int i = 0; i < k - 1; i++)
-	{
-		if(dendrogram[N - i - 2].i < N)
-			result[dendrogram[N - i - 2].i] = curK++;
-		else if(dendrogram[N - i - 2].i <= 2 * (N - 1) - (k - 1))
-			assign(dendrogram, i - 2, curK++, N, result);
-		
-		if(dendrogram[N - i - 2].j < N)
-			result[dendrogram[N - i - 2].j] = curK++;
-		else if(dendrogram[N - i - 2].j <= 2 * (N - 1) - (k - 1))
-			assign(dendrogram, i - 2, curK++, N, result);    
-	}
+	int index = 0;
+	for(int i = 0; i < k - 1; i++) {
+    index = N - i - 2;
+    if(dendrogram[index].i < N)
+      assignment[dendrogram[index].i] = curK++;
+    else if(dendrogram[index].i <= 2 * (N - 1) - (k - 1))
+      assign(dendrogram, dendrogram[index].i - N, curK++, N, assignment);
+    if(dendrogram[index].j < N)
+      assignment[dendrogram[index].j] = curK++;
+    else if(dendrogram[index].j <= 2 * (N - 1) - (k - 1))
+      assign(dendrogram, dendrogram[index].j - N, curK++, N, assignment);
+  }
 }
 
-void assign(dendrite *dendrogram, int line, int k, int N, int *result) {
-	if(dendrogram[line].i < N)
-		result[dendrogram[line].i] = k;
-	else
-		assign(dendrogram, dendrogram[line].i - N, k, N, result);
-	
-  if(dendrogram[line].j < N)
-		result[dendrogram[line].j] = k;
+void assign(dendrite *dendrogram, int line, int k, int N, int *assignment) {
+  if(dendrogram[line].i < N)
+    assignment[dendrogram[line].i] = k;
   else
-		assign(dendrogram, dendrogram[line].j - N, k, N, result);
+    assign(dendrogram, dendrogram[line].i - N, k, N, assignment);
+  if(dendrogram[line].j < N)
+    assignment[dendrogram[line].j] = k;
+  else
+    assign(dendrogram, dendrogram[line].j - N, k, N, assignment);
 }

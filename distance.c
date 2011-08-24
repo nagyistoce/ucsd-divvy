@@ -12,7 +12,7 @@
 // Calculate distances with matrix/matrix operations (BLAS3)
 void distance(int N, int D, float *data, float *result) {
 	int i, j, m, o;
-	int blockSize = 250;
+	int blockSize = 50;
   int threadNum = omp_get_max_threads(); // Number of threads OpenMP will spawn
   
 	float *diag = (float *)malloc(sizeof(float) * N);

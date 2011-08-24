@@ -7,8 +7,12 @@
 //
 
 #import "DivvyLinkageController.h"
-
+#import "DivvyAppDelegate.h"
 
 @implementation DivvyLinkageController
+
+-(IBAction) changeK:(id)sender {
+  [(DivvyAppDelegate *)[NSApp delegate] clustererChanged];
+}
 
 @end
