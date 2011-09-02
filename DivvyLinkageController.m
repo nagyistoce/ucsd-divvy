@@ -12,7 +12,9 @@
 @implementation DivvyLinkageController
 
 -(IBAction) changeParameter:(id)sender {
-  [(DivvyAppDelegate *)[NSApp delegate] clustererChanged];
+  DivvyAppDelegate *delegate = [NSApp delegate];
+  [delegate clustererChanged];
+  [delegate reloadSelectedDatasetViewImage];
 }
 
 @end

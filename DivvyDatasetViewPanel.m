@@ -77,7 +77,7 @@
   delegate.selectedDatasetView.selectedClusterer = clustererController.content;
   
   [delegate datasetVisualizerChanged]; // If the clustering changes, the dataset visualizer result needs to be updated
-  [delegate reloadSelectedDatasetViewImage]; 
+  [delegate reloadSelectedDatasetViewImage];
 }
 
 - (IBAction) reducerSelect:(id)sender {
@@ -89,7 +89,7 @@
   
   [delegate datasetVisualizerChanged]; // If the reduction changes, the dataset visualizer result needs to be updated
   [delegate pointVisualizerChanged]; // Same for the point visualizer
-  [delegate reloadSelectedDatasetViewImage]; 
+  [delegate reloadSelectedDatasetViewImage];
 }
 
 - (void) reflow {

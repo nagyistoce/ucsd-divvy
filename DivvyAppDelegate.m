@@ -40,28 +40,42 @@
 @synthesize managedObjectModel;
 @synthesize managedObjectContext;
 
+@synthesize processingImage;
+
 - (void) reloadSelectedDatasetViewImage {
-  [[self selectedDatasetView] reloadImage];
-  [[[self datasetWindowController] datasetViewsBrowser] reloadData];
+  [self.selectedDatasetView setProcessingImage];
+  [self.datasetWindowController.datasetViewsBrowser reloadData];
+  
+  NSInvocationOperation *invocationOperation = [[[NSInvocationOperation alloc] initWithTarget:self.selectedDatasetView
+                                                                                     selector:@selector(checkForNullPluginResults)
+                                                                                       object:nil] autorelease];
+  
+  
+  // Reload the DatasetView image in main thread once processing is complete.
+  [invocationOperation setCompletionBlock:^{
+    dispatch_async(dispatch_get_main_queue(), ^{
+      if([self.selectedDatasetView.operationQueue operationCount] == 0)
+        [self.datasetWindowController.datasetViewsBrowser reloadData];
+    });
+  }];
+  
+  
+  [self.selectedDatasetView.operationQueue addOperation:invocationOperation];
 }
 
 - (void) datasetVisualizerChanged {
-  [[self selectedDatasetView] datasetVisualizerChanged];
-  [self reloadSelectedDatasetViewImage];
+  [self.selectedDatasetView datasetVisualizerChanged];
 }
 - (void) pointVisualizerChanged {
-  [[self selectedDatasetView] pointVisualizerChanged];
-  [self reloadSelectedDatasetViewImage];
+  [self.selectedDatasetView pointVisualizerChanged];
 }
 
 - (void) clustererChanged {
-  [[self selectedDatasetView] clustererChanged];
-  [self reloadSelectedDatasetViewImage];
+  [self.selectedDatasetView clustererChanged];
 }
 
 - (void) reducerChanged {
-  [[self selectedDatasetView] reducerChanged];
-  [self reloadSelectedDatasetViewImage];
+  [self.selectedDatasetView reducerChanged];
 }
 
 - (NSString *)defaultDatasetVisualizer {
@@ -147,6 +161,8 @@
   [datasetWindow showWindow:nil];  
   self.datasetWindowController = datasetWindow;
   [datasetWindow release];
+  
+  self.processingImage = [[[NSImage alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"waiting" withExtension:@"png"]] autorelease];
   
   [datasetViewPanel reflow];
 }
@@ -371,6 +387,8 @@
   [managedObjectContext release];
   [persistentStoreCoordinator release];
   [managedObjectModel release];
+  
+  [processingImage release];
   
   [super dealloc];
 }

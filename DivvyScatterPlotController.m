@@ -13,7 +13,8 @@
 @implementation DivvyScatterPlotController
 
 -(IBAction) changePointSize:(id)sender{
-  [(DivvyAppDelegate *)[NSApp delegate] datasetVisualizerChanged];
-}
+  DivvyAppDelegate *delegate = [NSApp delegate];
+  [delegate datasetVisualizerChanged];
+  [delegate reloadSelectedDatasetViewImage];}
 
 @end

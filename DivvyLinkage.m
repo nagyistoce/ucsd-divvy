@@ -18,6 +18,7 @@
 @dynamic name;
 
 @dynamic k;
+@dynamic isComplete;
 
 - (void) awakeFromInsert {
   [super awakeFromInsert];

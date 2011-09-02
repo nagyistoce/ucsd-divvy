@@ -13,10 +13,10 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
+#include <dispatch/dispatch.h>
 
 #include <vecLib/cblas.h>
 #include <vecLib/clapack.h>
-#include <omp.h>
 
 #include "indexing.h"
 

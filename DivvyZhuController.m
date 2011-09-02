@@ -14,7 +14,8 @@
 @implementation DivvyZhuController
 
 - (IBAction) changeLineWidth:(id)sender {
-  [(DivvyAppDelegate *)[NSApp delegate] pointVisualizerChanged];
-}
+  DivvyAppDelegate *delegate = [NSApp delegate];
+  [delegate pointVisualizerChanged];
+  [delegate reloadSelectedDatasetViewImage];}
 
 @end

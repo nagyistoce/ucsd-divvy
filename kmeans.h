@@ -11,7 +11,7 @@
 
 #include <stdlib.h>
 #include <float.h>
-#include <omp.h>
+#include <dispatch/dispatch.h>
 
 void kmeans(float *data, unsigned int n, unsigned int d, unsigned int k, int *assignment);
 

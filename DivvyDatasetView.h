@@ -49,15 +49,25 @@
 @property (nonatomic, assign) id <DivvyClusterer> selectedClusterer;
 @property (nonatomic, assign) id <DivvyReducer> selectedReducer;
 
+@property (nonatomic, retain) NSOperationQueue *operationQueue;
+
 @property (readonly) NSImage *image;
 
 + (id) datasetViewInDefaultContextWithDataset:(DivvyDataset *)dataset;
 
+- (void) setProcessingImage;
 - (void) reloadImage;
+
+- (void) checkForNullPluginResults;
 
 - (void) datasetVisualizerChanged;
 - (void) pointVisualizerChanged;
 - (void) clustererChanged;
 - (void) reducerChanged;
+
+- (void) datasetVisualizerUpdate;
+- (void) pointVisualizerUpdate;
+- (void) clustererUpdate;
+- (void) reducerUpdate;
 
 @end

@@ -39,6 +39,8 @@
 @property (nonatomic, retain, readonly) NSManagedObjectModel *managedObjectModel;
 @property (nonatomic, retain, readonly) NSManagedObjectContext *managedObjectContext;
 
+@property (nonatomic, retain) NSImage *processingImage;
+
 - (IBAction)saveAction:sender;
 - (IBAction)openDatasets:sender;
 - (IBAction)closeDatasets:sender;
