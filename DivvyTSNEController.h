@@ -10,4 +10,7 @@
 
 
 @interface DivvyTSNEController : NSViewController
+
+-(IBAction) changePerplexity:(id)sender;
+
 @end

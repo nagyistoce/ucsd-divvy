@@ -15,4 +15,6 @@
 @property (nonatomic, retain) NSString *reducerID;
 @property (nonatomic, retain) NSString *name;
 
+@property (nonatomic, retain) NSNumber *perplexity;
+
 @end

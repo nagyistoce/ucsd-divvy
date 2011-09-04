@@ -17,6 +17,8 @@
 @dynamic reducerID;
 @dynamic name;
 
+@dynamic perplexity;
+
 - (void) awakeFromInsert {
 	[super awakeFromInsert];
 	
@@ -27,16 +29,14 @@
 - (void) reduceDataset:(DivvyDataset *)dataset
            reducedData:(NSData *)reducedData {
 	
-	
-	float perplexity = 10.0;			// should come from the GUI
-	
-	// Run t-SNE code
 	int no_dims = 2;
 	float *newReducedData = (float*) [reducedData bytes];
+    printf("Using perplexity of %f...\n", [[self perplexity] floatValue]);
 	perform_tsne([dataset floatData], 
 				[[dataset d] unsignedIntValue], 
 				[[dataset n] unsignedIntValue], 
-				newReducedData, no_dims, perplexity);
+				newReducedData, no_dims, 
+                [[self perplexity] floatValue]);
 }
 
 @end

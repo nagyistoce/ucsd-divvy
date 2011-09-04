@@ -24,7 +24,6 @@ void perform_tsne(float* X, int D, int N, float* Y, int no_dims, float perplexit
 	float* P        = (float*) malloc(N * N * sizeof(float));
 	float* Q        = (float*) malloc(N * N * sizeof(float));
 	float* unnorm_Q = (float*) malloc(N * N * sizeof(float));
-	float* Z		= (float*) malloc(N * N * sizeof(float));
 	float* uY       = (float*) calloc(N * no_dims, sizeof(float));	
 	float* dY       = (float*) malloc(N * no_dims * sizeof(float));	
 	
@@ -47,10 +46,10 @@ void perform_tsne(float* X, int D, int N, float* Y, int no_dims, float perplexit
 		compute_student(Y, N, no_dims, Q, unnorm_Q);
 		
 		// Compute stiffnesses
-		compute_stiffnesses(P, Q, unnorm_Q, Z, N);
+		compute_stiffnesses(P, Q, unnorm_Q, N);
 		
 		// Compute gradient
-		compute_gradient(Y, Z, dY, N, no_dims);
+		compute_gradient(Y, unnorm_Q, dY, N, no_dims);
 		
 		// Update solution
 		for(int i = 0; i < N * no_dims; i++) uY[i] = momentum * uY[i] - eta * dY[i];
@@ -79,7 +78,6 @@ void perform_tsne(float* X, int D, int N, float* Y, int no_dims, float perplexit
 	free(P);
 	free(Q);
 	free(unnorm_Q);
-	free(Z);
 	free(uY);
 	free(dY);
 }
@@ -135,6 +133,8 @@ void zero_mean(float* X, int N, int D) {
 }
 
 void compute_squared_euclidean_distance(float* X, int N, int D, float* DD) {
+    
+    // Compute squared Euclidean distance matrix (without BLAS)
     float val;
 	for(int n = 0; n < N; n++) {
 		DD[n * N + n] = 0.0;
@@ -145,6 +145,10 @@ void compute_squared_euclidean_distance(float* X, int N, int D, float* DD) {
 			DD[m * N + n] = val;
 		}
 	}    
+    
+    // Compute squared Euclidean distance matrix (using BLAS)
+    // ...put squared row and column sums in DD...
+    //cblas_sgemm(CblasRowMajor, CblasTrans, CblasNoTrans, N, N, D, -2.0, X, N, X, N, 0.0, DD, N);	
 }
 
 void compute_gaussian_perplexity(float* X, int N, int D, float* P, float perplexity) {
@@ -269,8 +273,8 @@ void compute_student(float* X, int N, int D, float* P, float* unnorm_P) {
     for(int i = 0; i < N * N; i++) P[i] /= totalSum;    
 }
 
-void compute_stiffnesses(float* P, float* Q, float* unnorm_Q, float* Z, int N) {
-	for(int i = 0; i < N * N; i++) Z[i] = 4.0 * (P[i] - Q[i]) * unnorm_Q[i];
+void compute_stiffnesses(float* P, float* Q, float* unnorm_Q, int N) {
+	for(int i = 0; i < N * N; i++) unnorm_Q[i] = 4.0 * (P[i] - Q[i]) * unnorm_Q[i];
 }
 
 void compute_gradient(float* Y, float* Z, float* dY, int N, int D) {

@@ -7,8 +7,14 @@
 //
 
 #import "DivvyTSNEController.h"
-
+#import "DivvyAppDelegate.h"
 
 @implementation DivvyTSNEController
+
+-(IBAction) changePerplexity:(id)sender {
+    DivvyAppDelegate *delegate = [NSApp delegate];
+    [delegate reducerChanged];
+    [delegate reloadSelectedDatasetViewImage];
+}
 
 @end
