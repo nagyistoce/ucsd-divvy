@@ -31,12 +31,13 @@
 	
 	int no_dims = 2;
 	float *newReducedData = (float*) [reducedData bytes];
-    printf("Using perplexity of %f...\n", [[self perplexity] floatValue]);
+    float cur_perplexity = [[self perplexity] floatValue];
+    if(cur_perplexity == 0.0) cur_perplexity = 5.0;
 	perform_tsne([dataset floatData], 
 				[[dataset d] unsignedIntValue], 
 				[[dataset n] unsignedIntValue], 
 				newReducedData, no_dims, 
-                [[self perplexity] floatValue]);
+                cur_perplexity);
 }
 
 @end
