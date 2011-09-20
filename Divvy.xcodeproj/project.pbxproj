@@ -75,6 +75,13 @@
 		D7764F5D137B4CDE00F7F49F /* DatasetWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = D7764F5C137B4CDE00F7F49F /* DatasetWindow.xib */; };
 		D77DF784118636A2009C1946 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D77DF783118636A2009C1946 /* Accelerate.framework */; };
 		D78CD47413FC718C00390ABD /* Divvy.xcdatamodel in Sources */ = {isa = PBXBuildFile; fileRef = D78CD47313FC718C00390ABD /* Divvy.xcdatamodel */; };
+		D792E57C14292A4F0084626A /* DivvyIsomap.plist in Resources */ = {isa = PBXBuildFile; fileRef = D792E57B14292A4F0084626A /* DivvyIsomap.plist */; };
+		D792E59D14292C710084626A /* DivvyNilPointVisualizer.m in Sources */ = {isa = PBXBuildFile; fileRef = D792E59C14292C710084626A /* DivvyNilPointVisualizer.m */; };
+		D792E5A014292C7C0084626A /* DivvyNilPointVisualizerController.m in Sources */ = {isa = PBXBuildFile; fileRef = D792E59F14292C7C0084626A /* DivvyNilPointVisualizerController.m */; };
+		D792E5A214292C8A0084626A /* DivvyNilPointVisualizer.xcdatamodel in Sources */ = {isa = PBXBuildFile; fileRef = D792E5A114292C8A0084626A /* DivvyNilPointVisualizer.xcdatamodel */; };
+		D792E5A414292C930084626A /* DivvyNilPointVisualizer.xib in Resources */ = {isa = PBXBuildFile; fileRef = D792E5A314292C930084626A /* DivvyNilPointVisualizer.xib */; };
+		D792E5B514292E320084626A /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D730D27713B5297E00E01F31 /* Cocoa.framework */; };
+		D792E5B814292E670084626A /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */; };
 		D7A24D9613F320AE001AD337 /* DivvyZhu.xcdatamodel in Sources */ = {isa = PBXBuildFile; fileRef = D7A24D9513F320AE001AD337 /* DivvyZhu.xcdatamodel */; };
 		D7A24D9913F3212F001AD337 /* DivvyZhu.xib in Resources */ = {isa = PBXBuildFile; fileRef = D7A24D9813F3212F001AD337 /* DivvyZhu.xib */; };
 		D7A24D9C13F3214D001AD337 /* DivvyZhuController.m in Sources */ = {isa = PBXBuildFile; fileRef = D7A24D9B13F3214D001AD337 /* DivvyZhuController.m */; };
@@ -145,6 +152,13 @@
 			remoteGlobalIDString = 0D9C419013FD007100E59675;
 			remoteInfo = DivvyTSNE;
 		};
+		D792E59914292C1E0084626A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 29B97313FDCFA39411CA2CEA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D792E59214292C120084626A /* DivvyNilPointVisualizer */;
+			remoteInfo = DivvyNilPointVisualizer;
+		};
 		D7A24DA713F3225C001AD337 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 29B97313FDCFA39411CA2CEA /* Project object */;
@@ -178,7 +192,6 @@
 		0D55DC7313FAA056000ADAFB /* DivvyPCAController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DivvyPCAController.m; sourceTree = "<group>"; };
 		0D55DC7513FAA05A000ADAFB /* DivvyPCA.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DivvyPCA.xib; sourceTree = "<group>"; };
 		0D86ADF31428990F00877901 /* DivvyIsomap.plugin */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DivvyIsomap.plugin; sourceTree = BUILT_PRODUCTS_DIR; };
-		0D86ADF41428991100877901 /* DivvyIsomap.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = DivvyIsomap.plist; path = "/Users/laurens/Desktop/ucsd-divvy/DivvyIsomap.plist"; sourceTree = "<absolute>"; };
 		0D86ADF51428998D00877901 /* DivvyIsomap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DivvyIsomap.h; sourceTree = "<group>"; };
 		0D86ADF61428998D00877901 /* DivvyIsomap.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DivvyIsomap.m; sourceTree = "<group>"; };
 		0D86ADF814289A4F00877901 /* isomap.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = isomap.c; sourceTree = "<group>"; };
@@ -200,9 +213,6 @@
 		0D9C41AA13FD05DA00E59675 /* DivvyTSNE.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DivvyTSNE.xib; sourceTree = "<group>"; };
 		0DA1048413FD272A0017B561 /* DivvyTSNE.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DivvyTSNE.xcdatamodel; sourceTree = "<group>"; };
 		0DA603CB142897BA008B1727 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
-		0DA603CF142897BA008B1727 /* DivvyIsomap-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "DivvyIsomap-Info.plist"; sourceTree = "<group>"; };
-		0DA603D1142897BA008B1727 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		0DA603D3142897BA008B1727 /* DivvyIsomap-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "DivvyIsomap-Prefix.pch"; sourceTree = "<group>"; };
 		1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = /System/Library/Frameworks/Cocoa.framework; sourceTree = "<absolute>"; };
 		13E42FB307B3F0F600E4EEF1 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = /System/Library/Frameworks/CoreData.framework; sourceTree = "<absolute>"; };
 		1DDD58150DA1D0A300B32029 /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/MainMenu.xib; sourceTree = "<group>"; };
@@ -254,6 +264,15 @@
 		D7764F5C137B4CDE00F7F49F /* DatasetWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DatasetWindow.xib; sourceTree = "<group>"; };
 		D77DF783118636A2009C1946 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
 		D78CD47313FC718C00390ABD /* Divvy.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Divvy.xcdatamodel; sourceTree = "<group>"; };
+		D792E57B14292A4F0084626A /* DivvyIsomap.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = DivvyIsomap.plist; sourceTree = "<group>"; };
+		D792E59314292C120084626A /* DivvyNilPointVisualizer.plugin */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DivvyNilPointVisualizer.plugin; sourceTree = BUILT_PRODUCTS_DIR; };
+		D792E59414292C120084626A /* DivvyNilPointVisualizer-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "DivvyNilPointVisualizer-Info.plist"; sourceTree = "<group>"; };
+		D792E59B14292C710084626A /* DivvyNilPointVisualizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DivvyNilPointVisualizer.h; sourceTree = "<group>"; };
+		D792E59C14292C710084626A /* DivvyNilPointVisualizer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DivvyNilPointVisualizer.m; sourceTree = "<group>"; };
+		D792E59E14292C7C0084626A /* DivvyNilPointVisualizerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DivvyNilPointVisualizerController.h; sourceTree = "<group>"; };
+		D792E59F14292C7C0084626A /* DivvyNilPointVisualizerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DivvyNilPointVisualizerController.m; sourceTree = "<group>"; };
+		D792E5A114292C8A0084626A /* DivvyNilPointVisualizer.xcdatamodel */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = wrapper.xcdatamodel; path = DivvyNilPointVisualizer.xcdatamodel; sourceTree = "<group>"; };
+		D792E5A314292C930084626A /* DivvyNilPointVisualizer.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DivvyNilPointVisualizer.xib; sourceTree = "<group>"; };
 		D7A24D8413F32039001AD337 /* DivvyNilReducer.plugin */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DivvyNilReducer.plugin; sourceTree = BUILT_PRODUCTS_DIR; };
 		D7A24D8513F32039001AD337 /* DivvyNilReducer-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "DivvyNilReducer-Info.plist"; sourceTree = "<group>"; };
 		D7A24D8E13F3204A001AD337 /* DivvyZhu.plugin */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DivvyZhu.plugin; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -344,6 +363,7 @@
 				D7BC2DB211790CE700A37DF2 /* OpenCL.framework in Frameworks */,
 				D77DF784118636A2009C1946 /* Accelerate.framework in Frameworks */,
 				D7DD8B6D137C9D6700DADC35 /* Quartz.framework in Frameworks */,
+				D792E5B514292E320084626A /* Cocoa.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -377,6 +397,14 @@
 				D730D28B13B52BE600E01F31 /* OpenCL.framework in Frameworks */,
 				D730D28A13B52BD500E01F31 /* Accelerate.framework in Frameworks */,
 				D730D27B13B5298300E01F31 /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D792E59114292C120084626A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D792E5B814292E670084626A /* Cocoa.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -454,31 +482,13 @@
 				0D86AE031428BEF600877901 /* DivvyIsomapController.m */,
 				0D86ADF814289A4F00877901 /* isomap.c */,
 				0D86ADFA14289A7400877901 /* isomap.h */,
-				0D86ADF41428991100877901 /* DivvyIsomap.plist */,
+				D792E57B14292A4F0084626A /* DivvyIsomap.plist */,
 				0D86ADFB1428A47C00877901 /* dijkstra.c */,
 				0D86ADFD1428A4DD00877901 /* fibheap.h */,
 				0D86ADFE1428BC1F00877901 /* DivvyIsomap.xcdatamodel */,
 				0D86AE001428BC5A00877901 /* DivvyIsomap.xib */,
 			);
 			name = Isomap;
-			sourceTree = "<group>";
-		};
-		0DA603CD142897BA008B1727 /* DivvyIsomap */ = {
-			isa = PBXGroup;
-			children = (
-				0DA603CE142897BA008B1727 /* Supporting Files */,
-			);
-			path = DivvyIsomap;
-			sourceTree = "<group>";
-		};
-		0DA603CE142897BA008B1727 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				0DA603CF142897BA008B1727 /* DivvyIsomap-Info.plist */,
-				0DA603D0142897BA008B1727 /* InfoPlist.strings */,
-				0DA603D3142897BA008B1727 /* DivvyIsomap-Prefix.pch */,
-			);
-			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
 		1058C7A0FEA54F0111CA2CBB /* Linked Frameworks */ = {
@@ -519,6 +529,7 @@
 				0D9C419113FD007100E59675 /* DivvyTSNE.plugin */,
 				D7A250971402E788001AD337 /* DivvyLinkage.plugin */,
 				0D86ADF31428990F00877901 /* DivvyIsomap.plugin */,
+				D792E59314292C120084626A /* DivvyNilPointVisualizer.plugin */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -535,7 +546,6 @@
 				080E96DDFE201D6D7F000001 /* Classes */,
 				29B97315FDCFA39411CA2CEA /* Other Sources */,
 				29B97317FDCFA39411CA2CEA /* Resources */,
-				0DA603CD142897BA008B1727 /* DivvyIsomap */,
 				29B97323FDCFA39411CA2CEA /* Frameworks */,
 				19C28FACFE9D520D11CA2CBB /* Products */,
 			);
@@ -726,6 +736,13 @@
 		D7A2501B13F58627001AD337 /* NilPointVisualizer */ = {
 			isa = PBXGroup;
 			children = (
+				D792E59414292C120084626A /* DivvyNilPointVisualizer-Info.plist */,
+				D792E59B14292C710084626A /* DivvyNilPointVisualizer.h */,
+				D792E59C14292C710084626A /* DivvyNilPointVisualizer.m */,
+				D792E59E14292C7C0084626A /* DivvyNilPointVisualizerController.h */,
+				D792E59F14292C7C0084626A /* DivvyNilPointVisualizerController.m */,
+				D792E5A114292C8A0084626A /* DivvyNilPointVisualizer.xcdatamodel */,
+				D792E5A314292C930084626A /* DivvyNilPointVisualizer.xib */,
 			);
 			name = NilPointVisualizer;
 			sourceTree = "<group>";
@@ -841,6 +858,7 @@
 				0D55DCAD13FAA0D2000ADAFB /* PBXTargetDependency */,
 				D751AC9D13FD7E780089FAAE /* PBXTargetDependency */,
 				D7A250F81402F7E2001AD337 /* PBXTargetDependency */,
+				D792E59A14292C1E0084626A /* PBXTargetDependency */,
 			);
 			name = Divvy;
 			productInstallPath = "$(HOME)/Applications";
@@ -915,6 +933,23 @@
 			name = DivvyKMeans;
 			productName = DivvyKMeans;
 			productReference = D730D23F13B5271A00E01F31 /* DivvyKMeans.plugin */;
+			productType = "com.apple.product-type.bundle";
+		};
+		D792E59214292C120084626A /* DivvyNilPointVisualizer */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D792E59814292C130084626A /* Build configuration list for PBXNativeTarget "DivvyNilPointVisualizer" */;
+			buildPhases = (
+				D792E58F14292C120084626A /* Resources */,
+				D792E59014292C120084626A /* Sources */,
+				D792E59114292C120084626A /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = DivvyNilPointVisualizer;
+			productName = DivvyNilPointVisualizer;
+			productReference = D792E59314292C120084626A /* DivvyNilPointVisualizer.plugin */;
 			productType = "com.apple.product-type.bundle";
 		};
 		D7A24D8313F32039001AD337 /* DivvyNilReducer */ = {
@@ -1002,6 +1037,7 @@
 				0D9C419013FD007100E59675 /* DivvyTSNE */,
 				D7A250961402E788001AD337 /* DivvyLinkage */,
 				0D86ADE51428990F00877901 /* DivvyIsomap */,
+				D792E59214292C120084626A /* DivvyNilPointVisualizer */,
 			);
 		};
 /* End PBXProject section */
@@ -1021,6 +1057,7 @@
 			files = (
 				0D86ADE71428990F00877901 /* DivvyPCA.xib in Resources */,
 				0D86AE011428BC5A00877901 /* DivvyIsomap.xib in Resources */,
+				D792E57C14292A4F0084626A /* DivvyIsomap.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1074,6 +1111,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				D730D27113B5287200E01F31 /* DivvyKMeans.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D792E58F14292C120084626A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D792E5A414292C930084626A /* DivvyNilPointVisualizer.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1196,6 +1241,16 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		D792E59014292C120084626A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D792E59D14292C710084626A /* DivvyNilPointVisualizer.m in Sources */,
+				D792E5A014292C7C0084626A /* DivvyNilPointVisualizerController.m in Sources */,
+				D792E5A214292C8A0084626A /* DivvyNilPointVisualizer.xcdatamodel in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		D7A24D8113F32039001AD337 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1262,6 +1317,11 @@
 			target = 0D9C419013FD007100E59675 /* DivvyTSNE */;
 			targetProxy = D751AC9C13FD7E780089FAAE /* PBXContainerItemProxy */;
 		};
+		D792E59A14292C1E0084626A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D792E59214292C120084626A /* DivvyNilPointVisualizer */;
+			targetProxy = D792E59914292C1E0084626A /* PBXContainerItemProxy */;
+		};
 		D7A24DA813F3225C001AD337 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = D7A24D8313F32039001AD337 /* DivvyNilReducer */;
@@ -1284,14 +1344,6 @@
 			isa = PBXVariantGroup;
 			children = (
 				089C165DFE840E0CC02AAC07 /* English */,
-			);
-			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-		0DA603D0142897BA008B1727 /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				0DA603D1142897BA008B1727 /* en */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
@@ -1714,6 +1766,56 @@
 			};
 			name = Release;
 		};
+		D792E59614292C130084626A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_FIX_AND_CONTINUE = YES;
+				GCC_MODEL_TUNING = G5;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/AppKit.framework/Headers/AppKit.h";
+				INFOPLIST_FILE = "DivvyNilPointVisualizer-Info.plist";
+				INSTALL_PATH = "$(HOME)/Library/Bundles";
+				OTHER_LDFLAGS = (
+					"-framework",
+					Foundation,
+					"-framework",
+					AppKit,
+				);
+				PREBINDING = NO;
+				PRODUCT_NAME = DivvyNilPointVisualizer;
+				WRAPPER_EXTENSION = plugin;
+			};
+			name = Debug;
+		};
+		D792E59714292C130084626A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				GCC_MODEL_TUNING = G5;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/AppKit.framework/Headers/AppKit.h";
+				INFOPLIST_FILE = "DivvyNilPointVisualizer-Info.plist";
+				INSTALL_PATH = "$(HOME)/Library/Bundles";
+				OTHER_LDFLAGS = (
+					"-framework",
+					Foundation,
+					"-framework",
+					AppKit,
+				);
+				PREBINDING = NO;
+				PRODUCT_NAME = DivvyNilPointVisualizer;
+				WRAPPER_EXTENSION = bundle;
+				ZERO_LINK = NO;
+			};
+			name = Release;
+		};
 		D7A24D8713F3203A001AD337 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1936,6 +2038,15 @@
 			buildConfigurations = (
 				D730D24213B5271A00E01F31 /* Debug */,
 				D730D24313B5271A00E01F31 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D792E59814292C130084626A /* Build configuration list for PBXNativeTarget "DivvyNilPointVisualizer" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D792E59614292C130084626A /* Debug */,
+				D792E59714292C130084626A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

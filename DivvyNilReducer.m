@@ -16,10 +16,16 @@
 @dynamic reducerID;
 @dynamic name;
 
+@dynamic d;
+
 - (void) awakeFromInsert {
   [super awakeFromInsert];
   
   self.reducerID = [[NSProcessInfo processInfo] globallyUniqueString];
+}
+
+- (void) calculateD:(DivvyDataset *)dataset {
+  // Add code here (default 2 for now)
 }
 
 - (void) reduceDataset:(DivvyDataset *)dataset

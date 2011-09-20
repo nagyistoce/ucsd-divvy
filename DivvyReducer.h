@@ -15,6 +15,10 @@
 - (NSString *) reducerID;
 - (NSString *) name;
 
+- (NSNumber *) d;
+
+- (void) calculateD:(DivvyDataset *)dataset;
+
 - (void) reduceDataset:(DivvyDataset *)dataset
              reducedData:(NSData *)reducedData;
 

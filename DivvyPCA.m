@@ -17,6 +17,8 @@
 @dynamic reducerID;
 @dynamic name;
 
+@dynamic d;
+
 - (void) awakeFromInsert {
   [super awakeFromInsert];
   
@@ -24,16 +26,20 @@
   self.reducerID = [[NSProcessInfo processInfo] globallyUniqueString];
 }
 
+- (void) calculateD:(DivvyDataset *)dataset {
+  if(dataset.d < self.d)
+    self.d = dataset.d;
+}
+
 - (void) reduceDataset:(DivvyDataset *)dataset
            reducedData:(NSData *)reducedData {
 	
 	// Run PCA code
-	int no_dims = 2;
 	float *newReducedData = (float*) [reducedData bytes];
 	reduce_data([dataset floatData], 
 				[[dataset d] unsignedIntValue], 
 				[[dataset n] unsignedIntValue], 
-				newReducedData, no_dims);
+				newReducedData, [self.d unsignedIntValue]);
 	
 	// Print out reduced data
 	/*for(int i = 0; i < [[dataset n] unsignedIntValue]; i++) {

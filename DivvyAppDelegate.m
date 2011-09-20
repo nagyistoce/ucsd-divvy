@@ -135,7 +135,7 @@
   if (!(self = [super init])) return nil;
   
   pluginTypes = [[NSArray alloc] initWithObjects:@"datasetVisualizer", @"pointVisualizer", @"clusterer", @"reducer", nil];
-  pluginDefaults = [[NSArray alloc] initWithObjects:@"ScatterPlot", @"Zhu", @"KMeans", @"NilReducer", nil];
+  pluginDefaults = [[NSArray alloc] initWithObjects:@"ScatterPlot", @"NilPointVisualizer", @"KMeans", @"NilReducer", nil];
   
   pluginManager = [DivvyPluginManager shared];
   

@@ -17,6 +17,8 @@
 @dynamic reducerID;
 @dynamic name;
 
+@dynamic d;
+
 @dynamic perplexity;
 
 - (void) awakeFromInsert {
@@ -26,16 +28,19 @@
 	self.reducerID = [[NSProcessInfo processInfo] globallyUniqueString];
 }
 
+- (void) calculateD:(DivvyDataset *)dataset {
+  // tSNE always stays with its default of 2
+}
+
 - (void) reduceDataset:(DivvyDataset *)dataset
-           reducedData:(NSData *)reducedData {
-	
-	int no_dims = 2;
+           reducedData:(NSData *)reducedData {  
+  
 	float *newReducedData = (float*) [reducedData bytes];
     float cur_perplexity = [[self perplexity] floatValue];
     perform_tsne([dataset floatData], 
 				[[dataset d] unsignedIntValue], 
 				[[dataset n] unsignedIntValue], 
-				newReducedData, no_dims, 
+				newReducedData, [self.d unsignedIntValue], 
                 cur_perplexity);
 }
 

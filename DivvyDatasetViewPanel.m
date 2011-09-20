@@ -69,6 +69,29 @@
   }
 }
 
+
+- (IBAction) datasetVisualizerSelect:(id)sender {
+  [self reflow];
+  
+  DivvyAppDelegate *delegate = [NSApp delegate];
+  
+  delegate.selectedDatasetView.selectedDatasetVisualizer = pointVisualizerController.content;
+  
+  [delegate datasetVisualizerChanged];
+  [delegate reloadSelectedDatasetViewImage];
+}
+
+- (IBAction) pointVisualizerSelect:(id)sender {
+  [self reflow];
+  
+  DivvyAppDelegate *delegate = [NSApp delegate];
+  
+  delegate.selectedDatasetView.selectedPointVisualizer = pointVisualizerController.content;
+  
+  [delegate pointVisualizerChanged];
+  [delegate reloadSelectedDatasetViewImage];
+}
+
 - (IBAction) clustererSelect:(id)sender {
   [self reflow];
   

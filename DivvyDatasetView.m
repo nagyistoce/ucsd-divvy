@@ -217,9 +217,11 @@
 }
 
 - (void) reducerUpdate {
-  int reducerIndex = [self.reducers indexOfObject:self.selectedReducer];  
+  int reducerIndex = [self.reducers indexOfObject:self.selectedReducer];
   
-  int numBytes = [self.dataset.n intValue] * 2 * sizeof(int);
+  [self.selectedReducer calculateD:self.dataset];
+  
+  int numBytes = [self.dataset.n intValue] * [self.selectedReducer.d unsignedIntValue] * sizeof(float);
   int *newReducedData = malloc(numBytes);
   NSData *newData = [NSData dataWithBytesNoCopy:newReducedData length:numBytes freeWhenDone:YES];
   [self.reducerResults replaceObjectAtIndex:reducerIndex withObject:newData];
@@ -326,13 +328,14 @@
 }
 
 - (void) willSave { // Don't save all the images--it makes things slow and takes up a lot of disk
-  for(NSImage *anImage in self.datasetVisualizerResults)
-    if(anImage != (NSImage *)[NSNull null])
-      [self.datasetVisualizerResults replaceObjectAtIndex:[self.datasetVisualizerResults indexOfObject:anImage] withObject:[NSNull null]];
+  unsigned int i;
+  
+  for(i = 0; i < self.datasetVisualizerResults.count; i++)
+    [self.datasetVisualizerResults replaceObjectAtIndex:i withObject:[NSNull null]];
 
-  for(NSImage *anImage in self.pointVisualizerResults)
-    if(anImage != (NSImage *)[NSNull null])
-      [self.pointVisualizerResults replaceObjectAtIndex:[self.pointVisualizerResults indexOfObject:anImage] withObject:[NSNull null]];
+
+  for(i = 0; i < self.pointVisualizerResults.count; i++)
+    [self.pointVisualizerResults replaceObjectAtIndex:i withObject:[NSNull null]];
 }
 
 - (void) setSelectedDatasetVisualizer:(id <DivvyDatasetVisualizer>)aDatasetVisualizer {

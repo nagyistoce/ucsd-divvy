@@ -43,6 +43,8 @@
 @property (retain) NSMutableArray *clustererViewControllers;
 @property (retain) NSMutableArray *reducerViewControllers;
 
+- (IBAction) datasetVisualizerSelect:(id)sender;
+- (IBAction) pointVisualizerSelect:(id)sender;
 - (IBAction) clustererSelect:(id)sender;
 - (IBAction) reducerSelect:(id)sender;
 
