@@ -6,23 +6,23 @@
 //  Copyright 2011 Delft University of Technology. All rights reserved.
 //
 
-#import "DivvyTSNE.h"
+#import "DivvyIsomap.h"
 #import "DivvyDataset.h"
 
-#include "tsne.h"
+#include "isomap.h"
 
 
-@implementation DivvyTSNE
+@implementation DivvyIsomap
 
 @dynamic reducerID;
 @dynamic name;
 
-@dynamic perplexity;
+@dynamic k;
 
 - (void) awakeFromInsert {
 	[super awakeFromInsert];
 	
-	self.name = @"t-SNE";
+	self.name = @"Isomap";
 	self.reducerID = [[NSProcessInfo processInfo] globallyUniqueString];
 }
 
@@ -31,12 +31,11 @@
 	
 	int no_dims = 2;
 	float *newReducedData = (float*) [reducedData bytes];
-    float cur_perplexity = [[self perplexity] floatValue];
-    perform_tsne([dataset floatData], 
-				[[dataset d] unsignedIntValue], 
-				[[dataset n] unsignedIntValue], 
-				newReducedData, no_dims, 
-                cur_perplexity);
+    int cur_k = [[self k] intValue];
+    run_isomap([dataset floatData], 
+               [[dataset n] unsignedIntValue], 
+               [[dataset d] unsignedIntValue], 
+               newReducedData, no_dims, cur_k);
 }
 
 @end

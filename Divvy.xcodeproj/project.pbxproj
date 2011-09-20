@@ -15,6 +15,19 @@
 		0D55DC8213FAA0A1000ADAFB /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D77DF783118636A2009C1946 /* Accelerate.framework */; };
 		0D55DC8313FAA0A1000ADAFB /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D730D27713B5297E00E01F31 /* Cocoa.framework */; };
 		0D55DCB213FAA128000ADAFB /* DivvyPCA.xcdatamodel in Sources */ = {isa = PBXBuildFile; fileRef = D7A24D9713F32105001AD337 /* DivvyPCA.xcdatamodel */; };
+		0D86ADE71428990F00877901 /* DivvyPCA.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0D55DC7513FAA05A000ADAFB /* DivvyPCA.xib */; };
+		0D86ADE91428990F00877901 /* DivvyPCA.m in Sources */ = {isa = PBXBuildFile; fileRef = D7B1957713983DE500BF1EC7 /* DivvyPCA.m */; };
+		0D86ADEA1428990F00877901 /* DivvyPCAController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D55DC7313FAA056000ADAFB /* DivvyPCAController.m */; };
+		0D86ADEB1428990F00877901 /* DivvyPCA.xcdatamodel in Sources */ = {isa = PBXBuildFile; fileRef = D7A24D9713F32105001AD337 /* DivvyPCA.xcdatamodel */; };
+		0D86ADEC1428990F00877901 /* pca.c in Sources */ = {isa = PBXBuildFile; fileRef = 0D55DC6F13FAA04A000ADAFB /* pca.c */; };
+		0D86ADEE1428990F00877901 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D77DF783118636A2009C1946 /* Accelerate.framework */; };
+		0D86ADEF1428990F00877901 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D730D27713B5297E00E01F31 /* Cocoa.framework */; };
+		0D86ADF71428998D00877901 /* DivvyIsomap.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D86ADF61428998D00877901 /* DivvyIsomap.m */; };
+		0D86ADF914289A4F00877901 /* isomap.c in Sources */ = {isa = PBXBuildFile; fileRef = 0D86ADF814289A4F00877901 /* isomap.c */; };
+		0D86ADFC1428A47C00877901 /* dijkstra.c in Sources */ = {isa = PBXBuildFile; fileRef = 0D86ADFB1428A47C00877901 /* dijkstra.c */; };
+		0D86ADFF1428BC1F00877901 /* DivvyIsomap.xcdatamodel in Sources */ = {isa = PBXBuildFile; fileRef = 0D86ADFE1428BC1F00877901 /* DivvyIsomap.xcdatamodel */; };
+		0D86AE011428BC5A00877901 /* DivvyIsomap.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0D86AE001428BC5A00877901 /* DivvyIsomap.xib */; };
+		0D86AE041428BEF600877901 /* DivvyIsomapController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D86AE031428BEF600877901 /* DivvyIsomapController.m */; };
 		0D9C419E13FD00D700E59675 /* tsne.c in Sources */ = {isa = PBXBuildFile; fileRef = 0D9C419D13FD00D700E59675 /* tsne.c */; };
 		0D9C41A113FD00E900E59675 /* DivvyTSNE.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D9C41A013FD00E900E59675 /* DivvyTSNE.m */; };
 		0D9C41A413FD00F800E59675 /* DivvyTSNEController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D9C41A313FD00F800E59675 /* DivvyTSNEController.m */; };
@@ -164,6 +177,18 @@
 		0D55DC7213FAA056000ADAFB /* DivvyPCAController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DivvyPCAController.h; sourceTree = "<group>"; };
 		0D55DC7313FAA056000ADAFB /* DivvyPCAController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DivvyPCAController.m; sourceTree = "<group>"; };
 		0D55DC7513FAA05A000ADAFB /* DivvyPCA.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DivvyPCA.xib; sourceTree = "<group>"; };
+		0D86ADF31428990F00877901 /* DivvyIsomap.plugin */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DivvyIsomap.plugin; sourceTree = BUILT_PRODUCTS_DIR; };
+		0D86ADF41428991100877901 /* DivvyIsomap.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = DivvyIsomap.plist; path = "/Users/laurens/Desktop/ucsd-divvy/DivvyIsomap.plist"; sourceTree = "<absolute>"; };
+		0D86ADF51428998D00877901 /* DivvyIsomap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DivvyIsomap.h; sourceTree = "<group>"; };
+		0D86ADF61428998D00877901 /* DivvyIsomap.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DivvyIsomap.m; sourceTree = "<group>"; };
+		0D86ADF814289A4F00877901 /* isomap.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = isomap.c; sourceTree = "<group>"; };
+		0D86ADFA14289A7400877901 /* isomap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = isomap.h; sourceTree = "<group>"; };
+		0D86ADFB1428A47C00877901 /* dijkstra.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = dijkstra.c; sourceTree = "<group>"; };
+		0D86ADFD1428A4DD00877901 /* fibheap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = fibheap.h; sourceTree = "<group>"; };
+		0D86ADFE1428BC1F00877901 /* DivvyIsomap.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DivvyIsomap.xcdatamodel; sourceTree = "<group>"; };
+		0D86AE001428BC5A00877901 /* DivvyIsomap.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DivvyIsomap.xib; sourceTree = "<group>"; };
+		0D86AE021428BEF600877901 /* DivvyIsomapController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DivvyIsomapController.h; sourceTree = "<group>"; };
+		0D86AE031428BEF600877901 /* DivvyIsomapController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DivvyIsomapController.m; sourceTree = "<group>"; };
 		0D9C419113FD007100E59675 /* DivvyTSNE.plugin */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DivvyTSNE.plugin; sourceTree = BUILT_PRODUCTS_DIR; };
 		0D9C419213FD007100E59675 /* DivvyTSNE-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "DivvyTSNE-Info.plist"; sourceTree = "<group>"; };
 		0D9C419C13FD00D700E59675 /* tsne.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tsne.h; sourceTree = "<group>"; };
@@ -174,6 +199,10 @@
 		0D9C41A313FD00F800E59675 /* DivvyTSNEController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DivvyTSNEController.m; sourceTree = "<group>"; };
 		0D9C41AA13FD05DA00E59675 /* DivvyTSNE.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DivvyTSNE.xib; sourceTree = "<group>"; };
 		0DA1048413FD272A0017B561 /* DivvyTSNE.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DivvyTSNE.xcdatamodel; sourceTree = "<group>"; };
+		0DA603CB142897BA008B1727 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
+		0DA603CF142897BA008B1727 /* DivvyIsomap-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "DivvyIsomap-Info.plist"; sourceTree = "<group>"; };
+		0DA603D1142897BA008B1727 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		0DA603D3142897BA008B1727 /* DivvyIsomap-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "DivvyIsomap-Prefix.pch"; sourceTree = "<group>"; };
 		1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = /System/Library/Frameworks/Cocoa.framework; sourceTree = "<absolute>"; };
 		13E42FB307B3F0F600E4EEF1 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = /System/Library/Frameworks/CoreData.framework; sourceTree = "<absolute>"; };
 		1DDD58150DA1D0A300B32029 /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/MainMenu.xib; sourceTree = "<group>"; };
@@ -284,6 +313,15 @@
 			files = (
 				0D55DC8213FAA0A1000ADAFB /* Accelerate.framework in Frameworks */,
 				0D55DC8313FAA0A1000ADAFB /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0D86ADED1428990F00877901 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0D86ADEE1428990F00877901 /* Accelerate.framework in Frameworks */,
+				0D86ADEF1428990F00877901 /* Cocoa.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -407,6 +445,42 @@
 			name = TSNE;
 			sourceTree = "<group>";
 		};
+		0DA603C514289650008B1727 /* Isomap */ = {
+			isa = PBXGroup;
+			children = (
+				0D86ADF51428998D00877901 /* DivvyIsomap.h */,
+				0D86ADF61428998D00877901 /* DivvyIsomap.m */,
+				0D86AE021428BEF600877901 /* DivvyIsomapController.h */,
+				0D86AE031428BEF600877901 /* DivvyIsomapController.m */,
+				0D86ADF814289A4F00877901 /* isomap.c */,
+				0D86ADFA14289A7400877901 /* isomap.h */,
+				0D86ADF41428991100877901 /* DivvyIsomap.plist */,
+				0D86ADFB1428A47C00877901 /* dijkstra.c */,
+				0D86ADFD1428A4DD00877901 /* fibheap.h */,
+				0D86ADFE1428BC1F00877901 /* DivvyIsomap.xcdatamodel */,
+				0D86AE001428BC5A00877901 /* DivvyIsomap.xib */,
+			);
+			name = Isomap;
+			sourceTree = "<group>";
+		};
+		0DA603CD142897BA008B1727 /* DivvyIsomap */ = {
+			isa = PBXGroup;
+			children = (
+				0DA603CE142897BA008B1727 /* Supporting Files */,
+			);
+			path = DivvyIsomap;
+			sourceTree = "<group>";
+		};
+		0DA603CE142897BA008B1727 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				0DA603CF142897BA008B1727 /* DivvyIsomap-Info.plist */,
+				0DA603D0142897BA008B1727 /* InfoPlist.strings */,
+				0DA603D3142897BA008B1727 /* DivvyIsomap-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
 		1058C7A0FEA54F0111CA2CBB /* Linked Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -444,6 +518,7 @@
 				0D55DC5D13FA9FCA000ADAFB /* DivvyPCA.plugin */,
 				0D9C419113FD007100E59675 /* DivvyTSNE.plugin */,
 				D7A250971402E788001AD337 /* DivvyLinkage.plugin */,
+				0D86ADF31428990F00877901 /* DivvyIsomap.plugin */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -460,6 +535,7 @@
 				080E96DDFE201D6D7F000001 /* Classes */,
 				29B97315FDCFA39411CA2CEA /* Other Sources */,
 				29B97317FDCFA39411CA2CEA /* Resources */,
+				0DA603CD142897BA008B1727 /* DivvyIsomap */,
 				29B97323FDCFA39411CA2CEA /* Frameworks */,
 				19C28FACFE9D520D11CA2CBB /* Products */,
 			);
@@ -494,6 +570,7 @@
 			isa = PBXGroup;
 			children = (
 				1058C7A0FEA54F0111CA2CBB /* Linked Frameworks */,
+				0DA603CB142897BA008B1727 /* CoreFoundation.framework */,
 				1058C7A2FEA54F0111CA2CBB /* Other Frameworks */,
 			);
 			name = Frameworks;
@@ -619,6 +696,7 @@
 				D7A24D9413F32053001AD337 /* NilReducer */,
 				D730D24813B5276C00E01F31 /* PCA */,
 				0D9C418513FCFFE100E59675 /* TSNE */,
+				0DA603C514289650008B1727 /* Isomap */,
 			);
 			name = Reducers;
 			sourceTree = "<group>";
@@ -707,6 +785,23 @@
 			name = DivvyPCA;
 			productName = DivvyPCA;
 			productReference = 0D55DC5D13FA9FCA000ADAFB /* DivvyPCA.plugin */;
+			productType = "com.apple.product-type.bundle";
+		};
+		0D86ADE51428990F00877901 /* DivvyIsomap */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0D86ADF01428990F00877901 /* Build configuration list for PBXNativeTarget "DivvyIsomap" */;
+			buildPhases = (
+				0D86ADE61428990F00877901 /* Resources */,
+				0D86ADE81428990F00877901 /* Sources */,
+				0D86ADED1428990F00877901 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = DivvyIsomap;
+			productName = DivvyPCA;
+			productReference = 0D86ADF31428990F00877901 /* DivvyIsomap.plugin */;
 			productType = "com.apple.product-type.bundle";
 		};
 		0D9C419013FD007100E59675 /* DivvyTSNE */ = {
@@ -890,6 +985,7 @@
 				Japanese,
 				French,
 				German,
+				en,
 			);
 			mainGroup = 29B97314FDCFA39411CA2CEA /* Divvy */;
 			projectDirPath = "";
@@ -905,6 +1001,7 @@
 				0D55DC5C13FA9FCA000ADAFB /* DivvyPCA */,
 				0D9C419013FD007100E59675 /* DivvyTSNE */,
 				D7A250961402E788001AD337 /* DivvyLinkage */,
+				0D86ADE51428990F00877901 /* DivvyIsomap */,
 			);
 		};
 /* End PBXProject section */
@@ -915,6 +1012,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				0D55DC7A13FAA087000ADAFB /* DivvyPCA.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0D86ADE61428990F00877901 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0D86ADE71428990F00877901 /* DivvyPCA.xib in Resources */,
+				0D86AE011428BC5A00877901 /* DivvyIsomap.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1006,6 +1112,22 @@
 				0D55DC7913FAA081000ADAFB /* DivvyPCAController.m in Sources */,
 				0D55DCB213FAA128000ADAFB /* DivvyPCA.xcdatamodel in Sources */,
 				0D55DC7813FAA081000ADAFB /* pca.c in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0D86ADE81428990F00877901 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0D86ADE91428990F00877901 /* DivvyPCA.m in Sources */,
+				0D86ADEA1428990F00877901 /* DivvyPCAController.m in Sources */,
+				0D86ADEB1428990F00877901 /* DivvyPCA.xcdatamodel in Sources */,
+				0D86ADEC1428990F00877901 /* pca.c in Sources */,
+				0D86ADF71428998D00877901 /* DivvyIsomap.m in Sources */,
+				0D86ADF914289A4F00877901 /* isomap.c in Sources */,
+				0D86ADFC1428A47C00877901 /* dijkstra.c in Sources */,
+				0D86ADFF1428BC1F00877901 /* DivvyIsomap.xcdatamodel in Sources */,
+				0D86AE041428BEF600877901 /* DivvyIsomapController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1166,6 +1288,14 @@
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
+		0DA603D0142897BA008B1727 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				0DA603D1142897BA008B1727 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
 		1DDD58140DA1D0A300B32029 /* MainMenu.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -1222,6 +1352,56 @@
 					Accelerate,
 				);
 				PRODUCT_NAME = DivvyPCA;
+				WRAPPER_EXTENSION = bundle;
+				ZERO_LINK = NO;
+			};
+			name = Release;
+		};
+		0D86ADF11428990F00877901 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_MODEL_TUNING = G5;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = Divvy_Prefix.pch;
+				INFOPLIST_FILE = DivvyIsomap.plist;
+				INSTALL_PATH = "$(HOME)/Library/Bundles";
+				OTHER_LDFLAGS = (
+					"-framework",
+					Foundation,
+					"-framework",
+					AppKit,
+					"-framework",
+					Accelerate,
+				);
+				PRODUCT_NAME = DivvyIsomap;
+				WRAPPER_EXTENSION = plugin;
+			};
+			name = Debug;
+		};
+		0D86ADF21428990F00877901 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_MODEL_TUNING = G5;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/AppKit.framework/Headers/AppKit.h";
+				INFOPLIST_FILE = DivvyIsomap.plist;
+				INSTALL_PATH = "$(HOME)/Library/Bundles";
+				OTHER_LDFLAGS = (
+					"-framework",
+					Foundation,
+					"-framework",
+					AppKit,
+					"-framework",
+					Accelerate,
+				);
+				PRODUCT_NAME = DivvyIsomap;
 				WRAPPER_EXTENSION = bundle;
 				ZERO_LINK = NO;
 			};
@@ -1684,6 +1864,15 @@
 			buildConfigurations = (
 				0D55DC6013FA9FCA000ADAFB /* Debug */,
 				0D55DC6113FA9FCA000ADAFB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		0D86ADF01428990F00877901 /* Build configuration list for PBXNativeTarget "DivvyIsomap" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0D86ADF11428990F00877901 /* Debug */,
+				0D86ADF21428990F00877901 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

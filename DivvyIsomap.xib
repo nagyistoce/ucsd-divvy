@@ -50,35 +50,35 @@
 					<object class="NSSlider" id="168412438">
 						<reference key="NSNextResponder" ref="1005"/>
 						<int key="NSvFlags">268</int>
-						<string key="NSFrame">{{87, 17}, {194, 21}}</string>
+						<string key="NSFrame">{{30, 10}, {244, 25}}</string>
 						<reference key="NSSuperview" ref="1005"/>
 						<bool key="NSEnabled">YES</bool>
 						<object class="NSSliderCell" key="NSCell" id="472967057">
-							<int key="NSCellFlags">67239424</int>
+							<int key="NSCellFlags">-2080244224</int>
 							<int key="NSCellFlags2">0</int>
 							<string key="NSContents"/>
 							<reference key="NSControlView" ref="168412438"/>
-							<double key="NSMaxValue">50</double>
-							<double key="NSMinValue">5</double>
-							<double key="NSValue">27.5</double>
+							<double key="NSMaxValue">15</double>
+							<double key="NSMinValue">3</double>
+							<double key="NSValue">11</double>
 							<double key="NSAltIncValue">0.0</double>
-							<int key="NSNumberOfTickMarks">0</int>
-							<int key="NSTickMarkPosition">1</int>
-							<bool key="NSAllowsTickMarkValuesOnly">NO</bool>
+							<int key="NSNumberOfTickMarks">7</int>
+							<int key="NSTickMarkPosition">0</int>
+							<bool key="NSAllowsTickMarkValuesOnly">YES</bool>
 							<bool key="NSVertical">NO</bool>
 						</object>
 					</object>
 					<object class="NSTextField" id="58674595">
 						<reference key="NSNextResponder" ref="1005"/>
 						<int key="NSvFlags">268</int>
-						<string key="NSFrame">{{17, 20}, {67, 17}}</string>
+						<string key="NSFrame">{{17, 41}, {194, 17}}</string>
 						<reference key="NSSuperview" ref="1005"/>
 						<reference key="NSNextKeyView" ref="168412438"/>
 						<bool key="NSEnabled">YES</bool>
 						<object class="NSTextFieldCell" key="NSCell" id="463780674">
 							<int key="NSCellFlags">68288064</int>
 							<int key="NSCellFlags2">272630784</int>
-							<string key="NSContents">Perplexity</string>
+							<string key="NSContents">Number of nearest neighbors:</string>
 							<object class="NSFont" key="NSSupport">
 								<string key="NSName">LucidaGrande</string>
 								<double key="NSSize">13</double>
@@ -106,7 +106,7 @@
 						</object>
 					</object>
 				</object>
-				<string key="NSFrameSize">{299, 57}</string>
+				<string key="NSFrameSize">{299, 67}</string>
 				<reference key="NSSuperview"/>
 				<reference key="NSNextKeyView" ref="58674595"/>
 				<string key="NSClassName">NSView</string>
@@ -120,48 +120,32 @@
 				<bool key="EncodedWithXMLCoder">YES</bool>
 				<object class="IBConnectionRecord">
 					<object class="IBBindingConnection" key="connection">
-						<string key="label">value: delegate.selectedDatasetView.selectedReducer.perplexity</string>
+						<string key="label">value: self</string>
 						<reference key="source" ref="168412438"/>
 						<reference key="destination" ref="1004"/>
 						<object class="NSNibBindingConnector" key="connector">
 							<reference key="NSSource" ref="168412438"/>
 							<reference key="NSDestination" ref="1004"/>
-							<string key="NSLabel">value: delegate.selectedDatasetView.selectedReducer.perplexity</string>
+							<string key="NSLabel">value: self</string>
 							<string key="NSBinding">value</string>
-							<string key="NSKeyPath">delegate.selectedDatasetView.selectedReducer.perplexity</string>
+							<string key="NSKeyPath">self</string>
 							<object class="NSDictionary" key="NSOptions">
 								<bool key="EncodedWithXMLCoder">YES</bool>
 								<object class="NSArray" key="dict.sortedKeys">
 									<bool key="EncodedWithXMLCoder">YES</bool>
-									<string>NSNotApplicablePlaceholder</string>
 									<string>NSRaisesForNotApplicableKeys</string>
+									<string>NSValueTransformerName</string>
 								</object>
 								<object class="NSMutableArray" key="dict.values">
 									<bool key="EncodedWithXMLCoder">YES</bool>
-									<real value="27.5"/>
 									<boolean value="NO"/>
+									<string>delegate.selectedDatasetView.selectedReducer.k</string>
 								</object>
 							</object>
 							<int key="NSNibBindingConnectorVersion">2</int>
 						</object>
 					</object>
-					<int key="connectionID">33</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBOutletConnection" key="connection">
-						<string key="label">view</string>
-						<reference key="source" ref="1001"/>
-						<reference key="destination" ref="1005"/>
-					</object>
-					<int key="connectionID">36</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBActionConnection" key="connection">
-						<string key="label">changePerplexity:</string>
-						<reference key="source" ref="1001"/>
-						<reference key="destination" ref="168412438"/>
-					</object>
-					<int key="connectionID">37</int>
+					<int key="connectionID">45</int>
 				</object>
 			</object>
 			<object class="IBMutableOrderedSet" key="objectRecords">
@@ -196,8 +180,8 @@
 						<reference key="object" ref="1005"/>
 						<object class="NSMutableArray" key="children">
 							<bool key="EncodedWithXMLCoder">YES</bool>
-							<reference ref="58674595"/>
 							<reference ref="168412438"/>
+							<reference ref="58674595"/>
 						</object>
 						<reference key="parent" ref="0"/>
 					</object>
@@ -275,7 +259,7 @@
 				<reference key="dict.values" ref="0"/>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">37</int>
+			<int key="maxID">45</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes"/>
 		<int key="IBDocument.localizationMode">0</int>
