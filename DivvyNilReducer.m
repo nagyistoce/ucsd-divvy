@@ -25,37 +25,35 @@
 }
 
 - (void) calculateD:(DivvyDataset *)dataset {
-  // Add code here (default 2 for now)
+  if(self.d < dataset.d)
+    self.d = dataset.d;
 }
 
 - (void) reduceDataset:(DivvyDataset *)dataset
            reducedData:(NSData *)reducedData {
   int n = [dataset.n intValue];
   int d = [dataset.d intValue];
+  int reducedD = [self.d intValue];
   
   float *data = [dataset floatData];
   
   // reducedData is by default the first two dimensions scaled to be between
   // 0 and 1
-  float x, y, min, max;
+  float min, max, value;
   min = FLT_MAX;
   max = FLT_MIN;
-  for(int i = 0; i < n; i++) {
-    x = data[i * d];
-    y = data[i * d + 1];
-    
-    if(x < min) min = x;
-    if(x > max) max = x;
-    if(y < min) min = y;
-    if(y > max) max = y;
+  for(int i = 0; i < n; i++)
+    for(int j = 0; j < reducedD; j++) {
+      value = data[i * d + j];
+      if(value < min) min = value;
+      if(value > max) max = value;
   }
 
   float *newReducedData = (float *)[reducedData bytes];
   
-  for(int i = 0; i < n; i++) {
-    newReducedData[i * 2] = (data[i * d] - min) / (max - min);
-    newReducedData[i * 2 + 1] = (data[i * d + 1] - min) / (max - min);
-  }
+  for(int i = 0; i < n; i++)
+    for(int j = 0; j < reducedD; j++)
+      newReducedData[i * d + j] = (data[i * d + j] - min) / (max - min);
 }
 
 @end

@@ -185,6 +185,7 @@
   
   [self.selectedDatasetVisualizer drawImage:[self.datasetVisualizerResults objectAtIndex:datasetVisualizerIndex]
                                 reducedData:[self.reducerResults objectAtIndex:reducerIndex]
+                                   reducedD:self.selectedReducer.d
                                     dataset:self.dataset
                                  assignment:[self.clustererResults objectAtIndex:clustererIndex]];
 }

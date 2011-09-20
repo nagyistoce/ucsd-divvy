@@ -14,29 +14,21 @@
 @dynamic datasetVisualizerID;
 @dynamic name;
 
+@dynamic xAxis;
+@dynamic yAxis;
 @dynamic pointSize;
-
-+ (id <DivvyDatasetVisualizer>) scatterPlotInDefaultContext {
-  
-  NSManagedObjectContext* context = [[NSApp delegate] managedObjectContext];
-  
-  DivvyScatterPlot *newItem;    
-  newItem = [NSEntityDescription insertNewObjectForEntityForName:@"ScatterPlot"
-                                          inManagedObjectContext:context];
-  
-  return newItem;
-}
 
 - (void) awakeFromInsert {
   [super awakeFromInsert];
 
   self.datasetVisualizerID = [[NSProcessInfo processInfo] globallyUniqueString];
   
-  self.pointSize = [NSNumber numberWithInt:5];
+  
 }
 
 - (void) drawImage:(NSImage *) image 
        reducedData:(NSData *)reducedData
+          reducedD:(NSNumber *)reducedD
            dataset:(DivvyDataset *)dataset
         assignment:(NSData *)assignment {
   
@@ -60,6 +52,9 @@
   NSRect rect;
 
   float x, y, rectSize;
+  int d = [reducedD intValue];
+  int xD = [self.xAxis intValue];
+  int yD = [self.yAxis intValue];
   rectSize = [self.pointSize floatValue];
 
   // get the view geometry and fill the background.
@@ -73,10 +68,10 @@
   [white set];
   rect.size.width = rectSize;
   rect.size.height = rectSize;
-
+  
   for(int i = 0; i < n; i++) {
-    x = data[i * 2];
-    y = data[i * 2 + 1];
+    x = data[i * d + xD];
+    y = data[i * d + yD];
 
     // x and y are guaranteed to be between 0 and 1
     x = bounds.size.width * x;

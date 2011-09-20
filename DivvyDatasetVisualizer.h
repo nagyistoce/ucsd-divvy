@@ -17,7 +17,8 @@
 
 - (void) drawImage:(NSImage *) image
        reducedData:(NSData *)reducedData
+          reducedD:(NSNumber *)d
            dataset:(DivvyDataset *)dataset
-           assignment:(NSData *)assignment;
+        assignment:(NSData *)assignment;
 
 @end

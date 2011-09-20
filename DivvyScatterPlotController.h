@@ -11,6 +11,6 @@
 
 @interface DivvyScatterPlotController : NSViewController
 
--(IBAction) changePointSize:(id)sender;
+-(IBAction) changeScatterPlot:(id)sender;
 
 @end
