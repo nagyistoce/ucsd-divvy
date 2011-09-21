@@ -27,7 +27,7 @@
 }
 
 - (void) calculateD:(DivvyDataset *)dataset {
-  if(dataset.d < self.d)
+  if([dataset.d compare:self.d] == NSOrderedAscending)
     self.d = dataset.d;
 }
 

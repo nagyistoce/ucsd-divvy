@@ -25,7 +25,7 @@
 }
 
 - (void) calculateD:(DivvyDataset *)dataset {
-  if(self.d < dataset.d)
+  if([dataset.d compare:self.d] == NSOrderedAscending)
     self.d = dataset.d;
 }
 
@@ -45,15 +45,17 @@
   for(int i = 0; i < n; i++)
     for(int j = 0; j < reducedD; j++) {
       value = data[i * d + j];
-      if(value < min) min = value;
-      if(value > max) max = value;
+      if(value < min)
+        min = value;
+      if(value > max)
+        max = value;
   }
 
   float *newReducedData = (float *)[reducedData bytes];
   
   for(int i = 0; i < n; i++)
     for(int j = 0; j < reducedD; j++)
-      newReducedData[i * d + j] = (data[i * d + j] - min) / (max - min);
+      newReducedData[i * reducedD + j] = (data[i * d + j] - min) / (max - min);
 }
 
 @end

@@ -156,7 +156,7 @@
 			isa = PBXContainerItemProxy;
 			containerPortal = 29B97313FDCFA39411CA2CEA /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = D792E59214292C120084626A /* DivvyNilPointVisualizer */;
+			remoteGlobalIDString = D792E59214292C120084626A;
 			remoteInfo = DivvyNilPointVisualizer;
 		};
 		D7A24DA713F3225C001AD337 /* PBXContainerItemProxy */ = {
