@@ -44,38 +44,21 @@
 
 - (void) reloadSelectedDatasetViewImage {
   [self.selectedDatasetView setProcessingImage];
-  [self.datasetWindowController.datasetViewsBrowser reloadData];
+  [self.datasetWindowController.datasetViewsBrowser reloadData];  
   
   NSInvocationOperation *invocationOperation = [[[NSInvocationOperation alloc] initWithTarget:self.selectedDatasetView
                                                                                      selector:@selector(checkForNullPluginResults)
                                                                                        object:nil] autorelease];
   
-  
   // Reload the DatasetView image in main thread once processing is complete.
   [invocationOperation setCompletionBlock:^{
     dispatch_async(dispatch_get_main_queue(), ^{
-      if([self.selectedDatasetView.operationQueue operationCount] == 0)
         [self.datasetWindowController.datasetViewsBrowser reloadData];
     });
   }];
   
   
   [self.selectedDatasetView.operationQueue addOperation:invocationOperation];
-}
-
-- (void) datasetVisualizerChanged {
-  [self.selectedDatasetView datasetVisualizerChanged];
-}
-- (void) pointVisualizerChanged {
-  [self.selectedDatasetView pointVisualizerChanged];
-}
-
-- (void) clustererChanged {
-  [self.selectedDatasetView clustererChanged];
-}
-
-- (void) reducerChanged {
-  [self.selectedDatasetView reducerChanged];
 }
 
 - (NSString *)defaultDatasetVisualizer {

@@ -8,12 +8,13 @@
 
 #import "DivvyIsomapController.h"
 #import "DivvyAppDelegate.h"
+#import "DivvyDatasetView.h"
 
 @implementation DivvyIsomapController
 
 -(IBAction) changeK:(id)sender {
     DivvyAppDelegate *delegate = [NSApp delegate];
-    [delegate reducerChanged];
+    [delegate.selectedDatasetView  reducerChanged];
     [delegate reloadSelectedDatasetViewImage];
 }
 

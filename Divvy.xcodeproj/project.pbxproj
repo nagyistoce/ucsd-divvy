@@ -82,6 +82,7 @@
 		D792E5A414292C930084626A /* DivvyNilPointVisualizer.xib in Resources */ = {isa = PBXBuildFile; fileRef = D792E5A314292C930084626A /* DivvyNilPointVisualizer.xib */; };
 		D792E5B514292E320084626A /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D730D27713B5297E00E01F31 /* Cocoa.framework */; };
 		D792E5B814292E670084626A /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */; };
+		D7964FA1142BD4DF00BE63D5 /* DivvyDatasetView.h in Headers */ = {isa = PBXBuildFile; fileRef = D7DD8BDF1381DEBA00DADC35 /* DivvyDatasetView.h */; };
 		D7A24D9613F320AE001AD337 /* DivvyZhu.xcdatamodel in Sources */ = {isa = PBXBuildFile; fileRef = D7A24D9513F320AE001AD337 /* DivvyZhu.xcdatamodel */; };
 		D7A24D9913F3212F001AD337 /* DivvyZhu.xib in Resources */ = {isa = PBXBuildFile; fileRef = D7A24D9813F3212F001AD337 /* DivvyZhu.xib */; };
 		D7A24D9C13F3214D001AD337 /* DivvyZhuController.m in Sources */ = {isa = PBXBuildFile; fileRef = D7A24D9B13F3214D001AD337 /* DivvyZhuController.m */; };
@@ -774,6 +775,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D7964FA1142BD4DF00BE63D5 /* DivvyDatasetView.h in Headers */,
 				D704B89A13E1F088002692E9 /* DivvyDataset.h in Headers */,
 				D730D31313B5334C00E01F31 /* Divvy_Prefix.pch in Headers */,
 				D730D25113B527EF00E01F31 /* DivvyAppDelegate.h in Headers */,

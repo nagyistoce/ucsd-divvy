@@ -49,9 +49,4 @@
 
 - (void) reloadSelectedDatasetViewImage;
 
-- (void) datasetVisualizerChanged;
-- (void) pointVisualizerChanged;
-- (void) clustererChanged;
-- (void) reducerChanged;
-
 @end

@@ -8,6 +8,7 @@
 
 #import "DivvyPCAController.h"
 #import "DivvyAppDelegate.h"
+#import "DivvyDatasetView.h"
 
 @implementation DivvyPCAController
 

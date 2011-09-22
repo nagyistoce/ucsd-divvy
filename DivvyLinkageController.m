@@ -8,12 +8,13 @@
 
 #import "DivvyLinkageController.h"
 #import "DivvyAppDelegate.h"
+#import "DivvyDatasetView.h"
 
 @implementation DivvyLinkageController
 
 -(IBAction) changeParameter:(id)sender {
   DivvyAppDelegate *delegate = [NSApp delegate];
-  [delegate clustererChanged];
+  [delegate.selectedDatasetView  clustererChanged];
   [delegate reloadSelectedDatasetViewImage];
 }
 

@@ -8,13 +8,14 @@
 
 #import "DivvyScatterPlotController.h"
 #import "DivvyAppDelegate.h"
+#import "DivvyDatasetView.h"
 
 
 @implementation DivvyScatterPlotController
 
 -(IBAction) changeScatterPlot:(id)sender{
   DivvyAppDelegate *delegate = [NSApp delegate];
-  [delegate datasetVisualizerChanged];
+  [delegate.selectedDatasetView  datasetVisualizerChanged];
   [delegate reloadSelectedDatasetViewImage];}
 
 @end

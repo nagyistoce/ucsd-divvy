@@ -7,15 +7,15 @@
 //
 
 #import "DivvyZhuController.h"
-
 #import "DivvyAppDelegate.h"
+#import "DivvyDatasetView.h"
 
 
 @implementation DivvyZhuController
 
 - (IBAction) changeLineWidth:(id)sender {
   DivvyAppDelegate *delegate = [NSApp delegate];
-  [delegate pointVisualizerChanged];
+  [delegate.selectedDatasetView  pointVisualizerChanged];
   [delegate reloadSelectedDatasetViewImage];}
 
 @end

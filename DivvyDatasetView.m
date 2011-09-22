@@ -148,7 +148,10 @@
     }
   }
   
-  [self reloadImage];
+  if([self.operationQueue operationCount] < 2) // This is the last operation
+    [self reloadImage];
+  else
+    [self setProcessingImage];
 }
 
 - (void) datasetVisualizerChanged {
@@ -174,34 +177,50 @@
 - (void) datasetVisualizerUpdate {
   int datasetVisualizerIndex = [self.datasetVisualizers indexOfObject:self.selectedDatasetVisualizer];
   int clustererIndex = [self.clusterers indexOfObject:self.selectedClusterer];
-  int reducerIndex = [self.reducers indexOfObject:self.selectedReducer];  
+  int reducerIndex = [self.reducers indexOfObject:self.selectedReducer];
+  
+  // Prevent possible problems caused by a reducerChanged/clustererChanged message during drawing
+  NSData *reducerResult = [self.reducerResults objectAtIndex:reducerIndex];
+  NSData *clustererResult = [self.clustererResults objectAtIndex:clustererIndex];
+  
+  [reducerResult retain];
+  [clustererResult retain];
   
   NSSize imageSize = NSMakeSize(1024, 1024); // Size of output image
-  NSImage *newImage = [[NSImage alloc] initWithSize:imageSize];
+  NSImage *newImage = [[[NSImage alloc] initWithSize:imageSize] autorelease];
   
-  [self.datasetVisualizerResults replaceObjectAtIndex:datasetVisualizerIndex withObject:newImage];
-  
-  [newImage release];
-  
-  [self.selectedDatasetVisualizer drawImage:[self.datasetVisualizerResults objectAtIndex:datasetVisualizerIndex]
-                                reducedData:[self.reducerResults objectAtIndex:reducerIndex]
+  [self.selectedDatasetVisualizer drawImage:newImage
+                                reducedData:reducerResult
                                    reducedD:self.selectedReducer.d
                                     dataset:self.dataset
-                                 assignment:[self.clustererResults objectAtIndex:clustererIndex]];
+                                 assignment:clustererResult];
+  
+  [reducerResult release];
+  [clustererResult release];
+  
+  [self.datasetVisualizerResults replaceObjectAtIndex:datasetVisualizerIndex withObject:newImage];
 }
 
 - (void) pointVisualizerUpdate {
   int pointVisualizerIndex = [self.pointVisualizers indexOfObject:self.selectedPointVisualizer];
   int reducerIndex = [self.reducers indexOfObject:self.selectedReducer];  
   
-  NSSize imageSize = NSMakeSize(1024, 1024); // Size of output image
-  NSImage *newImage = [[NSImage alloc] initWithSize:imageSize];
-  [self.pointVisualizerResults replaceObjectAtIndex:pointVisualizerIndex withObject:newImage];
-  [newImage release];
+  // Prevent possible problems caused by a reducerChanged/clustererChanged message during drawing
+  NSData *reducerResult = [self.reducerResults objectAtIndex:reducerIndex];
   
-  [self.selectedPointVisualizer drawImage:[self.pointVisualizerResults objectAtIndex:pointVisualizerIndex]
-                              reducedData:[self.reducerResults objectAtIndex:reducerIndex]
-                                  dataset:self.dataset];}
+  [reducerResult retain];
+  
+  NSSize imageSize = NSMakeSize(1024, 1024); // Size of output image
+  NSImage *newImage = [[[NSImage alloc] initWithSize:imageSize] autorelease];
+  
+  [self.selectedPointVisualizer drawImage:newImage
+                              reducedData:reducerResult
+                                  dataset:self.dataset];
+  
+  [reducerResult release];
+
+  [self.pointVisualizerResults replaceObjectAtIndex:pointVisualizerIndex withObject:newImage];
+}
 
 - (void) clustererUpdate {
   int clustererIndex = [self.clusterers indexOfObject:self.selectedClusterer];  
@@ -209,11 +228,11 @@
   int numBytes = [self.dataset.n intValue] * sizeof(int);
   int *newAssignment = malloc(numBytes);
   NSData *newData = [NSData dataWithBytesNoCopy:newAssignment length:numBytes freeWhenDone:YES];
-  [self.clustererResults replaceObjectAtIndex:clustererIndex withObject:newData];
   
   [self.selectedClusterer clusterDataset:self.dataset
-                              assignment:[self.clustererResults objectAtIndex:clustererIndex]];
+                              assignment:newData];
   
+  [self.clustererResults replaceObjectAtIndex:clustererIndex withObject:newData];
   [self datasetVisualizerChanged];
 }
 
@@ -225,17 +244,17 @@
   int numBytes = [self.dataset.n intValue] * [self.selectedReducer.d unsignedIntValue] * sizeof(float);
   int *newReducedData = malloc(numBytes);
   NSData *newData = [NSData dataWithBytesNoCopy:newReducedData length:numBytes freeWhenDone:YES];
-  [self.reducerResults replaceObjectAtIndex:reducerIndex withObject:newData];
   
   [self.selectedReducer reduceDataset:self.dataset
-                          reducedData:[self.reducerResults objectAtIndex:reducerIndex]];
+                          reducedData:newData];
   
+  
+  [self.reducerResults replaceObjectAtIndex:reducerIndex withObject:newData];  
   [self datasetVisualizerChanged];
   [self pointVisualizerChanged];
 }
 
 - (NSImage *) image {
-  
   if ( self.renderedImage ) return self.renderedImage;
   
   int datasetVisualizerIndex = [self.datasetVisualizers indexOfObject:self.selectedDatasetVisualizer];  

@@ -77,7 +77,7 @@
   
   delegate.selectedDatasetView.selectedDatasetVisualizer = pointVisualizerController.content;
   
-  [delegate datasetVisualizerChanged];
+  [delegate.selectedDatasetView datasetVisualizerChanged];
   [delegate reloadSelectedDatasetViewImage];
 }
 
@@ -88,7 +88,7 @@
   
   delegate.selectedDatasetView.selectedPointVisualizer = pointVisualizerController.content;
   
-  [delegate pointVisualizerChanged];
+  [delegate.selectedDatasetView pointVisualizerChanged];
   [delegate reloadSelectedDatasetViewImage];
 }
 
@@ -99,7 +99,7 @@
   
   delegate.selectedDatasetView.selectedClusterer = clustererController.content;
   
-  [delegate datasetVisualizerChanged]; // If the clustering changes, the dataset visualizer result needs to be updated
+  [delegate.selectedDatasetView datasetVisualizerChanged]; // If the clustering changes, the dataset visualizer result needs to be updated
   [delegate reloadSelectedDatasetViewImage];
 }
 
@@ -110,8 +110,8 @@
   
   delegate.selectedDatasetView.selectedReducer = reducerController.content;
   
-  [delegate datasetVisualizerChanged]; // If the reduction changes, the dataset visualizer result needs to be updated
-  [delegate pointVisualizerChanged]; // Same for the point visualizer
+  [delegate.selectedDatasetView datasetVisualizerChanged]; // If the reduction changes, the dataset visualizer result needs to be updated
+  [delegate.selectedDatasetView pointVisualizerChanged]; // Same for the point visualizer
   [delegate reloadSelectedDatasetViewImage];
 }
 
