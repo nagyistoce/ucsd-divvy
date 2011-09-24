@@ -8,7 +8,7 @@
 
 #include "isomap.h"
 #include "fibheap.h"
-#include "dijkstra.c"
+#include "dijkstra.cpp"
 #include <math.h>
 #include <float.h>
 #include <Accelerate/Accelerate.h>
@@ -70,7 +70,6 @@ void run_isomap(float* X, int N, int D, float* Y, int no_dims, int K) {
     long int* Psmall = (long int *) calloc(N, sizeof(long int));
     for(int i = 0; i < N; i++) {        
         if((theHeap = new FibHeap) == NULL || (A = new HeapNode[N + 1]) == NULL) {
-            printf("Memory allocation failed -- ABORTING.\n");
             return;
         }     
         theHeap->ClearHeapOwnership();     
