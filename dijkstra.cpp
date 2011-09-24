@@ -64,6 +64,7 @@ extern void _main();
 #include <ctype.h>
 #include <memory.h>
 #include <time.h>
+#include <float.h>
 
 #include "fibheap.h"
 
@@ -731,7 +732,6 @@ public:
 void HeapNode::Print()
 {
     FibHeapNode::Print();
-    mexPrintf( "%f (%d)" , N , IndexV );
 }
 
 void HeapNode::operator =(double NewKeyVal)
@@ -781,21 +781,20 @@ void dodijk_sparse(
                    long int *P, // parents
                    double   *D, // distances
                    double   *sr,
-                   mwSize      *irs,
-                   mwSize      *jcs,
+                   int      *irs,
+                   int      *jcs,
                    HeapNode *A,
                    FibHeap  *theHeap  )
 {
     int      finished;
-    long int i,startind,endind,whichneighbor,ndone,index,switchwith,closest,closesti;
-    long int *INDICES;
+    long int i,startind,endind,whichneighbor,ndone,closest;
     double   closestD,arclength; 
     double   INF,SMALL,olddist;
     HeapNode *Min;
     HeapNode Temp;
     
-    INF   = mxGetInf();
-    SMALL = mxGetEps();
+    INF   = DBL_MAX;
+    SMALL = DBL_MIN;
     
     /* initialize */
     for (i=0; i<M; i++) 
@@ -814,14 +813,6 @@ void dodijk_sparse(
     theHeap->Insert(&Temp);
     theHeap->ExtractMin();
     
-    /*theHeap->Print();
-     for (i=0; i<M; i++)
-     {
-     closest = A[ i ].GetIndexValue();
-     closestD = A[ i ].GetKeyValue();
-     mexPrintf( "Index at i=%d =%d  value=%f\n" , i , closest , closestD );
-     }*/   
-    
     /* loop over nonreached nodes */
     finished = 0;
     ndone    = 0;
@@ -832,8 +823,6 @@ void dodijk_sparse(
         Min = (HeapNode *) theHeap->ExtractMin();
         closest  = Min->GetIndexValue();
         closestD = Min->GetKeyValue();
-        
-        if ((closest<0) || (closest>=M)) mexErrMsgTxt( "Minimum Index out of bound..." );
         
         //theHeap->Print();
         //       mexPrintf( "EXTRACTED MINIMUM  NDone=%d S=%d closest=%d closestD=%f\n" , ndone , S , closest , closestD );//TT
@@ -879,176 +868,5 @@ void dodijk_sparse(
     }
     // source node has no parent
     P[S] = -1;
-    
-}
-
-
-//========================================================================
-// Print()
-//
-// Used internally for debugging purposes.  The function prints the key
-// value for each node along the root list, then it calls itself on each
-// child list.   
-//========================================================================
-
-void FibHeap::Print(FibHeapNode *Tree, FibHeapNode *theParent)
-{
-    FibHeapNode* Temp = NULL;
-    
-    
-    if (Tree == NULL) {
-        Tree = MinRoot;
-    }
-    
-    Temp = Tree;
-    do {
-        if (Temp->Left == NULL)
-            mexPrintf( "(Left is NULL)" );
-        Temp->Print();
-        if (Temp->Parent != theParent)
-            mexPrintf("(Parent is incorrect)" );
-        if (Temp->Right == NULL)
-            mexPrintf( "(Right is NULL)" );
-        else if (Temp->Right->Left != Temp)
-            mexPrintf( "(Error in left link left) ->" );
-        else mexPrintf( " <-> " );
-        
-        Temp = Temp->Right;
-        
-        //      if (kbhit() && getch() == 27)
-        //      {
-        //        std::cout << "Hit a key to resume or ESC to break\n";
-        //          if (getch() == 27)
-        //                 break;
-        //         }
-    } while (Temp != NULL && Temp != Tree);
-    mexPrintf( "\n" );
-    
-    Temp = Tree;
-    do {
-        mexPrintf( "Children of " );
-        Temp->Print();
-        mexPrintf( ": " );
-        if (Temp->Child == NULL)
-            mexPrintf( "NONE\n" );
-        else Print(Temp->Child, Temp);
-        Temp = Temp->Right;
-    } while (Temp!=NULL && Temp != Tree);
-    
-    if (theParent == NULL)
-    {
-        char ch;
-        
-        mexPrintf( "\n\n\n" );
-        std::cin >> ch;
-    }
-}
-
-//===========================================================================
-
-/*void mexFunction(
-                 int          nlhs,
-                 mxArray      *plhs[],
-                 int          nrhs,
-                 const mxArray *prhs[]
-                 )
-{
-    double    *sr,*D,*P,*SS,*Dsmall;
-    long int *Psmall;
-    mwIndex       *irs,*jcs;
-    mwSize  M,N,S,MS,NS,i,j,in;
-    
-    HeapNode *A = NULL;
-    FibHeap  *theHeap = NULL;
-    
-    if (nrhs != 2)
-    {
-        mexErrMsgTxt( "Two input arguments required." );
-    }
-    else if (nlhs > 2) 
-    {
-        mexErrMsgTxt( "Too many output arguments." );
-    }
-    
-    M = mxGetM( prhs[0] );
-    N = mxGetN( prhs[0] );
-    
-    if (M != N) mexErrMsgTxt( "Input matrix needs to be square." );
-    
-    SS = mxGetPr(prhs[1]);
-    MS = mxGetM( prhs[1] );
-    NS = mxGetN( prhs[1] );
-    
-    if ((MS==0) || (NS==0) || ((MS>1) && (NS>1))) mexErrMsgTxt( "Source nodes are specified in one dimensional matrix only" );
-    if (NS>MS) MS=NS;
-    
-    // distance values output
-    plhs[0] = mxCreateDoubleMatrix( MS,M, mxREAL);
-    D = mxGetPr(plhs[0]);
-    
-    // predecessors output
-    plhs[1] = mxCreateDoubleMatrix( MS,M, mxREAL);
-    P = mxGetPr(plhs[1]);
-    
-    Dsmall = (double *) mxCalloc( M , sizeof( double ));
-    Psmall = (long int *) mxCalloc(M , sizeof(long int));
-    
-    if (Dsmall == NULL || Psmall == NULL) {
-        mexErrMsgTxt("Memory allocation failed");
-    }
-    
-    if (mxIsSparse( prhs[ 0 ] ) == 1)
-    {
-        /* dealing with sparse array */
-/*        sr      = mxGetPr(prhs[0]);
-        irs     = mxGetIr(prhs[0]);
-        jcs     = mxGetJc(prhs[0]);
-        
-        // Setup for the Fibonacci heap
-        
-/*        for (i=0; i<MS; i++)
-        {
-            if ((theHeap = new FibHeap) == NULL || (A = new HeapNode[M+1]) == NULL )
-            {
-                mexErrMsgTxt( "Memory allocation failed-- ABORTING.\n" );
-            }
-            
-            theHeap->ClearHeapOwnership();
-            
-            S = (long int) *( SS + i );
-            S--;
-            
-            if ((S < 0) || (S > M-1)) mexErrMsgTxt( "Source node(s) out of bound" );
-            
-            /* -------------------------------------------------------------------------------------------------
-             run the dijkstra code 
-             ------------------------------------------------------------------------------------------------- */
-            
-            //         mexPrintf( "Working on i=%d\n" , i );
-            
-/*            dodijk_sparse( M,N,S,Psmall,Dsmall,sr,irs,jcs,A,theHeap );
-            
-            for (j=0; j<M; j++) 
-            {
-                // copy distance values and predecessor indices to output 
-                *( D + j*MS + i ) = *( Dsmall + j );
-                *( P + j*MS + i ) = *( Psmall + j ) + 1;
-                //   P[j] = (double)(Psmall[j] + 1);
-                
-                //         mexPrintf( "Distance i=%d to j=%d =%f, Parent=%d\n", S+1, j, 
-                //                    *( Dsmall + j ), Psmall[j] );
-            }
-            
-            /* -------------------------------------------------------------------------------------------------
-             end of the dijkstra code 
-             ------------------------------------------------------------------------------------------------- */
-            
-/*            delete theHeap;
-            delete[] A;
-        } 
-        
-        
-        
-    } else mexErrMsgTxt( "Function not implemented for full arrays" );
     
 }
