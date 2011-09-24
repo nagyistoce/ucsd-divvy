@@ -15,7 +15,6 @@
 		0D55DC8213FAA0A1000ADAFB /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D77DF783118636A2009C1946 /* Accelerate.framework */; };
 		0D55DC8313FAA0A1000ADAFB /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D730D27713B5297E00E01F31 /* Cocoa.framework */; };
 		0D55DCB213FAA128000ADAFB /* DivvyPCA.xcdatamodel in Sources */ = {isa = PBXBuildFile; fileRef = D7A24D9713F32105001AD337 /* DivvyPCA.xcdatamodel */; };
-		0D86ADE71428990F00877901 /* DivvyPCA.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0D55DC7513FAA05A000ADAFB /* DivvyPCA.xib */; };
 		0D86ADE91428990F00877901 /* DivvyPCA.m in Sources */ = {isa = PBXBuildFile; fileRef = D7B1957713983DE500BF1EC7 /* DivvyPCA.m */; };
 		0D86ADEA1428990F00877901 /* DivvyPCAController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D55DC7313FAA056000ADAFB /* DivvyPCAController.m */; };
 		0D86ADEB1428990F00877901 /* DivvyPCA.xcdatamodel in Sources */ = {isa = PBXBuildFile; fileRef = D7A24D9713F32105001AD337 /* DivvyPCA.xcdatamodel */; };
@@ -75,7 +74,6 @@
 		D7764F5D137B4CDE00F7F49F /* DatasetWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = D7764F5C137B4CDE00F7F49F /* DatasetWindow.xib */; };
 		D77DF784118636A2009C1946 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D77DF783118636A2009C1946 /* Accelerate.framework */; };
 		D78CD47413FC718C00390ABD /* Divvy.xcdatamodel in Sources */ = {isa = PBXBuildFile; fileRef = D78CD47313FC718C00390ABD /* Divvy.xcdatamodel */; };
-		D792E57C14292A4F0084626A /* DivvyIsomap.plist in Resources */ = {isa = PBXBuildFile; fileRef = D792E57B14292A4F0084626A /* DivvyIsomap.plist */; };
 		D792E59D14292C710084626A /* DivvyNilPointVisualizer.m in Sources */ = {isa = PBXBuildFile; fileRef = D792E59C14292C710084626A /* DivvyNilPointVisualizer.m */; };
 		D792E5A014292C7C0084626A /* DivvyNilPointVisualizerController.m in Sources */ = {isa = PBXBuildFile; fileRef = D792E59F14292C7C0084626A /* DivvyNilPointVisualizerController.m */; };
 		D792E5A214292C8A0084626A /* DivvyNilPointVisualizer.xcdatamodel in Sources */ = {isa = PBXBuildFile; fileRef = D792E5A114292C8A0084626A /* DivvyNilPointVisualizer.xcdatamodel */; };
@@ -1065,9 +1063,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0D86ADE71428990F00877901 /* DivvyPCA.xib in Resources */,
 				0D86AE011428BC5A00877901 /* DivvyIsomap.xib in Resources */,
-				D792E57C14292A4F0084626A /* DivvyIsomap.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
