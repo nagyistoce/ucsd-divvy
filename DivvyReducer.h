@@ -10,7 +10,7 @@
 
 @class DivvyDataset;
 
-@protocol DivvyReducer
+@protocol DivvyReducer <NSObject>
 
 - (NSString *) reducerID;
 - (NSString *) name;

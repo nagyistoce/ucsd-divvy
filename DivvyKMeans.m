@@ -7,7 +7,10 @@
 //
 
 #import "DivvyKMeans.h"
+
+#import "DivvyAppDelegate.h"
 #import "DivvyDataset.h"
+#import "DivvyDatasetView.h"
 
 #include "kmeans.h"
 
@@ -22,9 +25,22 @@
 @dynamic initCentroidsFromPointsInDataset;
 
 - (void) awakeFromInsert {
-  [super awakeFromInsert];
+  [super awakeFromInsert];  
   
   self.clustererID = [[NSProcessInfo processInfo] globallyUniqueString];
+}
+
+- (void) awakeFromFetch {
+  [super awakeFromFetch];
+  
+  [self addObserver:self forKeyPath:@"k" options:0 context:nil];
+}
+
+- (void) observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
+  DivvyAppDelegate *delegate = [NSApp delegate];
+  
+  [delegate.selectedDatasetView clustererChanged];
+  [delegate reloadSelectedDatasetViewImage];
 }
 
 - (void) clusterDataset:(DivvyDataset *)dataset

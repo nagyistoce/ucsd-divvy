@@ -10,7 +10,7 @@
 
 @class DivvyDataset;
 
-@protocol DivvyClusterer
+@protocol DivvyClusterer <NSObject>
 
 - (NSString *) clustererID;
 - (NSString *) name;

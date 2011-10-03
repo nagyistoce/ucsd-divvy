@@ -7,15 +7,10 @@
 //
 
 #import "DivvyKMeansController.h"
+#import "DivvyKMeans.h"
 #import "DivvyAppDelegate.h"
 #import "DivvyDatasetView.h"
 
 @implementation DivvyKMeansController
-
--(IBAction) changeK:(id)sender {
-  DivvyAppDelegate *delegate = [NSApp delegate];
-  [delegate.selectedDatasetView clustererChanged];
-  [delegate reloadSelectedDatasetViewImage];
-}
 
 @end

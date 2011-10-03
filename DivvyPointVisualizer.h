@@ -10,7 +10,7 @@
 
 @class DivvyDataset;
 
-@protocol DivvyPointVisualizer
+@protocol DivvyPointVisualizer <NSObject>
 
 - (NSString *) pointVisualizerID;
 - (NSString *) name;

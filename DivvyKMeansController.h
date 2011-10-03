@@ -8,6 +8,4 @@
 
 @interface DivvyKMeansController : NSViewController
 
--(IBAction) changeK:(id)sender;
-
 @end

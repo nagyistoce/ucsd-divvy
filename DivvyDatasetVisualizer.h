@@ -10,7 +10,7 @@
 
 @class DivvyDataset;
 
-@protocol DivvyDatasetVisualizer
+@protocol DivvyDatasetVisualizer <NSObject>
 
 - (NSString *) datasetVisualizerID;
 - (NSString *) name;
