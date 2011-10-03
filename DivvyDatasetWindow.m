@@ -35,29 +35,17 @@
   [datasetViewsArrayController setSortDescriptors:sortDescriptors];
 }
 
-- (IBAction)addDatasetViewAction:(id)sender {
-  DivvyDataset *dataset = [[NSApp delegate] selectedDataset];
-  
-  [DivvyDatasetView datasetViewInDefaultContextWithDataset:dataset];
-}
-
-- (void) imageBrowserSelectionDidChange:(IKImageBrowserView *) aBrowser {
-  NSIndexSet *selectionIndexes = [aBrowser selectionIndexes];
+- (IBAction)editDatasetViews:(id)sender {
   DivvyAppDelegate *delegate = [NSApp delegate];
+  
+  NSInteger selectedSegment = [sender selectedSegment];
+  NSInteger clickedSegmentTag = [[sender cell] tagForSegment:selectedSegment];
 
-  if(selectionIndexes.count == 0) {
-    [delegate setValue:nil forKey:@"selectedDatasetView"];
-    [delegate.datasetViewPanelController reflow];
-  }
-  else {
-    NSArray *datasetViews = [self.datasetViewsArrayController arrangedObjects];
-    
-    DivvyDatasetView *datasetView = [datasetViews objectAtIndex:[selectionIndexes lastIndex]];
-    [delegate setValue:nil forKey:@"selectedDatasetView"];
-    [delegate setValue:datasetView forKey:@"selectedDatasetView"];
-    
-    //[delegate.datasetViewPanelController.clustererPopUp selectItemAtIndex:[datasetView.clusterers indexOfObject:datasetView.selectedClusterer]];
-    [delegate.datasetViewPanelController reflow];
+  if (clickedSegmentTag == 0) // Add button
+    [DivvyDatasetView datasetViewInDefaultContextWithDataset:delegate.selectedDataset];
+  else { // Remove button
+    for (id datasetView in [self.datasetViewsArrayController selectedObjects])
+      [delegate.managedObjectContext deleteObject:datasetView];
   }
 }
 

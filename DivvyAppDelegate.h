@@ -16,10 +16,7 @@
 @class DivvyDatasetWindow;
 
 @class DivvyPluginManager;
-
-@protocol DivvyClusterer;
-@protocol DivvyDatasetVisualizer;
-@protocol DivvyPointVisualizer;
+@class DivvyDelegateSettings;
 
 @interface DivvyAppDelegate : NSObject <NSApplicationDelegate>
 
@@ -30,10 +27,13 @@
 @property (nonatomic, assign) DivvyDataset *selectedDataset;
 @property (nonatomic, assign) DivvyDatasetView *selectedDatasetView;
 
+@property (nonatomic, retain) NSIndexSet *selectedDatasets;
+
 @property (nonatomic, retain) NSArray *pluginTypes;
 @property (nonatomic, retain) NSArray *pluginDefaults;
 
 @property (nonatomic, retain) DivvyPluginManager *pluginManager;
+@property (nonatomic, retain) DivvyDelegateSettings *delegateSettings;
 
 @property (nonatomic, retain, readonly) NSPersistentStoreCoordinator *persistentStoreCoordinator;
 @property (nonatomic, retain, readonly) NSManagedObjectModel *managedObjectModel;

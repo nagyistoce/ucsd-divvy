@@ -29,21 +29,12 @@
     [[NSApp delegate] closeDatasets:sender];
 }
 
-- (void)tableViewSelectionDidChange:(NSNotification *)notification {
+- (void) windowDidLoad {
+  [super windowDidLoad];
   
-  NSTableView* table     = [notification object];
-  NSInteger    selection = table.selectedRow;
-  
-  if(selection == -1) {
-    [[NSApp delegate] setValue:nil forKey:@"selectedDataset"];
-  }
-  else {
-    NSArray *datasets = [self.datasetsArrayController arrangedObjects];
-    
-    DivvyDataset *dataset = [datasets objectAtIndex:selection];
-    [[NSApp delegate] setValue:nil forKey:@"selectedDataset"];
-    [[NSApp delegate] setValue:dataset forKey:@"selectedDataset"];
-  }
+  // Load the datasets from the managed object context early so that we can set the saved selection in applicationDidFinishLaunching
+  NSError *error = nil;
+  [self.datasetsArrayController fetchWithRequest:nil merge:NO error:&error];
 }
 
 - (void) dealloc {

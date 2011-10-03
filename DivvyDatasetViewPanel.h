@@ -38,6 +38,8 @@
 
 @property (retain) IBOutlet NSTextField *selectViewTextField;
 
+@property (retain) IBOutlet NSScrollView *scrollView;
+
 @property (retain) NSMutableArray *datasetVisualizerViewControllers;
 @property (retain) NSMutableArray *pointVisualizerViewControllers;
 @property (retain) NSMutableArray *clustererViewControllers;

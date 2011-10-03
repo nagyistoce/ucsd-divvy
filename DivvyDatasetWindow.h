@@ -15,8 +15,6 @@
 @property (retain) IBOutlet IKImageBrowserView *datasetViewsBrowser;
 @property (retain) IBOutlet NSArrayController *datasetViewsArrayController;
 
-- (IBAction)addDatasetViewAction:sender;
-
-- (void) imageBrowserSelectionDidChange:(IKImageBrowserView *) aBrowser;
+- (IBAction)editDatasetViews:sender;
 
 @end

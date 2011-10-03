@@ -41,6 +41,8 @@
 
 @synthesize selectViewTextField;
 
+@synthesize scrollView;
+
 @synthesize datasetVisualizerViewControllers;
 @synthesize pointVisualizerViewControllers;
 @synthesize clustererViewControllers;
@@ -119,25 +121,23 @@
   DivvyAppDelegate *delegate = [NSApp delegate];
   NSArray *pluginTypes = delegate.pluginTypes;
   
-  //DivvyDatasetView *selectedDatasetView = delegate.selectedDatasetView;
-  //id <DivvyClusterer> selectedClusterer = selectedDatasetView.selectedClusterer;
-  
-  NSRect topFrame = [[self window] frame];
+  NSRect topFrame = self.window.frame;
+  NSRect documentFrame = [self.scrollView.documentView frame];
   
   float y = 0.f; // Go from the bottom up
   float popUpOffset = 13.f; // View borders from IB are 20px, we want 7px separation
   float disclosureButtonOffset = 7.f; // Centered disclosure buttons are 7px above their corresponding popups
   
-  if(delegate.selectedDatasetView) {
-  
-    // Need to set topFrame height before positioning the subviews
-    for(NSString *pluginType in pluginTypes) {
+  // Need to set documentFrame height before positioning the subviews
+  for(NSString *pluginType in pluginTypes) {
+    NSView *view = [self valueForKey:[NSString stringWithFormat:@"%@View", pluginType]];
+    
+    if(delegate.selectedDatasetView) { // Remove subviews that have changed and adjust height for the new views
       NSArray *viewControllers = [self valueForKey:[NSString stringWithFormat:@"%@ViewControllers", pluginType]];
       NSArrayController *arrayController = [self valueForKey:[NSString stringWithFormat:@"%@ArrayController", pluginType]];
       NSObjectController *objectController = [self valueForKey:[NSString stringWithFormat:@"%@Controller", pluginType]];
-      NSView *view = [self valueForKey:[NSString stringWithFormat:@"%@View", pluginType]];
       NSView *popup = [self valueForKey:[NSString stringWithFormat:@"%@PopUp", pluginType]];
-      
+
       NSViewController *aController;
       
       aController = [viewControllers objectAtIndex:[arrayController.arrangedObjects indexOfObject:[objectController content]]];
@@ -151,68 +151,70 @@
       
       y += subFrame.size.height;
       y += popUpFrame.size.height - popUpOffset;
-      
     }
-   
-    //y += 30.f; // Top border
+    else { // Remove all subviews
+      for(NSView *aView in view.subviews)
+        [aView removeFromSuperview];
+    }
   }
-//  else {
-//    y += 57.f; // Room for select view label
-//  }
 
-  y += 30.f; // Top border
-
-  topFrame.origin.y += topFrame.size.height - y;
-  topFrame.size.height = y;
-  [self.window setFrame:topFrame display:YES animate:NO];
+  y += delegate.selectedDatasetView ? 20.f : 70.f; // Top border, with room for select label if nothing's selected
   
-  y = 0.f; // Reset to position subviews
   
-  if(delegate.selectedDatasetView) {
+  documentFrame.origin.y = topFrame.origin.y + topFrame.size.height - y;
+  documentFrame.size.height = y;
+  [self.scrollView.documentView setFrame:documentFrame]; // display:YES animate:NO];
   
-    for(NSString *pluginType in pluginTypes) {
+  //y = 0.f; // Reset to position subviews
+  
+  for(NSString *pluginType in pluginTypes) {
+    NSView *view = [self valueForKey:[NSString stringWithFormat:@"%@View", pluginType]];
+    NSView *popUp = [self valueForKey:[NSString stringWithFormat:@"%@PopUp", pluginType]];
+    NSView *disclosureButton = [self valueForKey:[NSString stringWithFormat:@"%@DisclosureButton", pluginType]];
+    
+    if(delegate.selectedDatasetView) {
+      [view setHidden:NO];
+      [popUp setHidden:NO];
+      [disclosureButton setHidden:NO];        
+      
       NSArray *viewControllers = [self valueForKey:[NSString stringWithFormat:@"%@ViewControllers", pluginType]];
       NSArrayController *arrayController = [self valueForKey:[NSString stringWithFormat:@"%@ArrayController", pluginType]];
       NSObjectController *objectController = [self valueForKey:[NSString stringWithFormat:@"%@Controller", pluginType]];
-      NSView *view = [self valueForKey:[NSString stringWithFormat:@"%@View", pluginType]];
-      NSView *popUp = [self valueForKey:[NSString stringWithFormat:@"%@PopUp", pluginType]];
-      NSView *disclosureButton = [self valueForKey:[NSString stringWithFormat:@"%@DisclosureButton", pluginType]];
-      
       NSViewController *aController;
       
       aController = [viewControllers objectAtIndex:[arrayController.arrangedObjects indexOfObject:[objectController content]]];
       
-      NSRect frame = [view frame];
       NSRect subFrame = [[aController view] frame];
+      NSRect frame = [view frame];
       NSRect popUpFrame = [popUp frame];
       NSRect disclosureButtonFrame = [disclosureButton frame];
-      
+
+      y -= subFrame.size.height;
       frame.origin.y = y;
       frame.size.height = subFrame.size.height;
-      y += subFrame.size.height;
       
-      popUpFrame.origin.y = y - popUpOffset;
-      disclosureButtonFrame.origin.y = y - popUpOffset + disclosureButtonOffset;
-      y += popUpFrame.size.height - popUpOffset;
+      y -= popUpFrame.size.height - popUpOffset;
+      popUpFrame.origin.y = y;
+      disclosureButtonFrame.origin.y = y + disclosureButtonOffset;
       
       [view setFrame:frame];
       [popUp setFrame:popUpFrame];
       [disclosureButton setFrame:disclosureButtonFrame];
-      
+    
       if([view.subviews count] == 0) // Will happen only if we've changed views
         [view addSubview:[aController view]];
+    } else {
+      [view setHidden:YES];
+      [popUp setHidden:YES];
+      [disclosureButton setHidden:YES];
     }
 
-    NSRect selectViewFrame = [selectViewTextField frame];
-    selectViewFrame.origin.y = -50.f;
-    [selectViewTextField setFrame:selectViewFrame];
   }
-//  else {
-//    NSRect selectViewFrame = [selectViewTextField frame];
-//    selectViewFrame.origin.y = 20.f;
-//    [selectViewTextField setFrame:selectViewFrame];    
-//  }
-
+  
+  NSRect selectViewFrame = [selectViewTextField frame];
+  selectViewFrame.origin.y = 20.f;
+  [selectViewTextField setFrame:selectViewFrame];
+  [selectViewTextField setHidden:(delegate.selectedDatasetView ? YES : NO)];
 }
 
 - (void) dealloc {

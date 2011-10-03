@@ -17,6 +17,7 @@
 #import "DivvyReducer.h"
 
 #import "DivvyPluginManager.h"
+#import "DivvyDelegateSettings.h"
 
 #import "DivvyDatasetViewPanel.h"
 #import "DivvyDatasetsPanel.h"
@@ -31,10 +32,13 @@
 @synthesize selectedDataset;
 @synthesize selectedDatasetView;
 
+@synthesize selectedDatasets;
+
 @synthesize pluginTypes;
 @synthesize pluginDefaults;
 
 @synthesize pluginManager;
+@synthesize delegateSettings;
 
 @synthesize persistentStoreCoordinator;
 @synthesize managedObjectModel;
@@ -61,22 +65,6 @@
   [self.selectedDatasetView.operationQueue addOperation:invocationOperation];
 }
 
-- (NSString *)defaultDatasetVisualizer {
-  return @"ScatterPlot";
-}
-
-- (NSString *)defaultPointVisualizer {
-  return @"Zhu";
-}
-
-- (NSString *)defaultClusterer {
-  return @"KMeans";
-}
-
-- (NSString *)defaultReducer {
-  return @"NilReducer";
-}
-
 - (NSArray *)defaultSortDescriptors {
   return [NSArray arrayWithObject:[NSSortDescriptor sortDescriptorWithKey:@"title" ascending:YES]];
 }
@@ -100,13 +88,9 @@
 }
 
 - (IBAction) closeDatasets:(id)sender {
-  DivvyDatasetsPanel *datasetsPanel = self.datasetsPanelController;
-  NSTableView *datasetsTable = [datasetsPanel datasetsTable];
-  NSIndexSet *selections = datasetsTable.selectedRowIndexes;
-  NSArray *datasets = [[datasetsPanelController datasetsArrayController] arrangedObjects];
+  NSArray *datasets = [self.datasetsPanelController.datasetsArrayController arrangedObjects];
   
-  NSArray *selectedDatasets = [datasets objectsAtIndexes:selections];
-  for (id dataset in selectedDatasets) {
+  for (id dataset in [datasets objectsAtIndexes:self.selectedDatasets]) {
     for (id datasetView in [[dataset datasetViews] allObjects])
       [managedObjectContext deleteObject:datasetView];
     [managedObjectContext deleteObject:dataset];
@@ -147,7 +131,61 @@
   
   self.processingImage = [[[NSImage alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"waiting" withExtension:@"png"]] autorelease];
   
-  [datasetViewPanel reflow];
+  // Connect to delegateSettings
+  NSError *error = nil;
+  NSEntityDescription *delegateSettingsEntityDescription = [self.managedObjectModel.entitiesByName objectForKey:@"DelegateSettings"];
+  NSFetchRequest *request = [[[NSFetchRequest alloc] init] autorelease];
+  [request setEntity:delegateSettingsEntityDescription];
+  NSArray *delegateSettingsArray = [self.managedObjectContext executeFetchRequest:request error:&error];
+  
+  if(delegateSettingsArray.count == 0)
+    self.delegateSettings = [NSEntityDescription insertNewObjectForEntityForName:delegateSettingsEntityDescription.name inManagedObjectContext:self.managedObjectContext];
+  else {
+    self.delegateSettings = [delegateSettingsArray objectAtIndex:0];
+  }
+  
+  [self addObserver:self forKeyPath:@"selectedDatasets" options:0 context:nil];
+  [self addObserver:self forKeyPath:@"selectedDataset.selectedDatasetViews" options:0 context:nil];
+  
+  if(self.delegateSettings.selectedDatasets)
+    self.selectedDatasets = self.delegateSettings.selectedDatasets;
+}
+
+// This stuff needs to be cleaned up, but it's an improvement over catching UI events
+- (void) observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
+  if([keyPath isEqual:@"selectedDatasets"]) {
+    DivvyDataset *newDataset;
+
+    if(self.selectedDatasets.count == 0)
+      self.selectedDataset = nil;
+    else {
+      NSArray *datasets = [self.datasetsPanelController.datasetsArrayController arrangedObjects];
+      newDataset = [datasets objectAtIndex:[self.selectedDatasets lastIndex]];
+
+      NSIndexSet *cachedIndexes = newDataset.selectedDatasetViews;
+      
+      // Don't update the selectedDatasetViews until after the ImageBrowser has nuked them and they've been restored
+      [self removeObserver:self forKeyPath:@"selectedDataset.selectedDatasetViews"];
+      self.selectedDataset = newDataset;
+      [self addObserver:self forKeyPath:@"selectedDataset.selectedDatasetViews" options:0 context:nil];
+      
+      self.selectedDataset.selectedDatasetViews = cachedIndexes;
+    }
+  }
+  
+  if([keyPath isEqual:@"selectedDataset.selectedDatasetViews"]) {
+    if(!self.selectedDataset || self.selectedDataset.selectedDatasetViews.count == 0)
+        self.selectedDatasetView = nil;
+    else {
+      NSSortDescriptor *dateCreatedDescriptor = [[[NSSortDescriptor alloc] initWithKey:@"dateCreated" ascending:YES] autorelease];
+      NSArray *sortDescriptors = [NSArray arrayWithObjects:dateCreatedDescriptor, nil];
+      NSArray *datasetViews = [self.selectedDataset.datasetViews sortedArrayUsingDescriptors:sortDescriptors];
+      DivvyDatasetView *datasetView = [datasetViews objectAtIndex:[self.selectedDataset.selectedDatasetViews lastIndex]];
+      
+      self.selectedDatasetView = datasetView;
+    }
+    [self.datasetViewPanelController reflow];
+  }
 }
 
 /**
@@ -302,9 +340,12 @@
  before the application terminates.
  */
 
-- (NSApplicationTerminateReply)applicationShouldTerminate:(NSApplication *)sender {  
+- (NSApplicationTerminateReply)applicationShouldTerminate:(NSApplication *)sender {    
+  // Save the selected datasets.
+  self.delegateSettings.selectedDatasets = self.selectedDatasets;
+  
   // Stops a bunch of CoreGraphics errors from the binding between the dataset window
-  // title and the selected dataset title. There's probably a better way to fix them though.
+  // title and the selected dataset title. There's probably a better way to fix them though.  
   self.selectedDataset = nil;
   
   if (!managedObjectContext) return NSTerminateNow;
@@ -366,7 +407,10 @@
   [pluginDefaults release];
 
   [pluginManager release];
-
+  [delegateSettings release];
+  
+  [selectedDatasets release];
+  
   [managedObjectContext release];
   [persistentStoreCoordinator release];
   [managedObjectModel release];
