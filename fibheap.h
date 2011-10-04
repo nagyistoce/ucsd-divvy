@@ -42,14 +42,14 @@ protected:
     
 public:
     
-    inline  FibHeapNode();
+    FibHeapNode();
     virtual ~FibHeapNode();
     
     virtual void operator =(FibHeapNode& RHS);
     virtual int  operator ==(FibHeapNode& RHS);
     virtual int  operator <(FibHeapNode& RHS);
     
-    virtual void Print();
+    //virtual void Print();
 };
 
 //========================================================================
@@ -89,7 +89,7 @@ public:
     long GetNumTrees() { return NumTrees; };
     long GetNumMarkedNodes() { return NumMarkedNodes; };
     
-    void Print(FibHeapNode *Tree = NULL, FibHeapNode *theParent=NULL);
+    //void Print(FibHeapNode *Tree = NULL, FibHeapNode *theParent=NULL);
     
 private:
     
@@ -101,6 +101,32 @@ private:
     void _AddToRootList(FibHeapNode *);
     void _Cut(FibHeapNode *, FibHeapNode *);
     void _CascadingCut(FibHeapNode *);
+};
+
+
+// HeapNode Class
+class HeapNode : public FibHeapNode
+{
+    double   N;
+    long int IndexV;
+    
+public:
+    
+    HeapNode() : FibHeapNode() { N = 0; };   
+    
+    virtual void operator =(FibHeapNode& RHS);
+    virtual int  operator ==(FibHeapNode& RHS);
+    virtual int  operator <(FibHeapNode& RHS);
+    
+    virtual void operator =(double NewKeyVal );
+    //virtual void Print();
+    
+    double GetKeyValue() { return N; };       /* !!!! */
+    void SetKeyValue(double n) { N = n; };
+    
+    long int GetIndexValue() { return IndexV; };
+    void SetIndexValue( long int v) { IndexV = v; };
+    
 };
 
 #endif

@@ -8,16 +8,26 @@
 
 #include "isomap.h"
 #include "fibheap.h"
-#include "dijkstra.cpp"
 #include <math.h>
 #include <float.h>
 #include <Accelerate/Accelerate.h>
+
+void dodijk_sparse(long int M,
+                   long int N,
+                   long int S,
+                   long int *P, // parents
+                   double   *D, // distances
+                   double   *sr,
+                   int      *irs,
+                   int      *jcs,
+                   HeapNode *A,
+                   FibHeap  *theHeap  );
 
 
 void run_isomap(float* X, int N, int D, float* Y, int no_dims, int K) {
     
     // Compute pairwise distance matrix
-    float* DD = calloc(N * N, sizeof(float));
+    float* DD = (float*) calloc(N * N, sizeof(float));
     float val;
 	for(int n = 0; n < N; n++) {
 		DD[n * N + n] = 0.0;
@@ -82,8 +92,8 @@ void run_isomap(float* X, int N, int D, float* Y, int no_dims, int K) {
     }
     
     // Perform centering of geodesic distance matrix
-    float* row_sums = calloc(N, sizeof(float));
-    float* col_sums = calloc(N, sizeof(float));
+    float* row_sums = (float*) calloc(N, sizeof(float));
+    float* col_sums = (float*) calloc(N, sizeof(float));
     for(int n = 0; n < N; n++) {
         for(int m = 0; m < N; m++) {
             row_sums[m] += gD[n * N + m];

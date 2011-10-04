@@ -221,11 +221,11 @@ int  FibHeapNode::operator <(FibHeapNode& RHS)
 // Print()
 //=========================================================
 
-void FibHeapNode::Print()
+/*void FibHeapNode::Print()
 {
     if (NegInfinityFlag)
         std::cout << "-inf.";
-}
+}*/
 
 //***************************************************************************
 //===========================================================================
@@ -705,34 +705,10 @@ void FibHeap::_CascadingCut(FibHeapNode *y)
 }
 
 
-class HeapNode : public FibHeapNode
-{
-    double   N;
-    long int IndexV;
-    
-public:
-    
-    HeapNode() : FibHeapNode() { N = 0; };   
-    
-    virtual void operator =(FibHeapNode& RHS);
-    virtual int  operator ==(FibHeapNode& RHS);
-    virtual int  operator <(FibHeapNode& RHS);
-    
-    virtual void operator =(double NewKeyVal );
-    virtual void Print();
-    
-    double GetKeyValue() { return N; };       /* !!!! */
-    void SetKeyValue(double n) { N = n; };
-    
-    long int GetIndexValue() { return IndexV; };
-    void SetIndexValue( long int v) { IndexV = v; };
-    
-};
-
-void HeapNode::Print()
+/*void HeapNode::Print()
 {
     FibHeapNode::Print();
-}
+}*/
 
 void HeapNode::operator =(double NewKeyVal)
 {

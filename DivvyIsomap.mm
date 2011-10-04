@@ -11,6 +11,7 @@
 
 #include "isomap.h"
 
+struct IsomapImpl {};
 
 @implementation DivvyIsomap
 
@@ -18,6 +19,7 @@
 @dynamic name;
 
 @dynamic k;
+
 
 - (void) awakeFromInsert {
 	[super awakeFromInsert];
@@ -35,7 +37,8 @@
     run_isomap([dataset floatData], 
                [[dataset n] unsignedIntValue], 
                [[dataset d] unsignedIntValue], 
-               newReducedData, no_dims, cur_k);
+               newReducedData, no_dims, cur_k);     // this code is in C++
 }
+
 
 @end
