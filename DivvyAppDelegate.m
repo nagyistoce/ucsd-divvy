@@ -117,17 +117,17 @@
   self.datasetsPanelController = datasetsPanel;
   [datasetsPanel release];
 
+  DivvyDatasetWindow *datasetWindow;
+  datasetWindow = [[DivvyDatasetWindow alloc] initWithWindowNibName:@"DatasetWindow"];
+  [datasetWindow showWindow:nil];  
+  self.datasetWindowController = datasetWindow;
+  [datasetWindow release];  
+  
   DivvyDatasetViewPanel *datasetViewPanel;
   datasetViewPanel = [[DivvyDatasetViewPanel alloc] initWithWindowNibName:@"DatasetViewPanel"];
   [datasetViewPanel showWindow:nil];  
   self.datasetViewPanelController = datasetViewPanel;
   [datasetViewPanel release];
-  
-  DivvyDatasetWindow *datasetWindow;
-  datasetWindow = [[DivvyDatasetWindow alloc] initWithWindowNibName:@"DatasetWindow"];
-  [datasetWindow showWindow:nil];  
-  self.datasetWindowController = datasetWindow;
-  [datasetWindow release];
   
   self.processingImage = [[[NSImage alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"waiting" withExtension:@"png"]] autorelease];
   
@@ -177,12 +177,13 @@
     if(!self.selectedDataset || self.selectedDataset.selectedDatasetViews.count == 0)
         self.selectedDatasetView = nil;
     else {
-      NSSortDescriptor *dateCreatedDescriptor = [[[NSSortDescriptor alloc] initWithKey:@"dateCreated" ascending:YES] autorelease];
-      NSArray *sortDescriptors = [NSArray arrayWithObjects:dateCreatedDescriptor, nil];
-      NSArray *datasetViews = [self.selectedDataset.datasetViews sortedArrayUsingDescriptors:sortDescriptors];
-      DivvyDatasetView *datasetView = [datasetViews objectAtIndex:[self.selectedDataset.selectedDatasetViews lastIndex]];
-      
-      self.selectedDatasetView = datasetView;
+      NSArray *datasetViews = [self.datasetWindowController.datasetViewsArrayController arrangedObjects];
+      DivvyDatasetView *newDatasetView = [datasetViews objectAtIndex:[self.selectedDataset.selectedDatasetViews lastIndex]];
+
+      // Fixes potential errors from uninitialized views when the bindings fire
+      [newDatasetView willAccessValueForKey:nil];
+
+      self.selectedDatasetView = newDatasetView;
     }
     [self.datasetViewPanelController reflow];
   }

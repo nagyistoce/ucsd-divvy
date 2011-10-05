@@ -21,7 +21,7 @@
 		</object>
 		<object class="NSMutableArray" key="IBDocument.EditedObjectIDs">
 			<bool key="EncodedWithXMLCoder">YES</bool>
-			<integer value="2"/>
+			<integer value="3"/>
 		</object>
 		<object class="NSArray" key="IBDocument.PluginDependencies">
 			<bool key="EncodedWithXMLCoder">YES</bool>
@@ -375,11 +375,11 @@
 					</object>
 				</object>
 				<bool key="NSEditable">YES</bool>
-				<bool key="NSAutomaticallyPreparesContent">YES</bool>
 				<object class="_NSManagedProxy" key="_NSManagedProxy">
 					<string key="NSEntityName">DatasetView</string>
 				</object>
 				<bool key="_NSIsUsingManagedProxy">YES</bool>
+				<bool key="NSPreservesSelection">YES</bool>
 				<bool key="NSFilterRestrictsInsertion">YES</bool>
 				<bool key="NSClearsFilterPredicateOnInsertion">YES</bool>
 			</object>
@@ -448,22 +448,6 @@
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBBindingConnection" key="connection">
-						<string key="label">content: arrangedObjects</string>
-						<reference key="source" ref="24077413"/>
-						<reference key="destination" ref="171322530"/>
-						<object class="NSNibBindingConnector" key="connector" id="442451492">
-							<reference key="NSSource" ref="24077413"/>
-							<reference key="NSDestination" ref="171322530"/>
-							<string key="NSLabel">content: arrangedObjects</string>
-							<string key="NSBinding">content</string>
-							<string key="NSKeyPath">arrangedObjects</string>
-							<int key="NSNibBindingConnectorVersion">2</int>
-						</object>
-					</object>
-					<int key="connectionID">43</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBBindingConnection" key="connection">
 						<string key="label">contentSet: delegate.selectedDataset.datasetViews</string>
 						<reference key="source" ref="171322530"/>
 						<reference key="destination" ref="1004"/>
@@ -512,40 +496,6 @@
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBBindingConnection" key="connection">
-						<string key="label">selectionIndexes: selectionIndexes</string>
-						<reference key="source" ref="24077413"/>
-						<reference key="destination" ref="171322530"/>
-						<object class="NSNibBindingConnector" key="connector" id="436116338">
-							<reference key="NSSource" ref="24077413"/>
-							<reference key="NSDestination" ref="171322530"/>
-							<string key="NSLabel">selectionIndexes: selectionIndexes</string>
-							<string key="NSBinding">selectionIndexes</string>
-							<string key="NSKeyPath">selectionIndexes</string>
-							<reference key="NSPreviousConnector" ref="442451492"/>
-							<int key="NSNibBindingConnectorVersion">2</int>
-						</object>
-					</object>
-					<int key="connectionID">98</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBBindingConnection" key="connection">
-						<string key="label">zoomValue: delegate.selectedDataset.zoomValue</string>
-						<reference key="source" ref="24077413"/>
-						<reference key="destination" ref="1004"/>
-						<object class="NSNibBindingConnector" key="connector">
-							<reference key="NSSource" ref="24077413"/>
-							<reference key="NSDestination" ref="1004"/>
-							<string key="NSLabel">zoomValue: delegate.selectedDataset.zoomValue</string>
-							<string key="NSBinding">zoomValue</string>
-							<string key="NSKeyPath">delegate.selectedDataset.zoomValue</string>
-							<reference key="NSPreviousConnector" ref="436116338"/>
-							<int key="NSNibBindingConnectorVersion">2</int>
-						</object>
-					</object>
-					<int key="connectionID">99</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBBindingConnection" key="connection">
 						<string key="label">selectionIndexes: delegate.selectedDataset.selectedDatasetViews</string>
 						<reference key="source" ref="171322530"/>
 						<reference key="destination" ref="1004"/>
@@ -579,6 +529,60 @@
 						</object>
 					</object>
 					<int key="connectionID">114</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBBindingConnection" key="connection">
+						<string key="label">content: arrangedObjects</string>
+						<reference key="source" ref="24077413"/>
+						<reference key="destination" ref="171322530"/>
+						<object class="NSNibBindingConnector" key="connector" id="442451492">
+							<reference key="NSSource" ref="24077413"/>
+							<reference key="NSDestination" ref="171322530"/>
+							<string key="NSLabel">content: arrangedObjects</string>
+							<string key="NSBinding">content</string>
+							<string key="NSKeyPath">arrangedObjects</string>
+							<int key="NSNibBindingConnectorVersion">2</int>
+						</object>
+					</object>
+					<int key="connectionID">122</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBBindingConnection" key="connection">
+						<string key="label">selectionIndexes: selectionIndexes</string>
+						<reference key="source" ref="24077413"/>
+						<reference key="destination" ref="171322530"/>
+						<object class="NSNibBindingConnector" key="connector" id="436116338">
+							<reference key="NSSource" ref="24077413"/>
+							<reference key="NSDestination" ref="171322530"/>
+							<string key="NSLabel">selectionIndexes: selectionIndexes</string>
+							<string key="NSBinding">selectionIndexes</string>
+							<string key="NSKeyPath">selectionIndexes</string>
+							<reference key="NSPreviousConnector" ref="442451492"/>
+							<int key="NSNibBindingConnectorVersion">2</int>
+						</object>
+					</object>
+					<int key="connectionID">123</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBBindingConnection" key="connection">
+						<string key="label">zoomValue: delegate.selectedDataset.zoomValue</string>
+						<reference key="source" ref="24077413"/>
+						<reference key="destination" ref="1004"/>
+						<object class="NSNibBindingConnector" key="connector">
+							<reference key="NSSource" ref="24077413"/>
+							<reference key="NSDestination" ref="1004"/>
+							<string key="NSLabel">zoomValue: delegate.selectedDataset.zoomValue</string>
+							<string key="NSBinding">zoomValue</string>
+							<string key="NSKeyPath">delegate.selectedDataset.zoomValue</string>
+							<object class="NSDictionary" key="NSOptions">
+								<string key="NS.key.0">NSNullPlaceholder</string>
+								<real value="0.5" key="NS.object.0"/>
+							</object>
+							<reference key="NSPreviousConnector" ref="436116338"/>
+							<int key="NSNibBindingConnectorVersion">2</int>
+						</object>
+					</object>
+					<int key="connectionID">127</int>
 				</object>
 			</object>
 			<object class="IBMutableOrderedSet" key="objectRecords">
@@ -768,7 +772,7 @@
 				</object>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">114</int>
+			<int key="maxID">127</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">

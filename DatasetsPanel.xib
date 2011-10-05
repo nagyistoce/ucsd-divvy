@@ -339,8 +339,8 @@
 					<string key="NSEntityName">Dataset</string>
 				</object>
 				<bool key="_NSIsUsingManagedProxy">YES</bool>
-				<bool key="NSAvoidsEmptySelection">YES</bool>
 				<bool key="NSPreservesSelection">YES</bool>
+				<bool key="NSSelectsInsertedObjects">YES</bool>
 				<bool key="NSFilterRestrictsInsertion">YES</bool>
 				<bool key="NSClearsFilterPredicateOnInsertion">YES</bool>
 			</object>
@@ -719,9 +719,9 @@
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
-					<string>{{842, 148}, {300, 378}}</string>
+					<string>{{889, 100}, {300, 378}}</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
-					<string>{{842, 148}, {300, 378}}</string>
+					<string>{{889, 100}, {300, 378}}</string>
 					<boolean value="YES"/>
 					<boolean value="YES"/>
 					<string>{300, 378}</string>

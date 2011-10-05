@@ -12,7 +12,7 @@
 		</object>
 		<object class="NSMutableArray" key="IBDocument.EditedObjectIDs">
 			<bool key="EncodedWithXMLCoder">YES</bool>
-			<integer value="3"/>
+			<integer value="284"/>
 		</object>
 		<object class="NSArray" key="IBDocument.PluginDependencies">
 			<bool key="EncodedWithXMLCoder">YES</bool>
@@ -543,76 +543,58 @@
 				</object>
 				<bool key="NSEditable">YES</bool>
 				<object class="_NSManagedProxy" key="_NSManagedProxy"/>
-				<bool key="NSAvoidsEmptySelection">YES</bool>
-				<bool key="NSPreservesSelection">YES</bool>
-				<bool key="NSSelectsInsertedObjects">YES</bool>
 				<bool key="NSFilterRestrictsInsertion">YES</bool>
 				<bool key="NSClearsFilterPredicateOnInsertion">YES</bool>
 			</object>
 			<object class="NSArrayController" id="76454105">
 				<object class="NSMutableArray" key="NSDeclaredKeys">
 					<bool key="EncodedWithXMLCoder">YES</bool>
-					<string>arrangedObjects</string>
 					<string>name</string>
-					<string>selectionIndex</string>
-					<string>self.arrangedObjects.name</string>
-					<string>self.arrangedObjects</string>
 				</object>
 				<bool key="NSEditable">YES</bool>
 				<object class="_NSManagedProxy" key="_NSManagedProxy"/>
-				<bool key="NSAvoidsEmptySelection">YES</bool>
-				<bool key="NSPreservesSelection">YES</bool>
-				<bool key="NSSelectsInsertedObjects">YES</bool>
 				<bool key="NSFilterRestrictsInsertion">YES</bool>
 				<bool key="NSClearsFilterPredicateOnInsertion">YES</bool>
 			</object>
 			<object class="NSArrayController" id="108843543">
 				<object class="NSMutableArray" key="NSDeclaredKeys">
 					<bool key="EncodedWithXMLCoder">YES</bool>
-					<string>arrangedObjects</string>
 					<string>name</string>
-					<string>selectionIndex</string>
-					<string>self.arrangedObjects.name</string>
-					<string>self.arrangedObjects</string>
 				</object>
 				<bool key="NSEditable">YES</bool>
 				<object class="_NSManagedProxy" key="_NSManagedProxy"/>
-				<bool key="NSAvoidsEmptySelection">YES</bool>
-				<bool key="NSPreservesSelection">YES</bool>
-				<bool key="NSSelectsInsertedObjects">YES</bool>
 				<bool key="NSFilterRestrictsInsertion">YES</bool>
 				<bool key="NSClearsFilterPredicateOnInsertion">YES</bool>
 			</object>
 			<object class="NSArrayController" id="418879972">
 				<object class="NSMutableArray" key="NSDeclaredKeys">
 					<bool key="EncodedWithXMLCoder">YES</bool>
-					<string>arrangedObjects</string>
 					<string>name</string>
-					<string>selectionIndex</string>
-					<string>self.arrangedObjects.name</string>
-					<string>self.arrangedObjects</string>
 				</object>
 				<bool key="NSEditable">YES</bool>
 				<object class="_NSManagedProxy" key="_NSManagedProxy"/>
-				<bool key="NSAvoidsEmptySelection">YES</bool>
-				<bool key="NSPreservesSelection">YES</bool>
-				<bool key="NSSelectsInsertedObjects">YES</bool>
 				<bool key="NSFilterRestrictsInsertion">YES</bool>
 				<bool key="NSClearsFilterPredicateOnInsertion">YES</bool>
 			</object>
 			<object class="NSObjectController" id="494572533">
+				<string key="NSObjectClassName">id</string>
 				<bool key="NSEditable">YES</bool>
 				<object class="_NSManagedProxy" key="_NSManagedProxy"/>
 			</object>
 			<object class="NSObjectController" id="756208143">
+				<string key="NSObjectClassName">id</string>
 				<bool key="NSEditable">YES</bool>
-				<object class="_NSManagedProxy" key="_NSManagedProxy"/>
+				<object class="_NSManagedProxy" key="_NSManagedProxy">
+					<string key="NSEntityName">PointVisualizer</string>
+				</object>
 			</object>
 			<object class="NSObjectController" id="605092830">
+				<string key="NSObjectClassName">id</string>
 				<bool key="NSEditable">YES</bool>
 				<object class="_NSManagedProxy" key="_NSManagedProxy"/>
 			</object>
 			<object class="NSObjectController" id="928421681">
+				<string key="NSObjectClassName">id</string>
 				<bool key="NSEditable">YES</bool>
 				<object class="_NSManagedProxy" key="_NSManagedProxy"/>
 			</object>
@@ -659,22 +641,6 @@
 						</object>
 					</object>
 					<int key="connectionID">138</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBBindingConnection" key="connection">
-						<string key="label">contentObject: delegate.selectedDatasetView.selectedClusterer</string>
-						<reference key="source" ref="605092830"/>
-						<reference key="destination" ref="1004"/>
-						<object class="NSNibBindingConnector" key="connector">
-							<reference key="NSSource" ref="605092830"/>
-							<reference key="NSDestination" ref="1004"/>
-							<string key="NSLabel">contentObject: delegate.selectedDatasetView.selectedClusterer</string>
-							<string key="NSBinding">contentObject</string>
-							<string key="NSKeyPath">delegate.selectedDatasetView.selectedClusterer</string>
-							<int key="NSNibBindingConnectorVersion">2</int>
-						</object>
-					</object>
-					<int key="connectionID">165</int>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBOutletConnection" key="connection">
@@ -742,22 +708,6 @@
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBBindingConnection" key="connection">
-						<string key="label">contentArray: delegate.selectedDatasetView.pointVisualizers</string>
-						<reference key="source" ref="76454105"/>
-						<reference key="destination" ref="1004"/>
-						<object class="NSNibBindingConnector" key="connector">
-							<reference key="NSSource" ref="76454105"/>
-							<reference key="NSDestination" ref="1004"/>
-							<string key="NSLabel">contentArray: delegate.selectedDatasetView.pointVisualizers</string>
-							<string key="NSBinding">contentArray</string>
-							<string key="NSKeyPath">delegate.selectedDatasetView.pointVisualizers</string>
-							<int key="NSNibBindingConnectorVersion">2</int>
-						</object>
-					</object>
-					<int key="connectionID">248</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBBindingConnection" key="connection">
 						<string key="label">contentArray: delegate.selectedDatasetView.reducers</string>
 						<reference key="source" ref="418879972"/>
 						<reference key="destination" ref="1004"/>
@@ -771,54 +721,6 @@
 						</object>
 					</object>
 					<int key="connectionID">249</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBBindingConnection" key="connection">
-						<string key="label">contentObject: delegate.selectedDatasetView.selectedDatasetVisualizer</string>
-						<reference key="source" ref="494572533"/>
-						<reference key="destination" ref="1004"/>
-						<object class="NSNibBindingConnector" key="connector">
-							<reference key="NSSource" ref="494572533"/>
-							<reference key="NSDestination" ref="1004"/>
-							<string key="NSLabel">contentObject: delegate.selectedDatasetView.selectedDatasetVisualizer</string>
-							<string key="NSBinding">contentObject</string>
-							<string key="NSKeyPath">delegate.selectedDatasetView.selectedDatasetVisualizer</string>
-							<int key="NSNibBindingConnectorVersion">2</int>
-						</object>
-					</object>
-					<int key="connectionID">250</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBBindingConnection" key="connection">
-						<string key="label">contentObject: delegate.selectedDatasetView.selectedPointVisualizer</string>
-						<reference key="source" ref="756208143"/>
-						<reference key="destination" ref="1004"/>
-						<object class="NSNibBindingConnector" key="connector">
-							<reference key="NSSource" ref="756208143"/>
-							<reference key="NSDestination" ref="1004"/>
-							<string key="NSLabel">contentObject: delegate.selectedDatasetView.selectedPointVisualizer</string>
-							<string key="NSBinding">contentObject</string>
-							<string key="NSKeyPath">delegate.selectedDatasetView.selectedPointVisualizer</string>
-							<int key="NSNibBindingConnectorVersion">2</int>
-						</object>
-					</object>
-					<int key="connectionID">251</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBBindingConnection" key="connection">
-						<string key="label">contentObject: delegate.selectedDatasetView.selectedReducer</string>
-						<reference key="source" ref="928421681"/>
-						<reference key="destination" ref="1004"/>
-						<object class="NSNibBindingConnector" key="connector">
-							<reference key="NSSource" ref="928421681"/>
-							<reference key="NSDestination" ref="1004"/>
-							<string key="NSLabel">contentObject: delegate.selectedDatasetView.selectedReducer</string>
-							<string key="NSBinding">contentObject</string>
-							<string key="NSKeyPath">delegate.selectedDatasetView.selectedReducer</string>
-							<int key="NSNibBindingConnectorVersion">2</int>
-						</object>
-					</object>
-					<int key="connectionID">252</int>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBBindingConnection" key="connection">
@@ -1180,6 +1082,102 @@
 					</object>
 					<int key="connectionID">354</int>
 				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBBindingConnection" key="connection">
+						<string key="label">contentObject: delegate.selectedDatasetView.selectedReducer</string>
+						<reference key="source" ref="928421681"/>
+						<reference key="destination" ref="1004"/>
+						<object class="NSNibBindingConnector" key="connector">
+							<reference key="NSSource" ref="928421681"/>
+							<reference key="NSDestination" ref="1004"/>
+							<string key="NSLabel">contentObject: delegate.selectedDatasetView.selectedReducer</string>
+							<string key="NSBinding">contentObject</string>
+							<string key="NSKeyPath">delegate.selectedDatasetView.selectedReducer</string>
+							<object class="NSDictionary" key="NSOptions">
+								<string key="NS.key.0">NSRaisesForNotApplicableKeys</string>
+								<boolean value="NO" key="NS.object.0"/>
+							</object>
+							<int key="NSNibBindingConnectorVersion">2</int>
+						</object>
+					</object>
+					<int key="connectionID">355</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBBindingConnection" key="connection">
+						<string key="label">contentObject: delegate.selectedDatasetView.selectedClusterer</string>
+						<reference key="source" ref="605092830"/>
+						<reference key="destination" ref="1004"/>
+						<object class="NSNibBindingConnector" key="connector">
+							<reference key="NSSource" ref="605092830"/>
+							<reference key="NSDestination" ref="1004"/>
+							<string key="NSLabel">contentObject: delegate.selectedDatasetView.selectedClusterer</string>
+							<string key="NSBinding">contentObject</string>
+							<string key="NSKeyPath">delegate.selectedDatasetView.selectedClusterer</string>
+							<object class="NSDictionary" key="NSOptions">
+								<string key="NS.key.0">NSRaisesForNotApplicableKeys</string>
+								<boolean value="NO" key="NS.object.0"/>
+							</object>
+							<int key="NSNibBindingConnectorVersion">2</int>
+						</object>
+					</object>
+					<int key="connectionID">356</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBBindingConnection" key="connection">
+						<string key="label">contentObject: delegate.selectedDatasetView.selectedPointVisualizer</string>
+						<reference key="source" ref="756208143"/>
+						<reference key="destination" ref="1004"/>
+						<object class="NSNibBindingConnector" key="connector">
+							<reference key="NSSource" ref="756208143"/>
+							<reference key="NSDestination" ref="1004"/>
+							<string key="NSLabel">contentObject: delegate.selectedDatasetView.selectedPointVisualizer</string>
+							<string key="NSBinding">contentObject</string>
+							<string key="NSKeyPath">delegate.selectedDatasetView.selectedPointVisualizer</string>
+							<object class="NSDictionary" key="NSOptions">
+								<string key="NS.key.0">NSRaisesForNotApplicableKeys</string>
+								<boolean value="NO" key="NS.object.0"/>
+							</object>
+							<int key="NSNibBindingConnectorVersion">2</int>
+						</object>
+					</object>
+					<int key="connectionID">357</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBBindingConnection" key="connection">
+						<string key="label">contentObject: delegate.selectedDatasetView.selectedDatasetVisualizer</string>
+						<reference key="source" ref="494572533"/>
+						<reference key="destination" ref="1004"/>
+						<object class="NSNibBindingConnector" key="connector">
+							<reference key="NSSource" ref="494572533"/>
+							<reference key="NSDestination" ref="1004"/>
+							<string key="NSLabel">contentObject: delegate.selectedDatasetView.selectedDatasetVisualizer</string>
+							<string key="NSBinding">contentObject</string>
+							<string key="NSKeyPath">delegate.selectedDatasetView.selectedDatasetVisualizer</string>
+							<object class="NSDictionary" key="NSOptions">
+								<string key="NS.key.0">NSRaisesForNotApplicableKeys</string>
+								<boolean value="NO" key="NS.object.0"/>
+							</object>
+							<int key="NSNibBindingConnectorVersion">2</int>
+						</object>
+					</object>
+					<int key="connectionID">358</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBBindingConnection" key="connection">
+						<string key="label">contentArray: delegate.selectedDatasetView.pointVisualizers</string>
+						<reference key="source" ref="76454105"/>
+						<reference key="destination" ref="1004"/>
+						<object class="NSNibBindingConnector" key="connector">
+							<reference key="NSSource" ref="76454105"/>
+							<reference key="NSDestination" ref="1004"/>
+							<string key="NSLabel">contentArray: delegate.selectedDatasetView.pointVisualizers</string>
+							<string key="NSBinding">contentArray</string>
+							<string key="NSKeyPath">delegate.selectedDatasetView.pointVisualizers</string>
+							<int key="NSNibBindingConnectorVersion">2</int>
+						</object>
+					</object>
+					<int key="connectionID">360</int>
+				</object>
 			</object>
 			<object class="IBMutableOrderedSet" key="objectRecords">
 				<object class="NSArray" key="orderedObjects">
@@ -1306,7 +1304,6 @@
 						<object class="NSMutableArray" key="children">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<reference ref="18842592"/>
-							<reference ref="462494189"/>
 							<reference ref="206813862"/>
 							<reference ref="647832457"/>
 							<reference ref="326488758"/>
@@ -1318,6 +1315,7 @@
 							<reference ref="1027147141"/>
 							<reference ref="980732506"/>
 							<reference ref="766826414"/>
+							<reference ref="462494189"/>
 						</object>
 						<reference key="parent" ref="916825061"/>
 					</object>
@@ -1699,7 +1697,7 @@
 					</object>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<object class="NSAffineTransform">
-						<bytes key="NSTransformStruct">P4AAAL+AAABCGAAAxBRAAA</bytes>
+						<bytes key="NSTransformStruct">P4AAAL+AAABCGAAAw0sAAA</bytes>
 					</object>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<object class="NSAffineTransform">
@@ -1743,9 +1741,9 @@
 					</object>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
-					<string>{{773, 173}, {315, 387}}</string>
+					<string>{{52, 96}, {315, 387}}</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
-					<string>{{773, 173}, {315, 387}}</string>
+					<string>{{52, 96}, {315, 387}}</string>
 					<boolean value="YES"/>
 					<boolean value="YES"/>
 					<boolean value="YES"/>
@@ -1796,7 +1794,7 @@
 				</object>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">354</int>
+			<int key="maxID">360</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">

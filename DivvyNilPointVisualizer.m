@@ -17,7 +17,6 @@
 - (void) awakeFromInsert {
   [super awakeFromInsert];
   
-  self.name = @"None";
   self.pointVisualizerID = [[NSProcessInfo processInfo] globallyUniqueString];
 }
 
