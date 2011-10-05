@@ -19,4 +19,6 @@
 @property (nonatomic, retain) NSNumber *numRestarts;
 @property (nonatomic, retain) NSNumber *initCentroidsFromPointsInDataset;
 
+- (void) addObservers;
+
 @end

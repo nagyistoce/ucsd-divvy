@@ -199,7 +199,7 @@
 		0D55DC7313FAA056000ADAFB /* DivvyPCAController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DivvyPCAController.m; sourceTree = "<group>"; };
 		0D55DC7513FAA05A000ADAFB /* DivvyPCA.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DivvyPCA.xib; sourceTree = "<group>"; };
 		0D86ADF31428990F00877901 /* DivvyIsomap.plugin */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DivvyIsomap.plugin; sourceTree = BUILT_PRODUCTS_DIR; };
-		0D86ADF51428998D00877901 /* DivvyIsomap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DivvyIsomap.h; sourceTree = "<group>"; };
+		0D86ADF51428998D00877901 /* DivvyIsomap.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; path = DivvyIsomap.h; sourceTree = "<group>"; };
 		0D86ADF61428998D00877901 /* DivvyIsomap.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = DivvyIsomap.mm; sourceTree = "<group>"; };
 		0D86ADF814289A4F00877901 /* isomap.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = isomap.cpp; sourceTree = "<group>"; };
 		0D86ADFA14289A7400877901 /* isomap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = isomap.h; sourceTree = "<group>"; };

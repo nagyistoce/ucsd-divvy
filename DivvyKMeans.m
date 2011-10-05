@@ -28,12 +28,20 @@
   [super awakeFromInsert];  
   
   self.clustererID = [[NSProcessInfo processInfo] globallyUniqueString];
+  
+  [self addObservers];
 }
 
 - (void) awakeFromFetch {
   [super awakeFromFetch];
   
+  [self addObservers];
+}
+
+- (void) addObservers {
   [self addObserver:self forKeyPath:@"k" options:0 context:nil];
+  [self addObserver:self forKeyPath:@"numRestarts" options:0 context:nil];
+  [self addObserver:self forKeyPath:@"initCentroidsFromPointsInDataset" options:0 context:nil];
 }
 
 - (void) observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
