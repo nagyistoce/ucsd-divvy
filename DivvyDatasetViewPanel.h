@@ -9,7 +9,7 @@
 #import <Cocoa/Cocoa.h>
 
 
-@interface DivvyDatasetViewPanel : NSWindowController
+@interface DivvyDatasetViewPanel : NSViewController
 
 @property (retain) IBOutlet NSView *datasetVisualizerView;
 @property (retain) IBOutlet NSView *pointVisualizerView;
@@ -49,6 +49,8 @@
 - (IBAction) pointVisualizerSelect:(id)sender;
 - (IBAction) clustererSelect:(id)sender;
 - (IBAction) reducerSelect:(id)sender;
+
+- (void) loadPluginViewControllers;
 
 - (void) reflow;
 

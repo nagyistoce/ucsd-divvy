@@ -9,11 +9,16 @@
 #import <Cocoa/Cocoa.h>
 #import <Quartz/Quartz.h>
 
+@class DivvyDatasetsPanel;
+@class DivvyDatasetViewPanel;
 
 @interface DivvyDatasetWindow : NSWindowController
 
 @property (retain) IBOutlet IKImageBrowserView *datasetViewsBrowser;
 @property (retain) IBOutlet NSArrayController *datasetViewsArrayController;
+
+@property (retain) IBOutlet DivvyDatasetsPanel *datasetsPanel;
+@property (retain) IBOutlet DivvyDatasetViewPanel *datasetViewPanel;
 
 - (IBAction)editDatasetViews:sender;
 

@@ -9,7 +9,7 @@
 #import <Cocoa/Cocoa.h>
 
 
-@interface DivvyDatasetsPanel : NSWindowController <NSTableViewDelegate>
+@interface DivvyDatasetsPanel : NSViewController <NSTableViewDelegate>
 
 @property (retain) IBOutlet NSTableView *datasetsTable;
 @property (retain) IBOutlet NSArrayController *datasetsArrayController;

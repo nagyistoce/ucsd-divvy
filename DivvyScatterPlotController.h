@@ -11,6 +11,7 @@
 
 @interface DivvyScatterPlotController : NSViewController
 
--(IBAction) changeScatterPlot:(id)sender;
+@property (nonatomic, retain) IBOutlet NSSlider *xAxisSlider;
+@property (nonatomic, retain) IBOutlet NSSlider *yAxisSlider;
 
 @end

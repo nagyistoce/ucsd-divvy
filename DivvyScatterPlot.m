@@ -7,7 +7,10 @@
 //
 
 #import "DivvyScatterPlot.h"
+
+#import "DivvyAppDelegate.h"
 #import "DivvyDataset.h"
+#import "DivvyDatasetView.h"
 
 @implementation DivvyScatterPlot
 
@@ -20,10 +23,29 @@
 
 - (void) awakeFromInsert {
   [super awakeFromInsert];
-
+  
   self.datasetVisualizerID = [[NSProcessInfo processInfo] globallyUniqueString];
   
+  [self addObservers];
+}
+
+- (void) awakeFromFetch {
+  [super awakeFromFetch];
   
+  [self addObservers];
+}
+
+- (void) addObservers {
+  [self addObserver:self forKeyPath:@"xAxis" options:0 context:nil];
+  [self addObserver:self forKeyPath:@"yAxis" options:0 context:nil];
+  [self addObserver:self forKeyPath:@"pointSize" options:0 context:nil];
+}
+
+- (void) observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
+  DivvyAppDelegate *delegate = [NSApp delegate];
+  
+  [delegate.selectedDatasetView  datasetVisualizerChanged];
+  [delegate reloadSelectedDatasetViewImage];
 }
 
 - (void) drawImage:(NSImage *) image 

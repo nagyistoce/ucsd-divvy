@@ -110,29 +110,23 @@
 }
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
-  
-  DivvyDatasetsPanel *datasetsPanel;
-  datasetsPanel = [[DivvyDatasetsPanel alloc] initWithWindowNibName:@"DatasetsPanel"];
-  [datasetsPanel showWindow:nil];  
-  self.datasetsPanelController = datasetsPanel;
-  [datasetsPanel release];
-
   DivvyDatasetWindow *datasetWindow;
   datasetWindow = [[DivvyDatasetWindow alloc] initWithWindowNibName:@"DatasetWindow"];
-  [datasetWindow showWindow:nil];  
+  [datasetWindow showWindow:nil];
   self.datasetWindowController = datasetWindow;
-  [datasetWindow release];  
+  self.datasetsPanelController = datasetWindow.datasetsPanel;
+  self.datasetViewPanelController = datasetWindow.datasetViewPanel;
+  [datasetWindow release];
   
-  DivvyDatasetViewPanel *datasetViewPanel;
-  datasetViewPanel = [[DivvyDatasetViewPanel alloc] initWithWindowNibName:@"DatasetViewPanel"];
-  [datasetViewPanel showWindow:nil];  
-  self.datasetViewPanelController = datasetViewPanel;
-  [datasetViewPanel release];
+  // Load the datasets from the managed object context early so that we can set the saved selection in applicationDidFinishLaunching
+  NSError *error = nil;
+  [self.datasetsPanelController.datasetsArrayController fetchWithRequest:nil merge:NO error:&error];
+
+  [self.datasetViewPanelController loadPluginViewControllers];
   
   self.processingImage = [[[NSImage alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"waiting" withExtension:@"png"]] autorelease];
   
   // Connect to delegateSettings
-  NSError *error = nil;
   NSEntityDescription *delegateSettingsEntityDescription = [self.managedObjectModel.entitiesByName objectForKey:@"DelegateSettings"];
   NSFetchRequest *request = [[[NSFetchRequest alloc] init] autorelease];
   [request setEntity:delegateSettingsEntityDescription];
@@ -149,6 +143,9 @@
   
   if(self.delegateSettings.selectedDatasets)
     self.selectedDatasets = self.delegateSettings.selectedDatasets;
+  else
+    [self.datasetViewPanelController reflow];
+
 }
 
 // This stuff needs to be cleaned up, but it's an improvement over catching UI events

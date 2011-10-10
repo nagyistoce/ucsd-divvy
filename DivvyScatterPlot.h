@@ -19,4 +19,6 @@
 @property (nonatomic, retain) NSNumber *yAxis;
 @property (nonatomic, retain) NSNumber *pointSize;
 
+- (void) addObservers;
+
 @end

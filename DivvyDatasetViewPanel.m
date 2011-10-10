@@ -48,7 +48,7 @@
 @synthesize clustererViewControllers;
 @synthesize reducerViewControllers;
 
-- (void) windowWillLoad {
+- (void) loadPluginViewControllers {
   DivvyAppDelegate *delegate = [NSApp delegate];
   NSArray *pluginTypes = delegate.pluginTypes;
 
@@ -121,7 +121,7 @@
   DivvyAppDelegate *delegate = [NSApp delegate];
   NSArray *pluginTypes = delegate.pluginTypes;
   
-  NSRect topFrame = self.window.frame;
+  NSRect topFrame = self.view.frame;
   NSRect documentFrame = [self.scrollView.documentView frame];
   
   float y = 0.f; // Go from the bottom up

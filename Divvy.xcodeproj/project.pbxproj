@@ -67,8 +67,6 @@
 		D751AC8413FD7DFD0089FAAE /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D77DF783118636A2009C1946 /* Accelerate.framework */; };
 		D751AC8513FD7E030089FAAE /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D730D27713B5297E00E01F31 /* Cocoa.framework */; };
 		D75AEE3F141185AF00E83F9A /* waiting.png in Resources */ = {isa = PBXBuildFile; fileRef = D75AEE3E141185AF00E83F9A /* waiting.png */; };
-		D7764F2F1378B40400F7F49F /* DatasetViewPanel.xib in Resources */ = {isa = PBXBuildFile; fileRef = D7764F2E1378B40400F7F49F /* DatasetViewPanel.xib */; };
-		D7764F371378B65A00F7F49F /* DatasetsPanel.xib in Resources */ = {isa = PBXBuildFile; fileRef = D7764F361378B65A00F7F49F /* DatasetsPanel.xib */; };
 		D7764F46137B4A9900F7F49F /* DivvyDataset.m in Sources */ = {isa = PBXBuildFile; fileRef = D7764F45137B4A9900F7F49F /* DivvyDataset.m */; };
 		D7764F5D137B4CDE00F7F49F /* DatasetWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = D7764F5C137B4CDE00F7F49F /* DatasetWindow.xib */; };
 		D77DF784118636A2009C1946 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D77DF783118636A2009C1946 /* Accelerate.framework */; };
@@ -110,13 +108,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		0D2312A4143B5620009DD6DD /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 29B97313FDCFA39411CA2CEA /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 0D86ADE51428990F00877901;
-			remoteInfo = DivvyIsomap;
-		};
 		0D55DCAC13FAA0D2000ADAFB /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 29B97313FDCFA39411CA2CEA /* Project object */;
@@ -264,8 +255,6 @@
 		D7716124138C3D1200C70C36 /* DivvyDatasetVisualizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DivvyDatasetVisualizer.h; sourceTree = "<group>"; };
 		D7716140138C409500C70C36 /* DivvyScatterPlot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DivvyScatterPlot.h; sourceTree = "<group>"; };
 		D7716141138C409500C70C36 /* DivvyScatterPlot.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DivvyScatterPlot.m; sourceTree = "<group>"; };
-		D7764F2E1378B40400F7F49F /* DatasetViewPanel.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DatasetViewPanel.xib; sourceTree = "<group>"; };
-		D7764F361378B65A00F7F49F /* DatasetsPanel.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DatasetsPanel.xib; sourceTree = "<group>"; };
 		D7764F44137B4A9900F7F49F /* DivvyDataset.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DivvyDataset.h; sourceTree = "<group>"; };
 		D7764F45137B4A9900F7F49F /* DivvyDataset.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DivvyDataset.m; sourceTree = "<group>"; };
 		D7764F5C137B4CDE00F7F49F /* DatasetWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DatasetWindow.xib; sourceTree = "<group>"; };
@@ -580,12 +569,10 @@
 			isa = PBXGroup;
 			children = (
 				D75AEE3E141185AF00E83F9A /* waiting.png */,
-				D7764F2E1378B40400F7F49F /* DatasetViewPanel.xib */,
 				8D1107310486CEB800E47090 /* Divvy-Info.plist */,
 				D730D23513B526A800E01F31 /* DivvyPlugin-Info.plist */,
 				089C165CFE840E0CC02AAC07 /* InfoPlist.strings */,
 				1DDD58140DA1D0A300B32029 /* MainMenu.xib */,
-				D7764F361378B65A00F7F49F /* DatasetsPanel.xib */,
 				D7764F5C137B4CDE00F7F49F /* DatasetWindow.xib */,
 			);
 			name = Resources;
@@ -875,7 +862,6 @@
 				D751AC9D13FD7E780089FAAE /* PBXTargetDependency */,
 				D7A250F81402F7E2001AD337 /* PBXTargetDependency */,
 				D792E59A14292C1E0084626A /* PBXTargetDependency */,
-				0D2312A5143B5620009DD6DD /* PBXTargetDependency */,
 			);
 			name = Divvy;
 			productInstallPath = "$(HOME)/Applications";
@@ -1090,8 +1076,6 @@
 			files = (
 				8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */,
 				1DDD58160DA1D0A300B32029 /* MainMenu.xib in Resources */,
-				D7764F2F1378B40400F7F49F /* DatasetViewPanel.xib in Resources */,
-				D7764F371378B65A00F7F49F /* DatasetsPanel.xib in Resources */,
 				D7764F5D137B4CDE00F7F49F /* DatasetWindow.xib in Resources */,
 				0D55DC7613FAA05A000ADAFB /* DivvyPCA.xib in Resources */,
 				D75AEE3F141185AF00E83F9A /* waiting.png in Resources */,
@@ -1303,11 +1287,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		0D2312A5143B5620009DD6DD /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 0D86ADE51428990F00877901 /* DivvyIsomap */;
-			targetProxy = 0D2312A4143B5620009DD6DD /* PBXContainerItemProxy */;
-		};
 		0D55DCAD13FAA0D2000ADAFB /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 0D55DC5C13FA9FCA000ADAFB /* DivvyPCA */;

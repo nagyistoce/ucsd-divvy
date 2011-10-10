@@ -15,10 +15,6 @@
 @synthesize datasetsTable;
 @synthesize datasetsArrayController;
 
-- (void) loadWindow {
-  [super loadWindow];
-}
-
 - (IBAction) editDatasets:(id)sender {
   NSInteger selectedSegment = [sender selectedSegment];
   NSInteger clickedSegmentTag = [[sender cell] tagForSegment:selectedSegment];
@@ -27,14 +23,6 @@
     [[NSApp delegate] openDatasets:sender];
   else // Remove button
     [[NSApp delegate] closeDatasets:sender];
-}
-
-- (void) windowDidLoad {
-  [super windowDidLoad];
-  
-  // Load the datasets from the managed object context early so that we can set the saved selection in applicationDidFinishLaunching
-  NSError *error = nil;
-  [self.datasetsArrayController fetchWithRequest:nil merge:NO error:&error];
 }
 
 - (void) dealloc {
