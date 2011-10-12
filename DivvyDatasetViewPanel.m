@@ -24,8 +24,6 @@
 @synthesize clustererHeader;
 @synthesize reducerHeader;
 
-@synthesize datasetVisualizerDisclosureButton;
-
 @synthesize datasetVisualizerArrayController;
 @synthesize pointVisualizerArrayController;
 @synthesize clustererArrayController;
@@ -122,7 +120,7 @@
   NSRect documentFrame = [self.scrollView.documentView frame];
   
   float y = 0.f; // Go from the bottom up
-  float headerBuffer = 0.f; // Buffer between bottom of header and top of view
+  float headerBuffer = -10.f; // Buffer between bottom of header and top of view
   
   // Need to set documentFrame height before positioning the subviews
   for(NSString *pluginType in pluginTypes) {

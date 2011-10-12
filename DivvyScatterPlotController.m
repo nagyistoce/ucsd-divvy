@@ -12,6 +12,8 @@
 #import "DivvyDatasetView.h"
 #import "DivvyReducer.h"
 
+#import "DivvyScatterPlot.h"
+
 
 @implementation DivvyScatterPlotController
 
@@ -44,6 +46,16 @@
       slider.numberOfTickMarks = d + 1;
       if (value > d)
         slider.intValue = d;
+    }
+    
+    // If we're moving from low d to higher d, the NSSlider binding for the xAxis and yAxis values fire before this does.
+    // The following code updates the slider positions to compensate. Maybe there's a better way to do this.
+    for (id <DivvyDatasetVisualizer> datasetVisualizer in delegate.selectedDatasetView.datasetVisualizers) {
+      if ([datasetVisualizer isKindOfClass:[DivvyScatterPlot class]]) {
+        DivvyScatterPlot *scatterPlot = datasetVisualizer;
+        xAxisSlider.intValue = scatterPlot.xAxis.intValue;
+        yAxisSlider.intValue = scatterPlot.yAxis.intValue;
+      }
     }
   }
 }

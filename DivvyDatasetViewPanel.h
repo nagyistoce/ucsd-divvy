@@ -21,8 +21,6 @@
 @property (retain) IBOutlet NSView *clustererHeader;
 @property (retain) IBOutlet NSView *reducerHeader;
 
-@property (retain) IBOutlet NSButton *datasetVisualizerDisclosureButton;
-
 @property (retain) IBOutlet NSArrayController *datasetVisualizerArrayController;
 @property (retain) IBOutlet NSArrayController *pointVisualizerArrayController;
 @property (retain) IBOutlet NSArrayController *clustererArrayController;
