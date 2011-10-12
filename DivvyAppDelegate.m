@@ -128,7 +128,7 @@
 
   [self.datasetViewPanelController loadPluginViewControllers];
   
-  self.processingImage = [[[NSImage alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"waiting" withExtension:@"png"]] autorelease];
+  self.processingImage = [[[NSImage alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"processing" withExtension:@"png"]] autorelease];
   
   // Connect to delegateSettings
   NSEntityDescription *delegateSettingsEntityDescription = [self.managedObjectModel.entitiesByName objectForKey:@"DelegateSettings"];
