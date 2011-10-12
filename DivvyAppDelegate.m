@@ -97,6 +97,10 @@
   }
 }
 
+- (IBAction) openHelp:(NSString *)url {
+  [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:url]];
+}
+
 - (id)init
 {
   if (!(self = [super init])) return nil;

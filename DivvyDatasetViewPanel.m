@@ -19,15 +19,12 @@
 @synthesize clustererView;
 @synthesize reducerView;
 
-@synthesize datasetVisualizerPopUp;
-@synthesize pointVisualizerPopUp;
-@synthesize clustererPopUp;
-@synthesize reducerPopUp;
+@synthesize datasetVisualizerHeader;
+@synthesize pointVisualizerHeader;
+@synthesize clustererHeader;
+@synthesize reducerHeader;
 
 @synthesize datasetVisualizerDisclosureButton;
-@synthesize pointVisualizerDisclosureButton;
-@synthesize clustererDisclosureButton;
-@synthesize reducerDisclosureButton;
 
 @synthesize datasetVisualizerArrayController;
 @synthesize pointVisualizerArrayController;
@@ -125,18 +122,17 @@
   NSRect documentFrame = [self.scrollView.documentView frame];
   
   float y = 0.f; // Go from the bottom up
-  float popUpOffset = 13.f; // View borders from IB are 20px, we want 7px separation
-  float disclosureButtonOffset = 7.f; // Centered disclosure buttons are 7px above their corresponding popups
+  float headerBuffer = 0.f; // Buffer between bottom of header and top of view
   
   // Need to set documentFrame height before positioning the subviews
   for(NSString *pluginType in pluginTypes) {
     NSView *view = [self valueForKey:[NSString stringWithFormat:@"%@View", pluginType]];
+    NSView *header = [self valueForKey:[NSString stringWithFormat:@"%@Header", pluginType]];
     
     if(delegate.selectedDatasetView) { // Remove subviews that have changed and adjust height for the new views
       NSArray *viewControllers = [self valueForKey:[NSString stringWithFormat:@"%@ViewControllers", pluginType]];
       NSArrayController *arrayController = [self valueForKey:[NSString stringWithFormat:@"%@ArrayController", pluginType]];
       NSObjectController *objectController = [self valueForKey:[NSString stringWithFormat:@"%@Controller", pluginType]];
-      NSView *popup = [self valueForKey:[NSString stringWithFormat:@"%@PopUp", pluginType]];
 
       NSViewController *aController;
       
@@ -147,10 +143,10 @@
           [aView removeFromSuperview];
       
       NSRect subFrame = [[aController view] frame];
-      NSRect popUpFrame = [popup frame];
+      NSRect headerFrame = [header frame];
       
       y += subFrame.size.height;
-      y += popUpFrame.size.height - popUpOffset;
+      y += headerFrame.size.height + headerBuffer;
     }
     else { // Remove all subviews
       for(NSView *aView in view.subviews)
@@ -169,13 +165,9 @@
   
   for(NSString *pluginType in pluginTypes) {
     NSView *view = [self valueForKey:[NSString stringWithFormat:@"%@View", pluginType]];
-    NSView *popUp = [self valueForKey:[NSString stringWithFormat:@"%@PopUp", pluginType]];
-    NSView *disclosureButton = [self valueForKey:[NSString stringWithFormat:@"%@DisclosureButton", pluginType]];
+    NSView *header = [self valueForKey:[NSString stringWithFormat:@"%@Header", pluginType]];
     
     if(delegate.selectedDatasetView) {
-      [view setHidden:NO];
-      [popUp setHidden:NO];
-      [disclosureButton setHidden:NO];        
       
       NSArray *viewControllers = [self valueForKey:[NSString stringWithFormat:@"%@ViewControllers", pluginType]];
       NSArrayController *arrayController = [self valueForKey:[NSString stringWithFormat:@"%@ArrayController", pluginType]];
@@ -186,35 +178,26 @@
       
       NSRect subFrame = [[aController view] frame];
       NSRect frame = [view frame];
-      NSRect popUpFrame = [popUp frame];
-      NSRect disclosureButtonFrame = [disclosureButton frame];
+      NSRect headerFrame = [header frame];
 
       y -= subFrame.size.height;
       frame.origin.y = y;
       frame.size.height = subFrame.size.height;
       
-      y -= popUpFrame.size.height - popUpOffset;
-      popUpFrame.origin.y = y;
-      disclosureButtonFrame.origin.y = y + disclosureButtonOffset;
+      y -= headerFrame.size.height + headerBuffer;
+      headerFrame.origin.y = y;
       
       [view setFrame:frame];
-      [popUp setFrame:popUpFrame];
-      [disclosureButton setFrame:disclosureButtonFrame];
+      [header setFrame:headerFrame];
     
       if([view.subviews count] == 0) // Will happen only if we've changed views
         [view addSubview:[aController view]];
-    } else {
-      [view setHidden:YES];
-      [popUp setHidden:YES];
-      [disclosureButton setHidden:YES];
     }
-
   }
   
   NSRect selectViewFrame = [selectViewTextField frame];
   selectViewFrame.origin.y = 20.f;
   [selectViewTextField setFrame:selectViewFrame];
-  [selectViewTextField setHidden:(delegate.selectedDatasetView ? YES : NO)];
 }
 
 - (void) dealloc {

@@ -16,15 +16,12 @@
 @property (retain) IBOutlet NSView *clustererView;
 @property (retain) IBOutlet NSView *reducerView;
 
-@property (retain) IBOutlet NSPopUpButton *datasetVisualizerPopUp;
-@property (retain) IBOutlet NSPopUpButton *pointVisualizerPopUp;
-@property (retain) IBOutlet NSPopUpButton *clustererPopUp;
-@property (retain) IBOutlet NSPopUpButton *reducerPopUp;
+@property (retain) IBOutlet NSView *datasetVisualizerHeader;
+@property (retain) IBOutlet NSView *pointVisualizerHeader;
+@property (retain) IBOutlet NSView *clustererHeader;
+@property (retain) IBOutlet NSView *reducerHeader;
 
 @property (retain) IBOutlet NSButton *datasetVisualizerDisclosureButton;
-@property (retain) IBOutlet NSButton *pointVisualizerDisclosureButton;
-@property (retain) IBOutlet NSButton *clustererDisclosureButton;
-@property (retain) IBOutlet NSButton *reducerDisclosureButton;
 
 @property (retain) IBOutlet NSArrayController *datasetVisualizerArrayController;
 @property (retain) IBOutlet NSArrayController *pointVisualizerArrayController;

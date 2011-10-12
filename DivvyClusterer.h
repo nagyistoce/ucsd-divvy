@@ -7,13 +7,13 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import "DivvyPlugin.h"
 
 @class DivvyDataset;
 
-@protocol DivvyClusterer <NSObject>
+@protocol DivvyClusterer <NSObject, DivvyPlugin>
 
 - (NSString *) clustererID;
-- (NSString *) name;
 
 - (void) clusterDataset:(DivvyDataset *)dataset
              assignment:(NSData *)assignment;

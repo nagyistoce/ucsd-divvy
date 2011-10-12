@@ -7,13 +7,13 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import "DivvyPlugin.h"
 
 @class DivvyDataset;
 
-@protocol DivvyReducer <NSObject>
+@protocol DivvyReducer <NSObject, DivvyPlugin>
 
 - (NSString *) reducerID;
-- (NSString *) name;
 
 - (NSNumber *) d;
 

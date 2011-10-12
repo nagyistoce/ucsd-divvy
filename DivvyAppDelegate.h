@@ -45,6 +45,8 @@
 - (IBAction)openDatasets:sender;
 - (IBAction)closeDatasets:sender;
 
+- (IBAction) openHelp:url;
+
 - (NSArray *)defaultSortDescriptors;
 
 - (void) reloadSelectedDatasetViewImage;

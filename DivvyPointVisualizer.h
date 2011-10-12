@@ -7,13 +7,13 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import "DivvyPlugin.h"
 
 @class DivvyDataset;
 
-@protocol DivvyPointVisualizer <NSObject>
+@protocol DivvyPointVisualizer <NSObject, DivvyPlugin>
 
 - (NSString *) pointVisualizerID;
-- (NSString *) name;
 
 - (void) drawImage:(NSImage *) image
        reducedData:(NSData *)reducedData
