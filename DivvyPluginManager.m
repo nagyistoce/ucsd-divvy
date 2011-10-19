@@ -19,6 +19,7 @@
 
 @synthesize pluginClasses;
 @synthesize pluginModels;
+@synthesize pluginModelsWithExistingStore;
 
 + (id)shared;
 {
@@ -69,19 +70,44 @@
 {
   if (pluginModels) return pluginModels;
   
+  [self initModels];
+  
+  return self.pluginModels;
+}
+
+- (NSArray*)pluginModelsWithExistingStore;
+{
+  if (pluginModelsWithExistingStore) return pluginModelsWithExistingStore;
+  
+  [self initModels];
+  
+  return self.pluginModelsWithExistingStore;
+}
+
+- (void) initModels {
+  // FileManager for checking whether a store already exists
+  NSFileManager *fileManager = [NSFileManager defaultManager];
+  
   NSMutableArray *models = [NSMutableArray array];
+  NSMutableArray *modelsWithExistingStore = [NSMutableArray array];
+  
   for (Class aClass in [self pluginClasses]) {
     NSBundle *myBundle = [NSBundle bundleForClass:aClass];
     NSArray *bundles = [NSArray arrayWithObject:myBundle];
     
     NSManagedObjectModel *managedObjectModel = [[NSManagedObjectModel mergedModelFromBundles:bundles] retain];
     [models addObject:managedObjectModel];
+    
+    NSString *path = [[self applicationSupportFolder] stringByAppendingFormat:@"/%@.storedata", NSStringFromClass(aClass)];
+    if ([fileManager fileExistsAtPath:path])
+      [modelsWithExistingStore addObject:managedObjectModel];
+    
     [managedObjectModel release];
   }
   
   self.pluginModels = models;
+  self.pluginModelsWithExistingStore = modelsWithExistingStore;
   
-  return self.pluginModels;
 }
 
 - (NSString*)applicationSupportFolder 

@@ -45,8 +45,11 @@
   NSInteger selectedSegment = [sender selectedSegment];
   NSInteger clickedSegmentTag = [[sender cell] tagForSegment:selectedSegment];
 
-  if (clickedSegmentTag == 0) // Add button
-    [DivvyDatasetView datasetViewInDefaultContextWithDataset:delegate.selectedDataset];
+  if (clickedSegmentTag == 0) { // Add button
+    DivvyDatasetView *datasetView = [NSEntityDescription insertNewObjectForEntityForName:@"DatasetView" inManagedObjectContext:delegate.managedObjectContext];
+    datasetView.dataset = delegate.selectedDataset;
+    [datasetView checkForNullPluginResults];
+  }
   else { // Remove button
     for (id datasetView in [self.datasetViewsArrayController selectedObjects])
       [delegate.managedObjectContext deleteObject:datasetView];

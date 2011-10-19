@@ -242,9 +242,20 @@
     return nil;
   }
   
+  NSManagedObjectModel *momWithExistingStore = nil;
+  
+  // We will need to migrate if a new plugin has been added
+  if(pluginManager.pluginModels.count != pluginManager.pluginModelsWithExistingStore.count) {
+    NSMutableArray *modelsWithExistingStore = [NSMutableArray array];
+    [modelsWithExistingStore addObject:[NSManagedObjectModel mergedModelFromBundles:nil]];
+    [modelsWithExistingStore addObjectsFromArray:[pluginManager pluginModelsWithExistingStore]];
+    
+    momWithExistingStore = [[NSManagedObjectModel modelByMergingModels:modelsWithExistingStore] retain];
+  }
+  
   NSFileManager *fileManager = [NSFileManager defaultManager];
   NSString *applicationSupportDirectory = [self applicationSupportDirectory];
-  NSError *error = nil;
+  NSError *error;
   
   if ( ![fileManager fileExistsAtPath:applicationSupportDirectory isDirectory:NULL] ) {
 		if (![fileManager createDirectoryAtPath:applicationSupportDirectory withIntermediateDirectories:NO attributes:nil error:&error]) {
@@ -263,12 +274,61 @@
   persistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel: mom];
   
   NSString *filePath;
+  NSString *migrationFilePath;
   for (NSString *configName in configArray) {
     filePath = [configName stringByAppendingPathExtension:@"storedata"];
     filePath = [applicationSupportDirectory stringByAppendingPathComponent:filePath];
 
     NSURL *url = [NSURL fileURLWithPath:filePath];
-    if (![persistentStoreCoordinator addPersistentStoreWithType:NSXMLStoreType 
+        
+    if (momWithExistingStore && [fileManager fileExistsAtPath:filePath]) {
+      // Migrate the existing store
+      NSURL *migrationURL;
+      NSMappingModel *mappingModel;
+      NSMigrationManager *manager;      
+      
+      mappingModel = [NSMappingModel inferredMappingModelForSourceModel:momWithExistingStore
+                                                                       destinationModel:mom error:&error];
+      if (!mappingModel) {
+        NSString *message = [NSString stringWithFormat:@"Inferring failed %@ [%@]",
+                             [error description], ([error userInfo] ? [[error userInfo] description] : @"no user info")];
+        NSLog(@"Failure message: %@", message);
+      }
+      
+      // Move the store file
+      migrationFilePath = [configName stringByAppendingPathExtension:@"storedataprevious"];
+      migrationFilePath = [applicationSupportDirectory stringByAppendingPathComponent:migrationFilePath];
+      
+      migrationURL = [NSURL fileURLWithPath:migrationFilePath];
+      
+      if(![fileManager moveItemAtURL:url toURL:migrationURL error:&error]) {
+        NSString *message = [NSString stringWithFormat:@"File move failed %@ [%@]",
+                             [error description], ([error userInfo] ? [[error userInfo] description] : @"no user info")];
+        NSLog(@"Failure message: %@", message);        
+      }
+      
+      NSValue *classValue = [[NSPersistentStoreCoordinator registeredStoreTypes] objectForKey:NSSQLiteStoreType];
+      Class sqliteStoreClass = (Class)[classValue pointerValue];
+      Class sqliteStoreMigrationManagerClass = [sqliteStoreClass migrationManagerClass];
+      
+      manager = [[sqliteStoreMigrationManagerClass alloc]
+                                     initWithSourceModel:momWithExistingStore destinationModel:mom];
+
+      if (![manager migrateStoreFromURL:migrationURL type:NSSQLiteStoreType
+                                options:nil withMappingModel:mappingModel toDestinationURL:url
+                        destinationType:NSSQLiteStoreType destinationOptions:nil error:&error]) {
+        
+        NSString *message = [NSString stringWithFormat:@"Migration failed %@ [%@]",
+                             [error description], ([error userInfo] ? [[error userInfo] description] : @"no user info")];
+        NSLog(@"Failure message: %@", message);
+      }
+      
+      // Delete the old store file
+      [fileManager removeItemAtURL:migrationURL error:&error];
+    }
+    
+    
+    if (![persistentStoreCoordinator addPersistentStoreWithType:NSSQLiteStoreType 
                                                   configuration:configName 
                                                             URL:url 
                                                         options:nil 
@@ -277,6 +337,7 @@
       [persistentStoreCoordinator release], persistentStoreCoordinator = nil;
       return nil;
     }
+    
   }
   
   return persistentStoreCoordinator;

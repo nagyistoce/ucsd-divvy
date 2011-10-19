@@ -15,9 +15,11 @@
 
 @property (retain) NSArray *pluginClasses;
 @property (retain) NSArray *pluginModels;
+@property (retain) NSArray *pluginModelsWithExistingStore;
 
 + (id)shared;
 
 - (NSString*)applicationSupportFolder;
+- (void) initModels;
 
 @end

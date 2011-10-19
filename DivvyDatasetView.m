@@ -58,58 +58,6 @@
 
 @synthesize renderedImage;
 
-+ (id) datasetViewInDefaultContextWithDataset:(DivvyDataset *)dataset {
-  DivvyAppDelegate *delegate = [NSApp delegate];
-  NSManagedObjectContext* moc = delegate.managedObjectContext;
-  NSManagedObjectModel* mom = delegate.managedObjectModel;
-  NSArray *pluginTypes = delegate.pluginTypes;
-  NSArray *pluginDefaults = delegate.pluginDefaults;
-  
-  DivvyDatasetView *datasetView;    
-  datasetView = [NSEntityDescription insertNewObjectForEntityForName:@"DatasetView"
-                                               inManagedObjectContext:moc];
-
-  datasetView.dateCreated = [NSDate date];  
-  
-  datasetView.dataset = dataset;
-  
-  
-  for(NSString *pluginType in pluginTypes) {
-    NSMutableArray *plugins = [[NSMutableArray alloc] init];
-    NSMutableArray *pluginIDs = [[NSMutableArray alloc] init];
-    [datasetView setValue:plugins forKey:[NSString stringWithFormat:@"%@s", pluginType]];
-    [datasetView setValue:pluginIDs forKey:[NSString stringWithFormat:@"%@IDs", pluginType]];
-    [plugins release];
-    [pluginIDs release];
-    
-    for(NSEntityDescription *anEntityDescription in [mom entities])
-      if([anEntityDescription.propertiesByName objectForKey:[NSString stringWithFormat:@"%@ID", pluginType]]) {
-        
-        id anEntity = [NSEntityDescription insertNewObjectForEntityForName:anEntityDescription.name inManagedObjectContext:moc];
-        
-        [[datasetView valueForKey:[NSString stringWithFormat:@"%@s", pluginType]] addObject:anEntity];
-        [[datasetView valueForKey:[NSString stringWithFormat:@"%@IDs", pluginType]] addObject:[anEntity valueForKey:[NSString stringWithFormat:@"%@ID", pluginType]]];
-        
-        if([anEntityDescription.name isEqual:[pluginDefaults objectAtIndex:[pluginTypes indexOfObject:pluginType]]]) {
-          [datasetView setValue:anEntity 
-                         forKey:[NSString stringWithFormat:@"selected%@%@", 
-                                 [[pluginType substringToIndex:1] capitalizedString], 
-                                 [pluginType substringFromIndex:1]]];
-        }
-      }
-
-    NSMutableArray *pluginResults = [[NSMutableArray alloc] init];
-    for(id aPlugin in [datasetView valueForKey:[NSString stringWithFormat:@"%@s", pluginType]])
-      [pluginResults addObject:[NSNull null]];
-    [datasetView setValue:pluginResults forKey:[NSString stringWithFormat:@"%@Results", pluginType]];
-    [pluginResults release];
-  }
-  
-  [datasetView checkForNullPluginResults];
-  
-  return datasetView;
-}
-
 - (void) setProcessingImage {
   DivvyAppDelegate *delegate = [NSApp delegate];
   
@@ -287,7 +235,11 @@
 - (void) awakeFromInsert {
   [super awakeFromInsert];
   
-  // called when the object is first created.
+  // Called when the object is first created.
+  self.dateCreated = [NSDate date];  
+   
+  [self createPlugins];
+  
   [self generateUniqueID];
   self.operationQueue = [[[NSOperationQueue alloc] init] autorelease];
   [self.operationQueue setMaxConcurrentOperationCount:1]; // Serial queue on a per dataset view basis
@@ -344,7 +296,78 @@
   self.operationQueue = [[[NSOperationQueue alloc] init] autorelease];
   [self.operationQueue setMaxConcurrentOperationCount:1]; // Serial queue on a per dataset view basis
   
+  [self updatePlugins];
+  
   [self checkForNullPluginResults];
+}
+
+- (void) createPlugins {
+  // Could be cleaned up a bit
+  DivvyAppDelegate *delegate = [NSApp delegate];
+  NSManagedObjectContext* moc = delegate.managedObjectContext;
+  NSManagedObjectModel* mom = delegate.managedObjectModel;
+  NSArray *pluginTypes = delegate.pluginTypes;
+  NSArray *pluginDefaults = delegate.pluginDefaults;
+  
+  for(NSString *pluginType in pluginTypes) {
+    NSMutableArray *plugins = [[NSMutableArray alloc] init];
+    NSMutableArray *pluginIDs = [[NSMutableArray alloc] init];
+    [self setValue:plugins forKey:[NSString stringWithFormat:@"%@s", pluginType]];
+    [self setValue:pluginIDs forKey:[NSString stringWithFormat:@"%@IDs", pluginType]];
+    
+    for(NSEntityDescription *anEntityDescription in [mom entities])
+      if([anEntityDescription.propertiesByName objectForKey:[NSString stringWithFormat:@"%@ID", pluginType]]) {
+        
+        id anEntity = [NSEntityDescription insertNewObjectForEntityForName:anEntityDescription.name inManagedObjectContext:moc];
+        
+        [[self valueForKey:[NSString stringWithFormat:@"%@s", pluginType]] addObject:anEntity];
+        [[self valueForKey:[NSString stringWithFormat:@"%@IDs", pluginType]] addObject:[anEntity valueForKey:[NSString stringWithFormat:@"%@ID", pluginType]]];
+        
+        if([anEntityDescription.name isEqual:[pluginDefaults objectAtIndex:[pluginTypes indexOfObject:pluginType]]]) {
+          [self setValue:anEntity 
+                  forKey:[NSString stringWithFormat:@"selected%@%@", 
+                          [[pluginType substringToIndex:1] capitalizedString], 
+                          [pluginType substringFromIndex:1]]];
+        }
+      }
+    
+    NSMutableArray *pluginResults = [[NSMutableArray alloc] init];
+    for(id aPlugin in [self valueForKey:[NSString stringWithFormat:@"%@s", pluginType]])
+      [pluginResults addObject:[NSNull null]];
+    [self setValue:pluginResults forKey:[NSString stringWithFormat:@"%@Results", pluginType]];
+    [pluginResults release];
+  }
+}
+
+- (void) updatePlugins {
+  // If there are new plugins since the last time we ran Divvy, add them
+  DivvyAppDelegate *delegate = [NSApp delegate];
+  NSManagedObjectContext* moc = delegate.managedObjectContext;
+  NSManagedObjectModel* mom = delegate.managedObjectModel;
+  NSArray *pluginTypes = delegate.pluginTypes;
+  
+  for(NSString *pluginType in pluginTypes) {
+    NSMutableArray *plugins = [self valueForKey:[NSString stringWithFormat:@"%@s", pluginType]];
+    NSMutableArray *pluginIDs = [self valueForKey:[NSString stringWithFormat:@"%@IDs", pluginType]];
+    NSMutableArray *pluginResults = [self valueForKey:[NSString stringWithFormat:@"%@Results", pluginType]];
+    
+    for(NSEntityDescription *anEntityDescription in [mom entities])
+      if([anEntityDescription.propertiesByName objectForKey:[NSString stringWithFormat:@"%@ID", pluginType]]) {
+        BOOL entityExists = FALSE;
+        
+        for(NSManagedObject *aPlugin in plugins)
+          if ([aPlugin.entity isEqual:anEntityDescription])
+            entityExists = TRUE;
+      
+        if(!entityExists) {
+          id anEntity = [NSEntityDescription insertNewObjectForEntityForName:anEntityDescription.name inManagedObjectContext:moc];
+          
+          [plugins addObject:anEntity];
+          [pluginIDs addObject:[anEntity valueForKey:[NSString stringWithFormat:@"%@ID", pluginType]]];
+          [pluginResults addObject:[NSNull null]];
+        }
+      }
+  }
 }
 
 - (void) willSave { // Don't save all the images--it makes things slow and takes up a lot of disk

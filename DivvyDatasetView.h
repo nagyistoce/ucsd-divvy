@@ -53,10 +53,11 @@
 
 @property (readonly) NSImage *image;
 
-+ (id) datasetViewInDefaultContextWithDataset:(DivvyDataset *)dataset;
-
 - (void) setProcessingImage;
 - (void) reloadImage;
+
+- (void) createPlugins;
+- (void) updatePlugins;
 
 - (void) checkForNullPluginResults;
 

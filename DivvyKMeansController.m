@@ -7,9 +7,6 @@
 //
 
 #import "DivvyKMeansController.h"
-#import "DivvyKMeans.h"
-#import "DivvyAppDelegate.h"
-#import "DivvyDatasetView.h"
 
 @implementation DivvyKMeansController
 
