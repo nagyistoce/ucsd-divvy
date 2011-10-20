@@ -13,9 +13,9 @@
 
 @interface DivvyPluginManager : NSObject
 
-@property (retain) NSArray *pluginClasses;
-@property (retain) NSArray *pluginModels;
-@property (retain) NSArray *pluginModelsWithExistingStore;
+@property (nonatomic, retain) NSArray *pluginClasses;
+@property (nonatomic, retain) NSArray *pluginModels;
+@property (nonatomic, retain) NSArray *pluginModelsWithExistingStore;
 
 + (id)shared;
 

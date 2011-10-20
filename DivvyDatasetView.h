@@ -51,7 +51,10 @@
 
 @property (nonatomic, retain) NSOperationQueue *operationQueue;
 
-@property (readonly) NSImage *image;
+@property (nonatomic, retain) NSImage *renderedImage;
+@property (nonatomic, readonly) NSImage *image;
+
+- (void) generateUniqueID;
 
 - (void) setProcessingImage;
 - (void) reloadImage;

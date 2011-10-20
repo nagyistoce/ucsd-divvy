@@ -25,29 +25,23 @@
 @dynamic datasetViews;
 @dynamic selectedDatasetViews;
 
-+ (id) datasetInDefaultContextWithFile:(NSString *)path {
-  NSManagedObjectContext *context = [[NSApp delegate] managedObjectContext];
+- (void) loadDataAtURL:(NSURL *)url {
+  NSString *path = [url path];
   
-  DivvyDataset *newItem;
-  newItem = [NSEntityDescription insertNewObjectForEntityForName:@"Dataset"
-                                          inManagedObjectContext:context];
+  self.title = [[path lastPathComponent] stringByDeletingPathExtension];
   
-  newItem.title = [[path lastPathComponent] stringByDeletingPathExtension];
+  self.data = [NSData dataWithContentsOfFile:path];
   
-  newItem.data = [NSData dataWithContentsOfFile:path];
-  
-  newItem.selectedDatasetViews = [NSIndexSet indexSet];
+  self.selectedDatasetViews = [NSIndexSet indexSet];
   
   unsigned int n;
   unsigned int d;
   
-  [newItem.data getBytes:&n range:NSMakeRange(0, 4)];
-  [newItem.data getBytes:&d range:NSMakeRange(4, 4)];
+  [self.data getBytes:&n range:NSMakeRange(0, 4)];
+  [self.data getBytes:&d range:NSMakeRange(4, 4)];
   
-  newItem.n = [NSNumber numberWithUnsignedInt:n];
-  newItem.d = [NSNumber numberWithUnsignedInt:d];
-
-  return newItem;
+  self.n = [NSNumber numberWithUnsignedInt:n];
+  self.d = [NSNumber numberWithUnsignedInt:d];
 }
 
 - (float *) floatData {

@@ -62,6 +62,7 @@
 - (void) dealloc {
   [pluginClasses release];
   [pluginModels release];
+  [pluginModelsWithExistingStore release];
   
   [super dealloc];
 }

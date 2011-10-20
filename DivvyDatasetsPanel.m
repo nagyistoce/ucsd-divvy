@@ -16,18 +16,20 @@
 @synthesize datasetsArrayController;
 
 - (IBAction) editDatasets:(id)sender {
+  DivvyAppDelegate *delegate = [NSApp delegate];
+  
   NSInteger selectedSegment = [sender selectedSegment];
   NSInteger clickedSegmentTag = [[sender cell] tagForSegment:selectedSegment];
   
   if (clickedSegmentTag == 0) // Add button
-    [[NSApp delegate] openDatasets:sender];
+    [delegate openDatasets:sender];
   else // Remove button
-    [[NSApp delegate] closeDatasets:sender];
+    [delegate closeDatasets:sender];
 }
 
 - (void) dealloc {
-  [self.datasetsTable release];
-  [self.datasetsArrayController release];
+  [datasetsTable release];
+  [datasetsArrayController release];
   
   [super dealloc];
 }

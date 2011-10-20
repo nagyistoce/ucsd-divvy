@@ -11,6 +11,7 @@
 #import "DivvyDataset.h"
 #import "DivvyDatasetView.h"
 
+#import "DivvyPlugin.h"
 #import "DivvyDatasetVisualizer.h"
 #import "DivvyPointVisualizer.h"
 #import "DivvyClusterer.h"
@@ -22,6 +23,17 @@
 #import "DivvyDatasetViewPanel.h"
 #import "DivvyDatasetsPanel.h"
 #import "DivvyDatasetWindow.h"
+
+// Define constants declared in DivvyPlugin.h
+NSString * const kDivvyDatasetVisualizer = @"datasetVisualizer";
+NSString * const kDivvyPointVisualizer = @"pointVisualizer";
+NSString * const kDivvyClusterer = @"clusterer";
+NSString * const kDivvyReducer = @"reducer";
+
+NSString * const kDivvyDefaultDatasetVisualizer = @"ScatterPlot";
+NSString * const kDivvyDefaultPointVisualizer = @"NilPointVisualizer";
+NSString * const kDivvyDefaultClusterer = @"KMeans";
+NSString * const kDivvyDefaultReducer = @"NilReducer";
 
 @implementation DivvyAppDelegate
 
@@ -73,6 +85,7 @@
   int result;
   NSArray *fileTypes = [NSArray arrayWithObject:@"bin"];
   NSOpenPanel *oPanel = [NSOpenPanel openPanel];
+  DivvyDataset *dataset;
   
   [oPanel setAllowsMultipleSelection:YES];
   [oPanel setAllowedFileTypes:fileTypes];
@@ -81,8 +94,8 @@
     NSArray *filesToOpen = [oPanel URLs];
     int i, count = [filesToOpen count];
     for (i=0; i<count; i++) {
-      NSString *aFile = [[filesToOpen objectAtIndex:i] path];
-      [DivvyDataset datasetInDefaultContextWithFile:aFile];
+      dataset = [NSEntityDescription insertNewObjectForEntityForName:@"Dataset" inManagedObjectContext:self.managedObjectContext];
+      [dataset loadDataAtURL:[filesToOpen objectAtIndex:i]];
     }
   }
 }
@@ -105,8 +118,8 @@
 {
   if (!(self = [super init])) return nil;
   
-  pluginTypes = [[NSArray alloc] initWithObjects:@"datasetVisualizer", @"pointVisualizer", @"clusterer", @"reducer", nil];
-  pluginDefaults = [[NSArray alloc] initWithObjects:@"ScatterPlot", @"NilPointVisualizer", @"KMeans", @"NilReducer", nil];
+  pluginTypes = [[NSArray alloc] initWithObjects:kDivvyDatasetVisualizer, kDivvyPointVisualizer, kDivvyClusterer, kDivvyReducer, nil];
+  pluginDefaults = [[NSArray alloc] initWithObjects:kDivvyDefaultDatasetVisualizer, kDivvyDefaultPointVisualizer, kDivvyDefaultClusterer, kDivvyDefaultReducer, nil];
   
   pluginManager = [DivvyPluginManager shared];
   
@@ -250,7 +263,7 @@
     [modelsWithExistingStore addObject:[NSManagedObjectModel mergedModelFromBundles:nil]];
     [modelsWithExistingStore addObjectsFromArray:[pluginManager pluginModelsWithExistingStore]];
     
-    momWithExistingStore = [[NSManagedObjectModel modelByMergingModels:modelsWithExistingStore] retain];
+    momWithExistingStore = [NSManagedObjectModel modelByMergingModels:modelsWithExistingStore];
   }
   
   NSFileManager *fileManager = [NSFileManager defaultManager];
@@ -322,6 +335,8 @@
                              [error description], ([error userInfo] ? [[error userInfo] description] : @"no user info")];
         NSLog(@"Failure message: %@", message);
       }
+      
+      [manager release];
       
       // Delete the old store file
       [fileManager removeItemAtURL:migrationURL error:&error];
@@ -466,13 +481,13 @@
   [datasetViewPanelController release];
   [datasetWindowController release];
   
+  [selectedDatasets release];
+  
   [pluginTypes release];
   [pluginDefaults release];
-
+  
   [pluginManager release];
   [delegateSettings release];
-  
-  [selectedDatasets release];
   
   [managedObjectContext release];
   [persistentStoreCoordinator release];

@@ -16,11 +16,6 @@
 #import "DivvyClusterer.h"
 #import "DivvyReducer.h"
 
-@interface DivvyDatasetView ()
-@property (nonatomic, retain) NSImage *renderedImage;
-- (void) generateUniqueID;
-@end
-
 @implementation DivvyDatasetView
 
 @dynamic uniqueID;
@@ -79,7 +74,7 @@
 
 - (void) checkForNullPluginResults {
   // We require a specific order, so we don't use the delegate version
-  NSArray *pluginTypes = [[NSArray alloc] initWithObjects:@"clusterer", @"reducer", @"datasetVisualizer", @"pointVisualizer", nil];
+  NSArray *pluginTypes = [[NSArray alloc] initWithObjects:kDivvyClusterer, kDivvyReducer, kDivvyDatasetVisualizer, kDivvyPointVisualizer, nil];
   
   for(NSString *pluginType in pluginTypes) {
     NSArray *plugins = [self valueForKey:[NSString stringWithFormat:@"%@s", pluginType]];
@@ -100,6 +95,8 @@
     [self reloadImage];
   else
     [self setProcessingImage];
+  
+  [pluginTypes release];
 }
 
 - (void) datasetVisualizerChanged {
@@ -442,7 +439,13 @@
 - (void) dealloc {
   
   // Core Data properties automatically managed.
-  // Only release sythesized properties.
+  // Only release retained & sythesized properties.
+  
+  [datasetVisualizers release];
+  [pointVisualizers release];
+  [clusterers release];
+  [reducers release];
+  
   [operationQueue release];
   
   [renderedImage release];

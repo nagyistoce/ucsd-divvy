@@ -34,7 +34,8 @@
 @property (nonatomic, retain) NSSet *datasetViews;
 @property (nonatomic, retain) NSIndexSet *selectedDatasetViews;
 
-+ (id) datasetInDefaultContextWithFile:(NSString *)file;
+// Load data from a file
+- (void) loadDataAtURL:(NSURL *)url;
 
 // A pointer to the beginning of the floats in data, after n and d
 - (float *) floatData;

@@ -199,12 +199,34 @@
 }
 
 - (void) dealloc {
-  // Need to add a million releases here for the retained IBOutlets
+  [datasetVisualizerViewControllers release];
+  [pointVisualizerViewControllers release];
+  [clustererViewControllers release];
+  [reducerViewControllers release];
   
-  [self.datasetVisualizerViewControllers release];
-  [self.pointVisualizerViewControllers release];
-  [self.clustererViewControllers release];
-  [self.reducerViewControllers release];
+  [datasetVisualizerView release];
+  [pointVisualizerView release];
+  [clustererView release];
+  [reducerView release];
+  
+  [datasetVisualizerHeader release];
+  [pointVisualizerHeader release];
+  [clustererHeader release];
+  [reducerHeader release];
+  
+  [datasetVisualizerArrayController release];
+  [pointVisualizerArrayController release];
+  [clustererArrayController release];
+  [reducerArrayController release];
+  
+  [datasetVisualizerController release];
+  [pointVisualizerController release];
+  [clustererController release];
+  [reducerController release];
+  
+  [selectViewTextField release];
+  
+  [scrollView release];
   
   [super dealloc];
 }
