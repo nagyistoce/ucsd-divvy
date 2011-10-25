@@ -99,6 +99,8 @@
 		D7A2512E1402F8BD001AD337 /* indexing.c in Sources */ = {isa = PBXBuildFile; fileRef = D7A2512D1402F8BD001AD337 /* indexing.c */; };
 		D7AADA5014465C800041E6F1 /* processing.png in Resources */ = {isa = PBXBuildFile; fileRef = D7AADA4F14465C800041E6F1 /* processing.png */; };
 		D7AADA8E144660120041E6F1 /* DivvyHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = D7AADA8D144660120041E6F1 /* DivvyHeaderView.m */; };
+		D7B4560E14576A3300A21CB4 /* DivvyImageBrowserView.m in Sources */ = {isa = PBXBuildFile; fileRef = D7B4560D14576A3300A21CB4 /* DivvyImageBrowserView.m */; };
+		D7B4561114576A3F00A21CB4 /* DivvyImageBrowserCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D7B4561014576A3F00A21CB4 /* DivvyImageBrowserCell.m */; };
 		D7B78CBE116A8FEE00D363A2 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D7B78CBD116A8FEE00D363A2 /* QuartzCore.framework */; };
 		D7BC2DB211790CE700A37DF2 /* OpenCL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D7BC2DB111790CE700A37DF2 /* OpenCL.framework */; };
 		D7D027681445038600D2CB6D /* DivvyPlugin.h in Headers */ = {isa = PBXBuildFile; fileRef = D7D027671445038600D2CB6D /* DivvyPlugin.h */; };
@@ -313,6 +315,10 @@
 		D7B1957313983DC200BF1EC7 /* DivvyReducer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DivvyReducer.h; sourceTree = "<group>"; };
 		D7B1957613983DE500BF1EC7 /* DivvyPCA.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DivvyPCA.h; sourceTree = "<group>"; };
 		D7B1957713983DE500BF1EC7 /* DivvyPCA.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DivvyPCA.m; sourceTree = "<group>"; };
+		D7B4560C14576A3300A21CB4 /* DivvyImageBrowserView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DivvyImageBrowserView.h; sourceTree = "<group>"; };
+		D7B4560D14576A3300A21CB4 /* DivvyImageBrowserView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DivvyImageBrowserView.m; sourceTree = "<group>"; };
+		D7B4560F14576A3F00A21CB4 /* DivvyImageBrowserCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DivvyImageBrowserCell.h; sourceTree = "<group>"; };
+		D7B4561014576A3F00A21CB4 /* DivvyImageBrowserCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DivvyImageBrowserCell.m; sourceTree = "<group>"; };
 		D7B78CBD116A8FEE00D363A2 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		D7BC2CFA1178FF2000A37DF2 /* assignment.cl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.opencl; path = assignment.cl; sourceTree = "<group>"; };
 		D7BC2CFB1178FF2000A37DF2 /* move.cl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.opencl; path = move.cl; sourceTree = "<group>"; };
@@ -439,7 +445,7 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		080E96DDFE201D6D7F000001 /* Classes */ = {
+		080E96DDFE201D6D7F000001 /* Core Classes */ = {
 			isa = PBXGroup;
 			children = (
 				256AC3D80F4B6AC300CF3369 /* DivvyAppDelegate.h */,
@@ -452,14 +458,8 @@
 				D74C66DE13DF36F900CC5BB2 /* DivvyPluginManager.m */,
 				D796519014326B8500BE63D5 /* DivvyDelegateSettings.h */,
 				D796519114326B8500BE63D5 /* DivvyDelegateSettings.m */,
-				D7DD8B4D137C9A7200DADC35 /* DivvyDatasetWindow.h */,
-				D7DD8B4E137C9A7200DADC35 /* DivvyDatasetWindow.m */,
-				D730D28013B52AE200E01F31 /* DivvyDatasetViewPanel.h */,
-				D730D28113B52AE200E01F31 /* DivvyDatasetViewPanel.m */,
-				D7DD89C2137C70A400DADC35 /* DivvyDatasetsPanel.h */,
-				D7DD89C3137C70A400DADC35 /* DivvyDatasetsPanel.m */,
 			);
-			name = Classes;
+			name = "Core Classes";
 			sourceTree = "<group>";
 		};
 		0D9C418513FCFFE100E59675 /* TSNE */ = {
@@ -548,8 +548,8 @@
 				D7642A6913F4EE7C00F1CE56 /* Reducers */,
 				D73A292713B26A760046EDE1 /* Protocols */,
 				D7764EEE13788C3100F7F49F /* Models */,
-				080E96DDFE201D6D7F000001 /* Classes */,
-				D7AADA8B14465F8E0041E6F1 /* Custom NSView Subclasses */,
+				080E96DDFE201D6D7F000001 /* Core Classes */,
+				D7AADA8B14465F8E0041E6F1 /* UI Classes */,
 				29B97315FDCFA39411CA2CEA /* Other Sources */,
 				29B97317FDCFA39411CA2CEA /* Resources */,
 				29B97323FDCFA39411CA2CEA /* Frameworks */,
@@ -772,15 +772,25 @@
 			name = Linkage;
 			sourceTree = "<group>";
 		};
-		D7AADA8B14465F8E0041E6F1 /* Custom NSView Subclasses */ = {
+		D7AADA8B14465F8E0041E6F1 /* UI Classes */ = {
 			isa = PBXGroup;
 			children = (
+				D7DD8B4D137C9A7200DADC35 /* DivvyDatasetWindow.h */,
+				D7DD8B4E137C9A7200DADC35 /* DivvyDatasetWindow.m */,
+				D730D28013B52AE200E01F31 /* DivvyDatasetViewPanel.h */,
+				D730D28113B52AE200E01F31 /* DivvyDatasetViewPanel.m */,
+				D7DD89C2137C70A400DADC35 /* DivvyDatasetsPanel.h */,
+				D7DD89C3137C70A400DADC35 /* DivvyDatasetsPanel.m */,
 				D7965140143140BF00BE63D5 /* DivvyFlippedView.h */,
 				D7965141143140BF00BE63D5 /* DivvyFlippedView.m */,
 				D7AADA8C144660120041E6F1 /* DivvyHeaderView.h */,
 				D7AADA8D144660120041E6F1 /* DivvyHeaderView.m */,
+				D7B4560C14576A3300A21CB4 /* DivvyImageBrowserView.h */,
+				D7B4560D14576A3300A21CB4 /* DivvyImageBrowserView.m */,
+				D7B4560F14576A3F00A21CB4 /* DivvyImageBrowserCell.h */,
+				D7B4561014576A3F00A21CB4 /* DivvyImageBrowserCell.m */,
 			);
-			name = "Custom NSView Subclasses";
+			name = "UI Classes";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1216,6 +1226,8 @@
 				D7965142143140BF00BE63D5 /* DivvyFlippedView.m in Sources */,
 				D796519214326B8500BE63D5 /* DivvyDelegateSettings.m in Sources */,
 				D7AADA8E144660120041E6F1 /* DivvyHeaderView.m in Sources */,
+				D7B4560E14576A3300A21CB4 /* DivvyImageBrowserView.m in Sources */,
+				D7B4561114576A3F00A21CB4 /* DivvyImageBrowserCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

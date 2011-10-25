@@ -11,10 +11,11 @@
 
 @class DivvyDatasetsPanel;
 @class DivvyDatasetViewPanel;
+@class DivvyImageBrowserView;
 
 @interface DivvyDatasetWindow : NSWindowController
 
-@property (retain) IBOutlet IKImageBrowserView *datasetViewsBrowser;
+@property (retain) IBOutlet DivvyImageBrowserView *datasetViewsBrowser;
 @property (retain) IBOutlet NSArrayController *datasetViewsArrayController;
 
 @property (retain) IBOutlet DivvyDatasetsPanel *datasetsPanel;
