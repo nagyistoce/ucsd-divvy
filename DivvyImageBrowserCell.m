@@ -24,7 +24,7 @@
 		selectionLayer.frame = CGRectMake(0, 0, frame.size.width, frame.size.height);
 		
 		const CGFloat fillComponents[4] = {0.824, 0.165, 0.071, 0.0};
-		const CGFloat strokeComponents[4] = {0.824, 0.165, 0.071, 0.0};
+		const CGFloat strokeComponents[4] = {0.824, 0.165, 0.071, 1.0};
 		
 		//set a background color
 		CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
