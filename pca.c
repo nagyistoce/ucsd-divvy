@@ -8,16 +8,23 @@
  */
 
 #include "pca.h"
+#include <string.h>
 #include <Accelerate/Accelerate.h>
 
 
 void reduce_data(float* X, int D, int N, float* Y, int no_dims) {
+    
+    // TODO: Use dispatch here!!!
+    
+    // Make copy of the data
+    float* XX = (float*) malloc(N * D * sizeof(float));
+    memcpy((void*) XX, (void*) X, N * D * sizeof(float));
 	
 	// Compute data mean
 	float* mean = (float*) calloc(D, sizeof(float));
 	for(int n = 0; n < N; n++) {
 		for(int d = 0; d < D; d++) {
-			mean[d] += X[n * D + d];
+			mean[d] += XX[n * D + d];
 		}
 	}
 	for(int d = 0; d < D; d++) {
@@ -27,13 +34,13 @@ void reduce_data(float* X, int D, int N, float* Y, int no_dims) {
 	// Subtract data mean
 	for(int n = 0; n < N; n++) {
 		for(int d = 0; d < D; d++) {
-			X[n * D + d] -= mean[d];
+			XX[n * D + d] -= mean[d];
 		}
 	}
 	
 	// Compute covariance matrix (with BLAS)
 	float* C = (float*) calloc(D * D, sizeof(float));
-	cblas_sgemm(CblasRowMajor, CblasNoTrans, CblasTrans, D, D, N, 1.0, X, N, X, N, 0.0, C, D);
+	cblas_sgemm(CblasRowMajor, CblasNoTrans, CblasTrans, D, D, N, 1.0, XX, N, XX, N, 0.0, C, D);
 	
 	// Compute covariance matrix (without BLAS)
 	/*float* C = (float*) calloc(D * D, sizeof(float));
@@ -55,14 +62,14 @@ void reduce_data(float* X, int D, int N, float* Y, int no_dims) {
 	ssyev_((char*) "V", (char*) "U", &n, C, &lda, lambda, work, &lwork, &info);				// eigenvectors for real, symmetric matrix
 
 	// Project data onto first eigenvectors (C' * X, using BLAS)
-	//cblas_sgemm(CblasRowMajor, CblasTrans, CblasNoTrans, no_dims, N, D, 1.0, C, no_dims, X, N, 0.0, Y, N);
+	//cblas_sgemm(CblasRowMajor, CblasTrans, CblasNoTrans, no_dims, N, D, 1.0, C, no_dims, XX, N, 0.0, Y, N);
 	
 	// Project data onto first eigenvectors (without BLAS)
 	for(int n = 0; n < N; n++) {
 		for(int d1 = 0; d1 < no_dims; d1++) {
 			Y[n * no_dims + d1] = 0.0;
 			for(int d2 = 0; d2 < D; d2++) {
-				Y[n * no_dims + d1] += X[n * no_dims + d2] * C[d1 * D + d2];
+				Y[n * no_dims + d1] += XX[n * no_dims + d2] * C[d1 * D + d2];
 			}
 		}
 	}
@@ -94,6 +101,7 @@ void reduce_data(float* X, int D, int N, float* Y, int no_dims) {
 	}	
 	
 	// Clean up memory
+    free(XX);
 	free(mean);
 	free(C);
 	free(lambda);

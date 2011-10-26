@@ -43,13 +43,11 @@
 	
 	// Print out reduced data
 	/*for(int i = 0; i < [[dataset n] unsignedIntValue]; i++) {
-		for(int j = 0; j < no_dims; j++) {
+		for(int j = 0; j < [self.d unsignedIntValue]; j++) {
 			printf("%f,", newReducedData[j * [[dataset n] unsignedIntValue] + i]);
 		}
 		printf("\n");
 	}*/
-	
-	// Should set firstAxis, secondAxis, and rotatedData...?
 }
 
 @end
